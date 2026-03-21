@@ -1,628 +1,545 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TBMI | Technical & Business Management Institute</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            color: #1e293b;
-            background-color: #ffffff;
-        }
-
-        /* Color scheme inspired by NDC */
-        :root {
-            --primary: #0f3b2c;
-            --primary-dark: #0a2a1f;
-            --primary-light: #eef7f2;
-            --gold: #c9a03d;
-            --gold-dark: #b88b2c;
-            --gray-light: #f8fafc;
-            --gray-border: #e2e8f0;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
-        .top-bar {
-            background: var(--primary-dark);
-            color: white;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .top-bar a {
-            color: #ddd;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        .top-bar a:hover {
-            color: var(--gold);
-        }
-
-        .main-header {
-            background: white;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--gray-border);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .logo-area h1 {
-            font-size: 28px;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        .logo-area p {
-            font-size: 14px;
-            color: #4b5563;
-            margin-top: 5px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #1f2937;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--gold);
-        }
-
-        /* Hero / Principal Message Section */
-        .principal-section {
-            background: var(--primary-light);
-            padding: 60px 0;
-        }
-
-        .principal-grid {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .principal-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .principal-image img {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
-        }
-
-        .principal-message {
-            flex: 2;
-        }
-
-        .principal-message h2 {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .principal-message p {
-            margin-bottom: 20px;
-            color: #2d3a48;
-            line-height: 1.7;
-        }
-
-        .principal-name {
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--primary-dark);
-            margin-top: 15px;
-        }
-
-        /* Welcome Section */
-        .welcome-section {
-            padding: 60px 0;
-            background: white;
-            text-align: center;
-        }
-
-        .welcome-section h2 {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .welcome-section p {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            color: #334155;
-        }
-
-        /* Stats */
-        .stats {
-            background: var(--primary);
-            color: white;
-            padding: 50px 0;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 42px;
-            font-weight: 700;
-        }
-
-        .stat-item p {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-top: 8px;
-        }
-
-        /* History Section */
-        .history-section {
-            padding: 60px 0;
-            background: var(--gray-light);
-        }
-
-        .section-title {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .history-content {
-            max-width: 900px;
-            margin: 0 auto;
-            color: #2d3a48;
-            line-height: 1.7;
-        }
-
-        .history-content p {
-            margin-bottom: 20px;
-        }
-
-        /* Mission Vision */
-        .mission-vision {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .mv-grid {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .mv-card {
-            flex: 1;
-            background: var(--gray-light);
-            padding: 35px 30px;
-            border-radius: 20px;
-            text-align: center;
-        }
-
-        .mv-card h3 {
-            font-size: 28px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        /* Departments */
-        .departments {
-            padding: 60px 0;
-            background: var(--gray-light);
-        }
-
-        .dept-grid {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .dept-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            flex: 1;
-            min-width: 250px;
-            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .dept-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .dept-card h4 {
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        /* Teachers */
-        .teachers {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .teacher-grid {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .teacher-card {
-            text-align: center;
-            background: var(--gray-light);
-            padding: 30px;
-            border-radius: 20px;
-            width: 260px;
-        }
-
-        .teacher-card img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            background: #cbd5e1;
-        }
-
-        .teacher-card h4 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        /* Notice & Events */
-        .notice-events {
-            padding: 60px 0;
-            background: var(--gray-light);
-        }
-
-        .notice-grid {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .notice-board, .events {
-            flex: 1;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-        }
-
-        .notice-board h3, .events h3 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            border-left: 5px solid var(--gold);
-            padding-left: 15px;
-        }
-
-        .notice-item, .event-item {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--gray-border);
-        }
-
-        /* Gallery */
-        .gallery {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .gallery-grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .gallery-item {
-            width: 200px;
-            height: 150px;
-            background: #cbd5e1;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            font-size: 14px;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 60px 0;
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        .contact-grid {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .contact-info, .contact-form {
-            flex: 1;
-        }
-
-        .contact-info i {
-            margin-right: 12px;
-            color: var(--gold);
-        }
-
-        .contact-info p {
-            margin: 15px 0;
-        }
-
-        /* Footer */
-        .footer {
-            background: #0a1f18;
-            color: #aaa;
-            padding: 30px 0;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        button, .btn {
-            background: var(--gold);
-            border: none;
-            padding: 12px 28px;
-            font-weight: 600;
-            border-radius: 40px;
-            cursor: pointer;
-            color: #1e293b;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 12px;
-            border: none;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .principal-grid {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>TBMI | Technical & Business Management Institute</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      color: #1e293b;
+      background: #ffffff;
+    }
+
+    :root {
+      --primary: #0f3b2c;
+      --primary-dark: #0a2a1f;
+      --primary-light: #eef7f2;
+      --gold: #c9a03d;
+      --gold-dark: #b88b2c;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* top bar */
+    .top-bar {
+      background: var(--primary-dark);
+      color: white;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-bar a {
+      color: #ddd;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .top-bar a:hover {
+      color: var(--gold);
+    }
+
+    /* header */
+    .main-header {
+      background: white;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-area h1 {
+      font-size: 28px;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-area p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-top: 5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #1f2937;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      color: var(--gold);
+    }
+
+    /* principal hero section (NDC style) */
+    .principal-hero {
+      background: var(--primary-light);
+      padding: 60px 0;
+    }
+
+    .principal-grid {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .principal-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .principal-image img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid white;
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+    }
+
+    .principal-message {
+      flex: 2;
+    }
+
+    .principal-message h2 {
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .principal-message p {
+      margin-bottom: 20px;
+      color: #2d3a48;
+      line-height: 1.7;
+    }
+
+    .read-more-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid var(--gold);
+      cursor: pointer;
+    }
+
+    /* stats */
+    .stats {
+      background: var(--primary);
+      color: white;
+      padding: 50px 0;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    /* mission vision */
+    .mission-vision {
+      padding: 60px 0;
+      background: white;
+    }
+
+    .mv-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .mv-card {
+      flex: 1;
+      background: var(--gray-light);
+      padding: 35px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .section-title {
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* departments */
+    .departments {
+      padding: 60px 0;
+      background: var(--gray-light);
+    }
+
+    .dept-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dept-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+    }
+
+    /* teachers */
+    .teachers {
+      padding: 60px 0;
+      background: white;
+    }
+
+    .teacher-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .teacher-card {
+      text-align: center;
+      background: var(--gray-light);
+      padding: 30px;
+      border-radius: 20px;
+      width: 260px;
+    }
+
+    .teacher-card img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    /* notice & events (NDC style) */
+    .notice-events {
+      padding: 60px 0;
+      background: var(--gray-light);
+    }
+
+    .notice-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .notice-board, .events {
+      flex: 1;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .notice-board h3, .events h3 {
+      font-size: 24px;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-left: 5px solid var(--gold);
+      padding-left: 15px;
+    }
+
+    .notice-item, .event-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    /* contact */
+    .contact {
+      padding: 60px 0;
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    .contact-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info, .contact-form {
+      flex: 1;
+    }
+
+    .contact-info i {
+      margin-right: 12px;
+      color: var(--gold);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      border: none;
+    }
+
+    .btn {
+      background: var(--gold);
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      color: #1e293b;
+    }
+
+    .footer {
+      background: #0a1f18;
+      color: #aaa;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* MODAL (Principal Corner popup) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      max-width: 700px;
+      width: 90%;
+      border-radius: 30px;
+      padding: 30px;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #555;
+    }
+    .modal img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 768px) {
+      .header-content, .principal-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <div class="top-bar">
-    <div class="container">
-        <span><i class="fas fa-map-marker-alt"></i> Bhawlagonj, Debiganj, Panchagarh</span>
-        <span>
-            <i class="fas fa-phone"></i> +8801309132253 &nbsp;|&nbsp;
-            <i class="fas fa-envelope"></i> info@tbmi.edu.bd
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </span>
-    </div>
+  <div class="container">
+    <span><i class="fas fa-map-marker-alt"></i> Bhawlagonj, Debiganj, Panchagarh</span>
+    <span><i class="fas fa-phone"></i> +8801309132253 | <i class="fas fa-envelope"></i> info@tbmi.edu.bd</span>
+  </div>
 </div>
 
 <div class="main-header">
-    <div class="container header-content">
-        <div class="logo-area">
-            <h1>Technical & Business<br>Management Institute</h1>
-            <p>"Building Skilled Professionals for the Future"</p>
-        </div>
-        <div class="nav-menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Admission</a>
-            <a href="#">Departments</a>
-            <a href="#">Contact</a>
-        </div>
+  <div class="container header-content">
+    <div class="logo-area">
+      <h1>Technical & Business<br>Management Institute</h1>
+      <p>"Building Skilled Professionals for the Future"</p>
     </div>
+    <div class="nav-menu">
+      <a href="#" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Admission</a>
+      <a href="#">Departments</a>
+      <a id="principalCornerBtn" style="cursor:pointer;">Principal Corner</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
 </div>
 
-<!-- Principal Section (exactly like NDC style) -->
-<div class="principal-section">
-    <div class="container principal-grid">
-        <div class="principal-image">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Principal">
-        </div>
-        <div class="principal-message">
-            <h2>Principal's Message</h2>
-            <p>Welcome to Technical & Business Management Institute – an institution dedicated to developing skilled professionals in technology and business education. Since 2004, we have been committed to providing quality technical education with practical learning that prepares students for the modern workforce.</p>
-            <p>At TBMI, we believe in nurturing both technical expertise and ethical values. Our dedicated faculty members work tirelessly to ensure every student achieves their full potential.</p>
-            <div class="principal-name">MD Ahsan Habib<br>Principal, TBMI</div>
-        </div>
+<!-- Principal Section like NDC -->
+<div class="principal-hero">
+  <div class="container principal-grid">
+    <div class="principal-image">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Principal">
     </div>
-</div>
-
-<!-- Welcome -->
-<div class="welcome-section">
-    <div class="container">
-        <h2>Welcome to TBMI</h2>
-        <p>Technical and Business Management Institute was established in 2004 with the aim of developing skilled professionals in technology and business education. The institute provides quality technical education with practical learning.</p>
-        <p>Our institute is fully self-financed, dedicated to excellence in technical and business education.</p>
+    <div class="principal-message">
+      <h2>Principal's Message</h2>
+      <p>Welcome to Technical & Business Management Institute – an institution dedicated to developing skilled professionals in technology and business education. Since 2004, we have been committed to providing quality technical education with practical learning that prepares students for the modern workforce.</p>
+      <p>At TBMI, we believe in nurturing both technical expertise and ethical values. Our dedicated faculty members work tirelessly to ensure every student achieves their full potential.</p>
+      <div style="font-weight:700;">MD Ahsan Habib <br><span style="font-weight:normal;">Principal, TBMI</span></div>
+      <a id="principalCornerLink" class="read-more-link">Read more →</a>
     </div>
+  </div>
 </div>
 
 <!-- Stats -->
 <div class="stats">
-    <div class="container stats-grid">
-        <div class="stat-item"><h3>10+</h3><p>Experienced Teachers</p></div>
-        <div class="stat-item"><h3>21</h3><p>Years of Excellence</p></div>
-        <div class="stat-item"><h3>3</h3><p>Departments</p></div>
-        <div class="stat-item"><h3>1000+</h3><p>Alumni</p></div>
-    </div>
+  <div class="container stats-grid">
+    <div class="stat-item"><h3>10+</h3><p>Experienced Teachers</p></div>
+    <div class="stat-item"><h3>21</h3><p>Years of Excellence</p></div>
+    <div class="stat-item"><h3>3</h3><p>Departments</p></div>
+    <div class="stat-item"><h3>1000+</h3><p>Alumni</p></div>
+  </div>
 </div>
 
-<!-- History + Mission Vision integrated -->
-<div class="history-section">
-    <div class="container">
-        <h2 class="section-title">College History & Tradition</h2>
-        <div class="history-content">
-            <p>Technical and Business Management Institute (TBMI) was founded in 2004 in Bhawlagonj, Debiganj, Panchagarh with a clear vision: to bridge the gap between technical skills and business knowledge. Starting with a small group of dedicated educators, TBMI quickly became a trusted name for quality technical education in northern Bangladesh.</p>
-            <p>Over the years, the institute has expanded its programs, introduced modern labs, and maintained a strong focus on practical, career-oriented training. Today, TBMI continues its mission to develop skilled professionals who contribute to the nation's economy.</p>
-        </div>
-    </div>
-</div>
-
+<!-- Mission & Vision -->
 <div class="mission-vision">
-    <div class="container mv-grid">
-        <div class="mv-card">
-            <h3>Our Mission</h3>
-            <p>High quality technical & business education with practical skills, innovation, and professionalism. We strive to produce graduates who are ready for the modern workforce.</p>
-        </div>
-        <div class="mv-card">
-            <h3>Our Vision</h3>
-            <p>Leading technical institute in Bangladesh, producing skilled graduates who will drive innovation and ethical leadership in technology and business sectors.</p>
-        </div>
+  <div class="container">
+    <h2 class="section-title">Mission & Vision</h2>
+    <div class="mv-grid">
+      <div class="mv-card"><h3>Our Mission</h3><p>High quality technical & business education with practical skills, innovation, and professionalism.</p></div>
+      <div class="mv-card"><h3>Our Vision</h3><p>Leading technical institute in Bangladesh, producing skilled graduates for modern workforce.</p></div>
     </div>
+  </div>
 </div>
 
 <!-- Departments -->
 <div class="departments">
-    <div class="container">
-        <h2 class="section-title">Our Departments</h2>
-        <div class="dept-grid">
-            <div class="dept-card"><h4>Human Resource Development</h4><p>Strategic HR, org. development & leadership</p></div>
-            <div class="dept-card"><h4>Digital Technology in Business</h4><p>E‑commerce, digital marketing, analytics</p></div>
-            <div class="dept-card"><h4>Computer Technology</h4><p>Programming, networking, system design</p></div>
-        </div>
+  <div class="container">
+    <h2 class="section-title">Our Departments</h2>
+    <div class="dept-grid">
+      <div class="dept-card"><h4>Human Resource Development</h4><p>Strategic HR, org. development & leadership</p></div>
+      <div class="dept-card"><h4>Digital Technology in Business</h4><p>E‑commerce, digital marketing, analytics</p></div>
+      <div class="dept-card"><h4>Computer Technology</h4><p>Programming, networking, system design</p></div>
     </div>
+  </div>
 </div>
 
 <!-- Teachers -->
 <div class="teachers">
-    <div class="container">
-        <h2 class="section-title">Teachers & Principal</h2>
-        <div class="teacher-grid">
-            <div class="teacher-card">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Principal">
-                <h4>MD Ahsan Habib</h4>
-                <p>Principal</p>
-                <small>Leading since 2010 · 20+ years experience</small>
-            </div>
-            <div class="teacher-card">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Lecturer">
-                <h4>Golam Maola</h4>
-                <p>Lecturer (HRD)</p>
-            </div>
-            <div class="teacher-card">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Teacher">
-                <h4>Other Faculty</h4>
-                <p>Total 10 experienced teachers</p>
-            </div>
-        </div>
+  <div class="container">
+    <h2 class="section-title">Teachers & Principal</h2>
+    <div class="teacher-grid">
+      <div class="teacher-card"><img src="https://randomuser.me/api/portraits/men/32.jpg"><h4>MD Ahsan Habib</h4><p>Principal</p><small>Leading since 2010</small></div>
+      <div class="teacher-card"><img src="https://randomuser.me/api/portraits/men/45.jpg"><h4>Golam Maola</h4><p>Lecturer (HRD)</p></div>
+      <div class="teacher-card"><img src="https://randomuser.me/api/portraits/women/68.jpg"><h4>Other Faculty</h4><p>Total 10 experienced teachers</p></div>
     </div>
+  </div>
 </div>
 
 <!-- Notice & Events -->
 <div class="notice-events">
-    <div class="container notice-grid">
-        <div class="notice-board">
-            <h3>Notice Board</h3>
-            <div class="notice-item"><strong>Form fill-up:</strong> All students are requested to complete their form fill-up within April.</div>
-            <div class="notice-item"><strong>Admission test:</strong> 10 April, 10 AM.</div>
-            <div class="notice-item"><strong>Class XI & XII</strong> Admission 2025–26 starts from 3 April. Eligibility: SSC Pass.</div>
-            <div class="notice-item"><strong>Download prospectus</strong> — available at admin office.</div>
-        </div>
-        <div class="events">
-            <h3>Upcoming Events</h3>
-            <div class="event-item"><strong>📅 April 10, 2025:</strong> Admission Test & Orientation</div>
-            <div class="event-item"><strong>📅 April 20, 2025:</strong> Career Counseling Workshop</div>
-            <div class="event-item"><strong>📅 May 5, 2025:</strong> Digital Skills Seminar</div>
-        </div>
+  <div class="container notice-grid">
+    <div class="notice-board"><h3>📢 Notice Board</h3>
+      <div class="notice-item"><strong>Form fill-up:</strong> All students complete form fill-up within April.</div>
+      <div class="notice-item"><strong>Admission test:</strong> 10 April, 10 AM.</div>
+      <div class="notice-item"><strong>Class XI & XII</strong> Admission 2025–26 starts from 3 April.</div>
     </div>
-</div>
-
-<!-- Gallery (placeholder) -->
-<div class="gallery">
-    <div class="container">
-        <h2 class="section-title">Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><i class="fas fa-image"></i> Campus</div>
-            <div class="gallery-item"><i class="fas fa-chalkboard"></i> Classroom</div>
-            <div class="gallery-item"><i class="fas fa-laptop-code"></i> Lab</div>
-            <div class="gallery-item"><i class="fas fa-users"></i> Event</div>
-        </div>
+    <div class="events"><h3>📅 Upcoming Events</h3>
+      <div class="event-item"><strong>April 10, 2025:</strong> Admission Test & Orientation</div>
+      <div class="event-item"><strong>April 20, 2025:</strong> Career Counseling Workshop</div>
+      <div class="event-item"><strong>May 5, 2025:</strong> Digital Skills Seminar</div>
     </div>
+  </div>
 </div>
 
 <!-- Contact -->
 <div class="contact">
-    <div class="container contact-grid">
-        <div class="contact-info">
-            <h3 style="color:var(--gold); margin-bottom:20px;">Get in Touch</h3>
-            <p><i class="fas fa-map-marker-alt"></i> Bhawlagonj, Debiganj, Panchagarh, Bangladesh</p>
-            <p><i class="fas fa-phone"></i> +8801309132253</p>
-            <p><i class="fas fa-envelope"></i> info@tbmi.edu.bd</p>
-            <p><i class="fab fa-facebook"></i> facebook.com/tbmi.panchagarh</p>
-        </div>
-        <div class="contact-form">
-            <h3 style="color:var(--gold); margin-bottom:20px;">Online Admission Form</h3>
-            <input type="text" placeholder="Student Name">
-            <input type="text" placeholder="SSC Roll">
-            <input type="text" placeholder="Mobile Number">
-            <button class="btn">Apply Now</button>
-        </div>
+  <div class="container contact-grid">
+    <div class="contact-info"><h3 style="color:var(--gold); margin-bottom:20px;">Get in Touch</h3>
+      <p><i class="fas fa-map-marker-alt"></i> Bhawlagonj, Debiganj, Panchagarh, Bangladesh</p>
+      <p><i class="fas fa-phone"></i> +8801309132253</p>
+      <p><i class="fas fa-envelope"></i> info@tbmi.edu.bd</p>
+      <p><i class="fab fa-facebook"></i> facebook.com/tbmi.panchagarh</p>
     </div>
+    <div class="contact-form"><h3 style="color:var(--gold);">📝 Online Admission Form</h3>
+      <input type="text" placeholder="Student Name"><input type="text" placeholder="SSC Roll"><input type="text" placeholder="Mobile Number"><button class="btn">Apply Now</button>
+    </div>
+  </div>
 </div>
 
 <div class="footer">
-    <div class="container">
-        <p>© 2025 Technical & Business Management Institute. All rights reserved. | Established 2004 | Self-financed institution committed to quality education.</p>
-        <p style="margin-top:10px;">Bhawlagonj, Debiganj, Panchagarh, Bangladesh</p>
-    </div>
+  <div class="container"><p>© 2025 Technical & Business Management Institute. All rights reserved. | Established 2004 | Self-financed institution committed to quality education.</p></div>
 </div>
 
+<!-- MODAL for Principal Corner (exactly like new page but inside popup) -->
+<div id="principalModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div style="text-align:center;">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Principal">
+      <h2 style="color:var(--primary); margin:15px 0 5px;">Principal's Corner</h2>
+      <p style="font-weight:600;">MD Ahsan Habib</p>
+      <p>Principal, Technical & Business Management Institute</p>
+    </div>
+    <div style="margin-top:20px;">
+      <p>Dear Students, Faculty Members, and Well-wishers,</p>
+      <p>It is my privilege to serve as the Principal of Technical & Business Management Institute. Since our establishment in 2004, TBMI has been a beacon of technical and business education in northern Bangladesh. Our mission has always been to nurture skilled professionals who can meet the demands of the modern workforce.</p>
+      <p>At TBMI, we believe education is not just about textbooks — it's about building character, fostering innovation, and preparing our students to become ethical leaders. Our dedicated faculty members work tirelessly to ensure every student receives personalized attention and practical training.</p>
+      <p>I invite all prospective students to visit our campus and experience the TBMI difference. Together, we can build a brighter future.</p>
+      <p style="margin-top:20px;">May your journey with us be transformative and rewarding.</p>
+      <div style="margin-top:30px; text-align:right;"><strong>MD Ahsan Habib</strong><br>Principal</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('principalModal');
+  const openBtns = document.getElementById('principalCornerBtn');
+  const openLink = document.getElementById('principalCornerLink');
+  const closeSpan = document.querySelector('.close-modal');
+
+  function openModal() {
+    modal.style.display = 'flex';
+  }
+  openBtns.addEventListener('click', openModal);
+  openLink.addEventListener('click', openModal);
+  closeSpan.addEventListener('click', () => { modal.style.display = 'none'; });
+  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+</script>
 </body>
 </html>
