@@ -943,7 +943,7 @@
 /* Chat Widget Styles */
 .chat-widget {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     z-index: 1000;
 }
@@ -969,7 +969,7 @@
 /* Chat Box - ডিফল্ট লুকানো */
 .chat-box {
     position: fixed;
-    bottom: 90px;
+    bottom: 150px;
     right: 20px;
     width: 350px;
     height: 450px;
@@ -1101,16 +1101,19 @@
         width: 300px;
         height: 400px;
         right: 10px;
-        bottom: 80px;
+        bottom: 130px;
+    }
+    
+    .chat-widget {
+        bottom: 70px;
+        right: 10px;
     }
     
     .chat-toggle {
         width: 50px;
         height: 50px;
-        right: 10px;
-        bottom: 10px;
     }
-    }
+    }    
     </style>
 </head>
 <body>
@@ -1776,6 +1779,7 @@
 </div>
 
 <!-- Chat Widget -->
+<!-- Chat Widget -->
 <div class="chat-widget">
     <div class="chat-toggle" id="chatToggle">
         <i class="fas fa-comment-dots"></i>
@@ -1789,7 +1793,7 @@
             <div class="message bot">👋 হ্যালো! আপনার প্রশ্ন লিখুন, আমরা সাহায্য করতে প্রস্তুত।</div>
         </div>
         <form class="chat-input-form" id="chatForm" 
-              action="https://formspree.io/f/mdawvjba" 
+              action="https://formspree.io/f/আপনার_চ্যাট_URL_এখানে" 
               method="POST">
             <input type="text" name="message" id="chatInput" placeholder="আপনার বার্তা লিখুন..." required>
             <input type="hidden" name="_subject" value="নতুন চ্যাট বার্তা - TBMI">
@@ -1983,7 +1987,7 @@
         }
     });
     
-    // Chat Widget with Formspree
+// Chat Widget with Formspree
 const chatToggle = document.getElementById('chatToggle');
 const chatBox = document.getElementById('chatBox');
 const closeChat = document.getElementById('closeChat');
@@ -2061,7 +2065,7 @@ if (chatForm) {
         
         chatMessages.scrollTop = chatMessages.scrollHeight;
     });
-}
+}    
     
 // Newsletter Form Submission Handler with Formspree
 const newsletterForm = document.getElementById('newsletterForm');
