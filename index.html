@@ -2,12 +2,20 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
+    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান">
+    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, কম্পিউটার টেকনোলজি, HRD, পঞ্চগড়">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
         * {
             margin: 0;
@@ -22,9 +30,12 @@
             --secondary: #ff9800;
             --secondary-dark: #e68900;
             --accent: #2ecc71;
+            --accent-dark: #27ae60;
             --dark: #1a1a2e;
             --light: #f8f9fa;
+            --gray: #6c757d;
             --white: #ffffff;
+            --black: #000000;
             --shadow: 0 5px 30px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
@@ -34,14 +45,32 @@
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
+            overflow-x: hidden;
         }
 
+        /* Dark Mode */
         body.dark-mode {
             --dark: #f8f9fa;
             --light: #1a1a2e;
             --white: #1e1e2e;
+            --black: #ffffff;
             background: var(--light);
             color: var(--dark);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
         }
 
         .container {
@@ -50,7 +79,74 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Header & Navigation */
         header {
             background: var(--white);
             box-shadow: var(--shadow);
@@ -59,6 +155,10 @@
             top: 0;
             z-index: 1000;
             transition: var(--transition);
+        }
+        header.scrolled {
+            padding: 5px 0;
+            background: var(--white);
         }
         .nav-bar {
             display: flex;
@@ -85,7 +185,8 @@
             font-weight: 500;
             transition: var(--transition);
         }
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--secondary);
         }
         .nav-icons {
@@ -93,65 +194,85 @@
             gap: 15px;
             align-items: center;
         }
-        .dark-mode-toggle, .menu-toggle {
+        .dark-mode-toggle,
+        .lang-toggle,
+        .menu-toggle {
             background: none;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--dark);
+            transition: var(--transition);
+        }
+        .dark-mode-toggle:hover,
+        .lang-toggle:hover {
+            color: var(--secondary);
         }
         .menu-toggle {
             display: none;
+            font-size: 1.5rem;
         }
 
-        /* Hero Section */
+        /* Hero Section with Video Background */
         .hero {
-            background: linear-gradient(135deg, rgba(30,60,114,0.9), rgba(42,82,152,0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600') center/cover;
+            position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--white);
             margin-top: 80px;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30,60,114,0.85), rgba(42,82,152,0.85));
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
         }
         .hero-content .typed-text {
             font-size: 1.5rem;
             margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
         }
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--white);
-        }
-        .btn-outline {
-            border: 2px solid var(--white);
-            color: var(--white);
-            background: transparent;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Counter Section */
@@ -168,84 +289,14 @@
         }
         .counter-item h3 {
             font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .counter-item p {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
-        /* Section */
-        .section {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 50px;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .feature-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        /* Courses */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .course-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        .course-img {
-            height: 200px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .course-content {
-            padding: 20px;
-        }
-
-        /* Notice Tabs */
+        /* Notice Board Section */
         .notice-section {
             background: var(--light);
         }
@@ -254,6 +305,7 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         .tab-btn {
             padding: 10px 25px;
@@ -261,10 +313,12 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
         }
         .tab-btn.active {
             background: var(--primary);
-            color: white;
+            color: var(--white);
         }
         .tab-content {
             display: none;
@@ -286,9 +340,162 @@
             align-items: center;
             flex-wrap: wrap;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .notice-item:hover {
+            transform: translateX(5px);
+        }
+        .notice-info h4 {
+            margin-bottom: 5px;
+        }
+        .notice-date {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        .notice-category {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
-        /* FAQ */
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        .course-content {
+            padding: 20px;
+        }
+        .course-content h3 {
+            margin-bottom: 10px;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: var(--gray);
+        }
+
+        /* Teachers Slider */
+        .teachers-slider {
+            padding: 20px 0;
+        }
+        .teacher-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .teacher-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+        .teacher-content {
+            padding: 20px;
+        }
+        .teacher-content h3 {
+            margin-bottom: 5px;
+        }
+        .teacher-content p {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Slider */
+        .testimonials-slider {
+            padding: 20px 0;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .testimonial-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        .testimonial-card h4 {
+            margin-top: 15px;
+            color: var(--primary);
+        }
+
+        /* Industry Partners */
+        .partners-slider {
+            padding: 20px 0;
+        }
+        .partner-logo {
+            text-align: center;
+            padding: 20px;
+        }
+        .partner-logo i {
+            font-size: 4rem;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        .partner-logo:hover i {
+            color: var(--secondary);
+        }
+
+        /* FAQ Section */
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -298,14 +505,16 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
         .faq-question {
             padding: 20px;
             background: var(--primary);
-            color: white;
+            color: var(--white);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         .faq-answer {
             padding: 0 20px;
@@ -316,6 +525,33 @@
         .faq-item.active .faq-answer {
             padding: 20px;
             max-height: 300px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .newsletter-form input {
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            width: 300px;
+            font-size: 1rem;
+        }
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
         }
 
         /* Footer */
@@ -343,6 +579,25 @@
         .footer-col ul li a {
             color: var(--white);
             text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
         }
         .copyright {
             text-align: center;
@@ -356,7 +611,7 @@
             bottom: 30px;
             right: 30px;
             background: var(--secondary);
-            color: white;
+            color: var(--white);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -374,6 +629,84 @@
             visibility: visible;
         }
 
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 999;
+        }
+        .chat-toggle {
+            background: var(--secondary);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        .chat-toggle:hover {
+            transform: scale(1.05);
+        }
+        .chat-box {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: none;
+        }
+        .chat-box.active {
+            display: block;
+        }
+        .chat-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 15px;
+        }
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        .chat-messages .message {
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            max-width: 85%;
+            font-size: 0.9rem;
+        }
+        .chat-messages .message.user {
+            background: var(--primary);
+            color: white;
+            margin-left: auto;
+        }
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            outline: none;
+        }
+        .chat-input button {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .nav-links {
@@ -386,6 +719,7 @@
                 flex-direction: column;
                 padding: 40px;
                 transition: var(--transition);
+                box-shadow: var(--shadow);
             }
             .nav-links.active {
                 left: 0;
@@ -396,7 +730,31 @@
             .hero-content h1 {
                 font-size: 2rem;
             }
+            .hero-content .typed-text {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
             .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 70px;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .courses-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -404,6 +762,7 @@
 </head>
 <body>
 
+<!-- Header -->
 <header>
     <div class="container">
         <div class="nav-bar">
@@ -412,7 +771,7 @@
                 <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">হোম</a></li>
+                <li><a href="index.html" class="active">হোম</a></li>
                 <li><a href="admission.html">অ্যাডমিশন</a></li>
                 <li><a href="academic.html">একাডেমিক</a></li>
                 <li><a href="placement.html">প্লেসমেন্ট</a></li>
@@ -421,13 +780,19 @@
             </ul>
             <div class="nav-icons">
                 <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle" id="langToggle">EN</button>
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Hero Section with Video Background -->
 <section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-students-studying-together-in-a-library-39858-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
             <h1>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</h1>
@@ -441,22 +806,23 @@
     </div>
 </section>
 
+<!-- Counter Section -->
 <section class="counter-section">
     <div class="container">
         <div class="counter-grid">
-            <div class="counter-item">
+            <div class="counter-item" data-aos="zoom-in">
                 <h3><span class="counter-num" data-target="350">0</span>+</h3>
                 <p>শিক্ষার্থী</p>
             </div>
-            <div class="counter-item">
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="100">
                 <h3><span class="counter-num" data-target="10">0</span>+</h3>
                 <p>শিক্ষক</p>
             </div>
-            <div class="counter-item">
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="200">
                 <h3><span class="counter-num" data-target="3">0</span></h3>
                 <p>বিভাগ</p>
             </div>
-            <div class="counter-item">
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="300">
                 <h3><span class="counter-num" data-target="85">0</span>%</h3>
                 <p>প্লেসমেন্ট রেট</p>
             </div>
@@ -464,111 +830,732 @@
     </div>
 </section>
 
+<!-- Notice Board Section -->
 <section class="section notice-section">
     <div class="container">
-        <h2 class="section-title">নোটিশ বোর্ড</h2>
-        <div class="notice-tabs">
+        <h2 class="section-title" data-aos="fade-up">নোটিশ বোর্ড</h2>
+        <p class="section-subtitle" data-aos="fade-up">সর্বশেষ বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তথ্য</p>
+        
+        <div class="notice-tabs" data-aos="fade-up">
             <button class="tab-btn active" data-tab="notice">নোটিশ</button>
             <button class="tab-btn" data-tab="event">ইভেন্ট</button>
             <button class="tab-btn" data-tab="exam">পরীক্ষা</button>
         </div>
+        
         <div class="tab-content active" id="notice-tab">
             <div class="notice-list">
                 <div class="notice-item">
-                    <div><h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু</h4><small>তারিখ: ১৫ মার্চ, ২০২৫</small></div>
+                    <div class="notice-info">
+                        <h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন বিজ্ঞপ্তি প্রকাশ</h4>
+                        <p class="notice-date">তারিখ: ১৫ মার্চ, ২০২৫</p>
+                    </div>
                     <span class="notice-category">অ্যাডমিশন</span>
                 </div>
                 <div class="notice-item">
-                    <div><h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4><small>তারিখ: ১০ মার্চ, ২০২৫</small></div>
+                    <div class="notice-info">
+                        <h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4>
+                        <p class="notice-date">তারিখ: ১০ মার্চ, ২০২৫</p>
+                    </div>
                     <span class="notice-category">পরীক্ষা</span>
+                </div>
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>মেধাবৃত্তির আবেদন শুরু</h4>
+                        <p class="notice-date">তারিখ: ৫ মার্চ, ২০২৫</p>
+                    </div>
+                    <span class="notice-category">স্কলারশিপ</span>
+                </div>
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>নতুন সেমিস্টারের ক্লাস শুরু</h4>
+                        <p class="notice-date">তারিখ: ১ এপ্রিল, ২০২৫</p>
+                    </div>
+                    <span class="notice-category">একাডেমিক</span>
                 </div>
             </div>
         </div>
+        
         <div class="tab-content" id="event-tab">
             <div class="notice-list">
                 <div class="notice-item">
-                    <div><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4><small>তারিখ: ২০ এপ্রিল, ২০২৫</small></div>
+                    <div class="notice-info">
+                        <h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4>
+                        <p class="notice-date">তারিখ: ২০ এপ্রিল, ২০২৫</p>
+                    </div>
                     <span class="notice-category">ক্রীড়া</span>
+                </div>
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>ক্যারিয়ার ফেয়ার ২০২৫</h4>
+                        <p class="notice-date">তারিখ: ৫ এপ্রিল, ২০২৫</p>
+                    </div>
+                    <span class="notice-category">প্লেসমেন্ট</span>
+                </div>
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>বিজ্ঞান মেলা ও প্রদর্শনী</h4>
+                        <p class="notice-date">তারিখ: ২৫ এপ্রিল, ২০২৫</p>
+                    </div>
+                    <span class="notice-category">ইভেন্ট</span>
                 </div>
             </div>
         </div>
+        
         <div class="tab-content" id="exam-tab">
             <div class="notice-list">
                 <div class="notice-item">
-                    <div><h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4><small>তারিখ: ১-১৫ এপ্রিল, ২০২৫</small></div>
+                    <div class="notice-info">
+                        <h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4>
+                        <p class="notice-date">তারিখ: ১-১৫ এপ্রিল, ২০২৫</p>
+                    </div>
                     <span class="notice-category">রুটিন</span>
+                </div>
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>মধ্যকালীন পরীক্ষার ফলাফল প্রকাশ</h4>
+                        <p class="notice-date">তারিখ: ২০ মার্চ, ২০২৫</p>
+                    </div>
+                    <span class="notice-category">রেজাল্ট</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Features Section -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">আমাদের বৈশিষ্ট্য</h2>
+        <h2 class="section-title" data-aos="fade-up">আমাদের বৈশিষ্ট্য</h2>
+        <p class="section-subtitle" data-aos="fade-up">কেন বেছে নেবেন টিবিএমআই</p>
+        
         <div class="features-grid">
-            <div class="feature-card"><i class="fas fa-laptop-code"></i><h3>আধুনিক ল্যাব</h3><p>অত্যাধুনিক কম্পিউটার ল্যাব সুবিধা</p></div>
-            <div class="feature-card"><i class="fas fa-wifi"></i><h3>ওয়াইফাই সুবিধা</h3><p>হাই-স্পিড ইন্টারনেট সংযোগ</p></div>
-            <div class="feature-card"><i class="fas fa-chalkboard-user"></i><h3>দক্ষ শিক্ষকমণ্ডলী</h3><p>অভিজ্ঞ শিক্ষকবৃন্দ</p></div>
-            <div class="feature-card"><i class="fas fa-briefcase"></i><h3>ক্যারিয়ার কাউন্সেলিং</h3><p>পেশাগত ক্যারিয়ার গঠনে সহায়তা</p></div>
+            <div class="feature-card" data-aos="flip-left">
+                <i class="fas fa-laptop-code"></i>
+                <h3>আধুনিক কম্পিউটার ল্যাব</h3>
+                <p>অত্যাধুনিক কম্পিউটার ল্যাব ও উন্নত প্রযুক্তি সুবিধা</p>
+            </div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="100">
+                <i class="fas fa-wifi"></i>
+                <h3>ওয়াইফাই সুবিধা</h3>
+                <p>ক্যাম্পাস জুড়ে হাই-স্পিড ইন্টারনেট সংযোগ</p>
+            </div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="200">
+                <i class="fas fa-chalkboard-user"></i>
+                <h3>দক্ষ শিক্ষকমণ্ডলী</h3>
+                <p>অভিজ্ঞ ও দক্ষ শিক্ষকদের দ্বারা পাঠদান</p>
+            </div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="300">
+                <i class="fas fa-briefcase"></i>
+                <h3>ক্যারিয়ার কাউন্সেলিং সেল</h3>
+                <p>পেশাগত ক্যারিয়ার গঠনে বিশেষ পরামর্শ ও সহায়তা</p>
+            </div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="400">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>মেধাবৃত্তি সুবিধা</h3>
+                <p>মেধাবী ও অর্থনৈতিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের জন্য বৃত্তি</p>
+            </div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="500">
+                <i class="fas fa-handshake"></i>
+                <h3>শিল্প সংযোগ</h3>
+                <p>শীর্ষস্থানীয় কোম্পানির সাথে শক্তিশালী নেটওয়ার্ক</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Courses Section -->
 <section class="section" style="background: var(--light);">
     <div class="container">
-        <h2 class="section-title">আমাদের কোর্সসমূহ</h2>
+        <h2 class="section-title" data-aos="fade-up">আমাদের কোর্সসমূহ</h2>
+        <p class="section-subtitle" data-aos="fade-up">আপনার ক্যারিয়ার গড়তে চয়েস করুন পছন্দের বিভাগ</p>
+        
         <div class="courses-grid">
-            <div class="course-card"><div class="course-img"><i class="fas fa-computer"></i></div><div class="course-content"><h3>কম্পিউটার টেকনোলজি</h3><p>প্রোগ্রামিং, নেটওয়ার্কিং ও সিস্টেম ডিজাইন</p><a href="departments/computer-technology.html" class="btn-outline">বিস্তারিত</a></div></div>
-            <div class="course-card"><div class="course-img"><i class="fas fa-chart-line"></i></div><div class="course-content"><h3>ডিজিটাল টেকনোলজি ইন বিজনেস</h3><p>ই-কমার্স, ডিজিটাল মার্কেটিং</p><a href="departments/digital-business.html" class="btn-outline">বিস্তারিত</a></div></div>
-            <div class="course-card"><div class="course-img"><i class="fas fa-users-gear"></i></div><div class="course-content"><h3>হিউম্যান রিসোর্স ডেভেলপমেন্ট</h3><p>কৌশলগত এইচআর ও সংগঠন উন্নয়ন</p><a href="departments/hrd.html" class="btn-outline">বিস্তারিত</a></div></div>
+            <div class="course-card" data-aos="zoom-in">
+                <div class="course-img">
+                    <i class="fas fa-computer"></i>
+                </div>
+                <div class="course-content">
+                    <h3>কম্পিউটার টেকনোলজি</h3>
+                    <p>প্রোগ্রামিং, নেটওয়ার্কিং, ডাটাবেস, ওয়েব ডেভেলপমেন্ট ও সিস্টেম ডিজাইন বিষয়ে দক্ষ করে গড়ে তোলা হয় শিক্ষার্থীদের।</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> ৪ বছর</span>
+                        <span><i class="fas fa-users"></i> ৬০ সিট</span>
+                    </div>
+                    <a href="departments/computer-technology.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;">বিস্তারিত</a>
+                </div>
+            </div>
+            <div class="course-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="course-img">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="course-content">
+                    <h3>ডিজিটাল টেকনোলজি ইন বিজনেস</h3>
+                    <p>ই-কমার্স, ডিজিটাল মার্কেটিং, বিজনেস অ্যানালিটিক্স, ডেটা সায়েন্স ও ব্যবসায়িক প্রযুক্তি বিষয়ে দক্ষতা অর্জন।</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> ৪ বছর</span>
+                        <span><i class="fas fa-users"></i> ৫০ সিট</span>
+                    </div>
+                    <a href="departments/digital-business.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;">বিস্তারিত</a>
+                </div>
+            </div>
+            <div class="course-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="course-img">
+                    <i class="fas fa-users-gear"></i>
+                </div>
+                <div class="course-content">
+                    <h3>হিউম্যান রিসোর্স ডেভেলপমেন্ট</h3>
+                    <p>কৌশলগত এইচআর, সংগঠন উন্নয়ন, নেতৃত্ব, রিক্রুটমেন্ট ও প্রশিক্ষণ বিষয়ে দক্ষতা অর্জন।</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> ৪ বছর</span>
+                        <span><i class="fas fa-users"></i> ৫০ সিট</span>
+                    </div>
+                    <a href="departments/hrd.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;">বিস্তারিত</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Teachers Section -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">জিজ্ঞাসিত প্রশ্ন</h2>
-        <div class="faq-grid">
-            <div class="faq-item"><div class="faq-question"><span>কিভাবে অ্যাডমিশন নিতে হয়?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>অনলাইনে আবেদন ফর্ম পূরণ করে অথবা সরাসরি কলেজের অ্যাডমিশন অফিসে যোগাযোগ করুন।</p></div></div>
-            <div class="faq-item"><div class="faq-question"><span>স্কলারশিপের সুযোগ আছে কি?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>হ্যাঁ, মেধাভিত্তিক ও অর্থনৈতিক ভিত্তিতে স্কলারশিপ প্রদান করা হয়।</p></div></div>
+        <h2 class="section-title" data-aos="fade-up">শিক্ষকমণ্ডলী</h2>
+        <p class="section-subtitle" data-aos="fade-up">আমাদের অভিজ্ঞ শিক্ষকবৃন্দ</p>
+        
+        <div class="swiper teachers-slider" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="teacher-content">
+                            <h3>মোঃ আহসান হাবিব</h3>
+                            <p>অধ্যক্ষ</p>
+                            <p>২০+ বছর অভিজ্ঞতা</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <i class="fas fa-chalkboard-user"></i>
+                        </div>
+                        <div class="teacher-content">
+                            <h3>গোলাম মাওলা</h3>
+                            <p>প্রভাষক (এইচআরডি)</p>
+                            <p>এইচআর ম্যানেজমেন্ট বিশেষজ্ঞ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="teacher-content">
+                            <h3>মোঃ সাদিকুর রহমান</h3>
+                            <p>প্রভাষক (কম্পিউটার)</p>
+                            <p>প্রোগ্রামিং ও নেটওয়ার্কিং বিশেষজ্ঞ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <i class="fas fa-chart-simple"></i>
+                        </div>
+                        <div class="teacher-content">
+                            <h3>নাজমা আক্তার</h3>
+                            <p>প্রভাষক (ডিজিটাল বিজনেস)</p>
+                            <p>ডিজিটাল মার্কেটিং বিশেষজ্ঞ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 </section>
 
+<!-- Testimonials Section -->
+<section class="section" style="background: var(--light);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">সাফল্যের গল্প</h2>
+        <p class="section-subtitle" data-aos="fade-up">আমাদের প্রাক্তন শিক্ষার্থীদের সাফল্য</p>
+        
+        <div class="swiper testimonials-slider" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right"></i>
+                        <p>টিবিএমআই-তে পড়াশোনা আমার ক্যারিয়ারের ভিত্তি গড়ে দিয়েছে। এখানকার ব্যবহারিক শিক্ষা পদ্ধতি আমাকে বাস্তব কর্মক্ষেত্রে দ্রুত মানিয়ে নিতে সাহায্য করেছে।</p>
+                        <h4>মোঃ রাকিব হাসান</h4>
+                        <p>সিনিয়র সফটওয়্যার ইঞ্জিনিয়ার, টেকনোলজি হাব লিমিটেড</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right"></i>
+                        <p>ডিজিটাল মার্কেটিং-এ আমার ক্যারিয়ার গড়তে টিবিএমআই-এর শিক্ষা পদ্ধতি ও শিক্ষকদের অবদান অনস্বীকার্য। এখানকার ব্যবহারিক প্রশিক্ষণ আমাকে আজকের অবস্থানে পৌঁছাতে সাহায্য করেছে।</p>
+                        <h4>ফাতেমা আক্তার</h4>
+                        <p>ডিজিটাল মার্কেটিং ম্যানেজার, ডিজিটাল সলিউশন বিডি</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right"></i>
+                        <p>এইচআরডি বিভাগ থেকে পড়াশোনা শেষ করে আমি আজ একজন সফল এইচআর ম্যানেজার। টিবিএমআই-এর ক্যারিয়ার কাউন্সেলিং সেল আমার ক্যারিয়ার গঠনে গুরুত্বপূর্ণ ভূমিকা রেখেছে।</p>
+                        <h4>মোঃ সোহেল রানা</h4>
+                        <p>এইচআর ম্যানেজার, এইচআর কনসালটেন্সি বিডি</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Industry Partners Section -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">আমাদের শিল্প সহযোগী</h2>
+        <p class="section-subtitle" data-aos="fade-up">আমাদের শিক্ষার্থীরা যেসব প্রতিষ্ঠানে কাজ করছে</p>
+        
+        <div class="swiper partners-slider" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="partner-logo">
+                        <i class="fas fa-laptop-code"></i>
+                        <p>টেকনোলজি হাব</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="partner-logo">
+                        <i class="fas fa-chart-line"></i>
+                        <p>ডিজিটাল সলিউশন</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="partner-logo">
+                        <i class="fas fa-users"></i>
+                        <p>এইচআর কনসালটেন্সি</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="partner-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <p>নেটওয়ার্ক সলিউশন</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="partner-logo">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>সফটওয়্যার ডেভেলপমেন্ট বিডি</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section" style="background: var(--light);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">জিজ্ঞাসিত প্রশ্ন</h2>
+        <p class="section-subtitle" data-aos="fade-up">আপনার জিজ্ঞাসার উত্তর</p>
+        
+        <div class="faq-grid">
+            <div class="faq-item" data-aos="fade-right">
+                <div class="faq-question">
+                    <span>কিভাবে অ্যাডমিশন নিতে হয়?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>অনলাইনে আবেদন ফর্ম পূরণ করে অথবা সরাসরি কলেজের অ্যাডমিশন অফিসে যোগাযোগ করে অ্যাডমিশন নিতে পারেন। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-left">
+                <div class="faq-question">
+                    <span>স্কলারশিপের সুযোগ আছে কি?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>হ্যাঁ, মেধাভিত্তিক ও অর্থনৈতিক ভিত্তিতে স্কলারশিপ প্রদান করা হয়। বিস্তারিত জানতে অ্যাডমিশন অফিসে যোগাযোগ করুন।</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-right">
+                <div class="faq-question">
+                    <span>হোস্টেল সুবিধা আছে কি?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>বর্তমানে হোস্টেল সুবিধা নেই। তবে আগামী শিক্ষাবর্ষে হোস্টেল চালু করার পরিকল্পনা রয়েছে।</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-left">
+                <div class="faq-question">
+                    <span>প্লেসমেন্টের হার কেমন?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>আমাদের শিক্ষার্থীদের প্লেসমেন্ট হার প্রায় ৮৫%। শীর্ষস্থানীয় কোম্পানিতে আমাদের শিক্ষার্থীরা কাজ করছে।</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-right">
+                <div class="faq-question">
+                    <span>ভর্তির জন্য কি কি ডকুমেন্ট লাগে?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>SSC ও HSC সার্টিফিকেট, জাতীয় পরিচয়পত্র, ৪ কপি পাসপোর্ট সাইজ ছবি, চরিত্র সনদ প্রভৃতি। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-left">
+                <div class="faq-question">
+                    <span>কোর্সের ফি কত?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>বিভাগ অনুযায়ী ফি ভিন্ন। বিস্তারিত ফি স্ট্রাকচারের জন্য অ্যাডমিশন পৃষ্ঠা দেখুন।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="container">
+        <h2 data-aos="fade-up">নিউজলেটার সাবস্ক্রাইব করুন</h2>
+        <p data-aos="fade-up">সকল আপডেট প্রথমে পেতে সাবস্ক্রাইব করুন</p>
+        <div class="newsletter-form" data-aos="fade-up">
+            <input type="email" placeholder="আপনার ইমেইল ঠিকানা" id="newsletterEmail">
+            <button class="btn btn-secondary" id="newsletterBtn">সাবস্ক্রাইব</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h3>TBMI</h3><p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
-            <div class="footer-col"><h3>দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li></ul></div>
-            <div class="footer-col"><h3>যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li><li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li></ul></div>
+            <div class="footer-col">
+                <h3>TBMI</h3>
+                <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                <p>প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>দ্রুত লিংক</h3>
+                <ul>
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="admission.html">অ্যাডমিশন</a></li>
+                    <li><a href="academic.html">একাডেমিক</a></li>
+                    <li><a href="placement.html">প্লেসমেন্ট</a></li>
+                    <li><a href="gallery.html">গ্যালারি</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>যোগাযোগ</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +8801309132253</li>
+                    <li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li>
+                    <li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li>
+                    <li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li>
+                    <li><i class="fab fa-whatsapp"></i> +8801309132253</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>শিক্ষা সহায়তা</h3>
+                <ul>
+                    <li><a href="#">প্রাইভেসি পলিসি</a></li>
+                    <li><a href="#">টার্মস অ্যান্ড কন্ডিশন</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="#">প্রাক্তন শিক্ষার্থী</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="copyright"><p>&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p></div>
+        <div class="copyright">
+            <p>&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
     </div>
 </footer>
 
-<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+<!-- Back to Top -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
 
+<!-- Chat Widget -->
+<div class="chat-widget">
+    <div class="chat-toggle" id="chatToggle">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h4>সহায়তা কেন্দ্র</h4>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message">আমি কি সাহায্য করতে পারি?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="আপনার বার্তা লিখুন...">
+            <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
     
     // Typed Text Effect
     const texts = ["Building Skilled Professionals for the Future", "প্রযুক্তি শিক্ষার সেরা ঠিকানা", "আপনার ক্যারিয়ার শুরু হোক আমাদের সাথে"];
-    let index = 0, charIndex = 0, currentText = "", isDeleting = false;
+    let index = 0;
+    let charIndex = 0;
+    let currentText = "";
+    let isDeleting = false;
+    
     function typeEffect() {
         const typedElement = document.getElementById("typedText");
         if (!typedElement) return;
-        if (isDeleting) { currentText = texts[index].substring(0, charIndex - 1); charIndex--; }
-        else { currentText = texts[index].substring(0, charIndex + 1); charIndex++; }
+        
+        if (isDeleting) {
+            currentText = texts[index].substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            currentText = texts[index].substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
         typedElement.innerHTML = currentText;
-        if (!isDeleting && charIndex === texts[index].length) { isDeleting = true; setTimeout(typeEffect, 2000); }
-        else if (isDeleting && charIndex === 0) { isDeleting = false; index = (index + 1) % texts.length; setTimeout(typeEffect, 500); }
-        else { setTimeout(typeEffect, isDeleting ? 50 : 100); }
+        
+        if (!isDeleting && charIndex === texts[index].length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            index = (index + 1) % texts.length;
+            setTimeout(typeEffect, 500);
+        } else {
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
+        }
     }
     typeEffect();
     
     // Counter Animation
     const counters = document.querySelectorAll('.counter-num');
-    const startCounters = () => counters.forEach(counter => { let targe
+    let counted = false;
+    
+    function startCounters() {
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            let count = 0;
+            const updateCounter = () => {
+                const increment = target / 50;
+                if (count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCounter, 30);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCounter();
+        });
+    }
+    
+    const counterSection = document.querySelector('.counter-section');
+    window.addEventListener('scroll', () => {
+        if (counterSection && !counted) {
+            const rect = counterSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                counted = true;
+                startCounters();
+            }
+        }
+    });
+    
+    // Header Scroll Effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
+    
+    // Language Toggle (Demo)
+    const langToggle = document.getElementById('langToggle');
+    let isBengali = true;
+    langToggle.addEventListener('click', () => {
+        isBengali = !isBengali;
+        langToggle.textContent = isBengali ? 'EN' : 'BN';
+        alert('ভাষা পরিবর্তন ফিচারটি ডেমো সংস্করণ। সম্পূর্ণ সংস্করণে বাংলা/ইংরেজি উভয় ভাষায় কন্টেন্ট থাকবে।');
+    });
+    
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+    
+    // Notice Tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+    });
+    
+    // Teachers Swiper
+    new Swiper('.teachers-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: {
+            768: { slidesPerView: 2 },
+            992: { slidesPerView: 3 }
+        }
+    });
+    
+    // Testimonials Swiper
+    new Swiper('.testimonials-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        autoplay: { delay: 5000 }
+    });
+    
+    // Partners Swiper
+    new Swiper('.partners-slider', {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        autoplay: { delay: 2000 },
+        breakpoints: {
+            768: { slidesPerView: 3 },
+            992: { slidesPerView: 5 }
+        }
+    });
+    
+    // Chat Widget
+    const chatToggle = document.getElementById('chatToggle');
+    const chatBox = document.getElementById('chatBox');
+    const chatSend = document.getElementById('chatSend');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+    
+    chatToggle.addEventListener('click', () => {
+        chatBox.classList.toggle('active');
+    });
+    
+    chatSend.addEventListener('click', () => {
+        const message = chatInput.value.trim();
+        if (message) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message user';
+            msgDiv.innerHTML = message;
+            chatMessages.appendChild(msgDiv);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            setTimeout(() => {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'message';
+                replyDiv.innerHTML = 'আপনার প্রশ্নটি পেয়েছি। শীঘ্রই আমাদের প্রতিনিধি যোগাযোগ করবেন।';
+                chatMessages.appendChild(replyDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    });
+    
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') chatSend.click();
+    });
+    
+    // Newsletter
+    document.getElementById('newsletterBtn').addEventListener('click', () => {
+        const email = document.getElementById('newsletterEmail').value;
+        if (email) {
+            alert('সাবস্ক্রিপশনের জন্য ধন্যবাদ!');
+            document.getElementById('newsletterEmail').value = '';
+        } else {
+            alert('দয়া করে আপনার ইমেইল ঠিকানা লিখুন');
+        }
+    });
+    
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
