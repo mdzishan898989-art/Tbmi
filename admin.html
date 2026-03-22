@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ্যাডমিন প্যানেল - TBMI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1e3c72;
+            --primary-dark: #0a2a4a;
+            --secondary: #ff9800;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 500px; margin: 100px auto; padding: 0 20px; }
+        
+        .login-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .login-box h2 { color: var(--primary); margin-bottom: 10px; }
+        .login-box p { color: #666; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-login:hover { background: var(--secondary); }
+        .error-msg {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+        }
+        .dashboard-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .dashboard-card h3 { font-size: 2rem; color: var(--primary); }
+        .dashboard-card p { color: #666; }
+        .btn-logout {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .notice-list-admin {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .notice-item-admin {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-notice-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .add-notice-form input, .add-notice-form select {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn-add {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="loginContainer">
+    <div class="login-box">
+        <h2><i class="fas fa-lock"></i> অ্যাডমিন প্যানেল</h2>
+        <p>দয়া করে লগইন করুন</p>
+        <div id="errorMsg" class="error-msg"></div>
+        <div class="form-group">
+            <input type="text" id="username" placeholder="ইউজারনেম">
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" placeholder="পাসওয়ার্ড">
+        </div>
+        <button class="btn-login" onclick="login()">লগইন</button>
+        <div class="note">ডেমো ইউজারনেম: admin_tbmi | পাসওয়ার্ড: admin123</div>
+    </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+    <div class="dashboard-header">
+        <h2><i class="fas fa-chart-line"></i> অ্যাডমিন ড্যাশবোর্ড - TBMI</h2>
+        <button class="btn-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> লগআউট</button>
+    </div>
+    <div class="dashboard-container">
+        <div class="dashboard-grid">
+            <div class="dashboard-card"><h3 id="totalStudents">0</h3><p>মোট শিক্ষার্থী</p></div>
+            <div class="dashboard-card"><h3 id="totalTeachers">0</h3><p>মোট শিক্ষক</p></div>
+            <div class="dashboard-card"><h3 id="totalNotices">0</h3><p>মোট নোটিশ</p></div>
+            <div class="dashboard-card"><h3 id="totalApplications">0</h3><p>অ্যাডমিশন আবেদন</p></div>
+        </div>
+        
+        <div class="add-notice-form">
+            <h3><i class="fas fa-plus-circle"></i> নতুন নোটিশ যোগ করুন</h3>
+            <input type="text" id="noticeTitle" placeholder="নোটিশের শিরোনাম" style="width: 40%;">
+            <input type="date" id="noticeDate" style="width: 20%;">
+            <select id="noticeCategory" style="width: 20%;">
+                <option value="admission">অ্যাডমিশন</option>
+                <option value="academic">একাডেমিক</option>
+                <option value="exam">পরীক্ষা</option>
+                <option value="event">ইভেন্ট</option>
+            </select>
+            <button class="btn-add" onclick="addNotice()"><i class="fas fa-save"></i> যোগ করুন</button>
+        </div>
+        
+        <div class="notice-list-admin">
+            <h3><i class="fas fa-bullhorn"></i> নোটিশ তালিকা</h3>
+            <div id="noticeListAdmin"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let notices = [
+        { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+        { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+        { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
+    ];
+    
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMsg = document.getElementById('errorMsg');
+        
+        if (username === 'admin_tbmi' && password === 'admin123') {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadDashboard();
+        } else {
+            errorMsg.style.display = 'block';
+            errorMsg.innerHTML = 'ভুল ইউজারনেম বা পাসওয়ার্ড!';
+        }
+    }
+    
+    function logout() {
+        document.getElementById('loginContainer').style.display = 'block';
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+    }
+    
+    function loadDashboard() {
+        document.getElementById('totalStudents').innerText = '350';
+        document.getElementById('totalTeachers').innerText = '10';
+        document.getElementById('totalNotices').innerText = notices.length;
+        document.getElementById('totalApplications').innerText = '45';
+        loadNoticeList();
+    }
+    
+    function loadNoticeList() {
+        const container = document.getElementById('noticeListAdmin');
+        container.innerHTML = '';
+        notices.forEach((notice, index) => {
+            container.innerHTML += `
+                <div class="notice-item-admin">
+                    <div><strong>${notice.title}</strong><br><small>${notice.date} | ${notice.category}</small></div>
+                    <button onclick="deleteNotice(${index})" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+        });
+        document.getElementById('totalNotices').innerText = notices.length;
+    }
+    
+    function addNotice() {
+        const title = document.getElementById('noticeTitle').value;
+        const date = document.getElementById('noticeDate').value;
+        const category = document.getElementById('noticeCategory').value;
+        
+        if (title && date) {
+            notices.unshift({ title, date, category });
+            loadNoticeList();
+            document.getElementById('noticeTitle').value = '';
+            document.getElementById('noticeDate').value = '';
+            alert('নোটিশ যোগ করা হয়েছে!');
+        } else {
+            alert('দয়া করে সব তথ্য পূরণ করুন!');
+        }
+    }
+    
+    function deleteNotice(index) {
+        if (confirm('নোটিশটি ডিলিট করতে চান?')) {
+            notices.splice(index, 1);
+            loadNoticeList();
+        }
+    }
+</script>
+</body>
+</html>
