@@ -940,35 +940,51 @@
     font-size: 1.2rem;
 }
 
-@keyframes fadeInUpMsg {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.newsletter-form button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.newsletter-form button i.fa-spinner {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}  
-
 /* Chat Widget Styles */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-toggle {
+    width: 60px;
+    height: 60px;
+    background: var(--secondary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: var(--transition);
+}
+
+.chat-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* Chat Box - ডিফল্ট লুকানো */
 .chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
     width: 350px;
     height: 450px;
     background: var(--white);
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    display: flex;
+    display: none;
     flex-direction: column;
     overflow: hidden;
+    z-index: 1000;
+}
+
+/* Chat Box - খোলা অবস্থায় */
+.chat-box.active {
+    display: flex;
 }
 
 .chat-header {
@@ -982,6 +998,7 @@
 
 .chat-header h4 {
     margin: 0;
+    font-size: 1rem;
 }
 
 .close-chat {
@@ -1078,20 +1095,22 @@
     transform: scale(1.05);
 }
 
-.chat-input-form button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
+/* Responsive */
 @media (max-width: 576px) {
     .chat-box {
         width: 300px;
         height: 400px;
-        position: fixed;
-        bottom: 80px;
         right: 10px;
+        bottom: 80px;
     }
-}        
+    
+    .chat-toggle {
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        bottom: 10px;
+    }
+    }
     </style>
 </head>
 <body>
@@ -1770,7 +1789,7 @@
             <div class="message bot">👋 হ্যালো! আপনার প্রশ্ন লিখুন, আমরা সাহায্য করতে প্রস্তুত।</div>
         </div>
         <form class="chat-input-form" id="chatForm" 
-              action="https://formspree.io/f/আপনার_চ্যাট_URL_এখানে" 
+              action="https://formspree.io/f/mdawvjba" 
               method="POST">
             <input type="text" name="message" id="chatInput" placeholder="আপনার বার্তা লিখুন..." required>
             <input type="hidden" name="_subject" value="নতুন চ্যাট বার্তা - TBMI">
@@ -1972,12 +1991,14 @@ const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 const chatMessages = document.getElementById('chatMessages');
 
-// Toggle chat box
-chatToggle.addEventListener('click', () => {
-    chatBox.classList.toggle('active');
-});
+// Toggle chat box on button click
+if (chatToggle) {
+    chatToggle.addEventListener('click', () => {
+        chatBox.classList.toggle('active');
+    });
+}
 
-// Close chat box
+// Close chat box with X button
 if (closeChat) {
     closeChat.addEventListener('click', () => {
         chatBox.classList.remove('active');
