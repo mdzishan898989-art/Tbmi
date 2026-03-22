@@ -1803,16 +1803,40 @@
         if (e.key === 'Enter') chatSend.click();
     });
     
-    // Newsletter
-    document.getElementById('newsletterBtn').addEventListener('click', () => {
-        const email = document.getElementById('newsletterEmail').value;
-        if (email) {
-            alert('সাবস্ক্রিপশনের জন্য ধন্যবাদ!');
-            document.getElementById('newsletterEmail').value = '';
-        } else {
-            alert('দয়া করে আপনার ইমেইল ঠিকানা লিখুন');
-        }
-    });
+    <!-- Newsletter Section with Formspree -->
+<section class="newsletter">
+    <div class="container">
+        <h2 data-aos="fade-up">নিউজলেটার সাবস্ক্রাইব করুন</h2>
+        <p data-aos="fade-up">সকল আপডেট প্রথমে পেতে সাবস্ক্রাইব করুন</p>
+        
+        <!-- Formspree Newsletter Form -->
+        <form class="newsletter-form" data-aos="fade-up" 
+              action="https://formspree.io/f/mqkjgvap" 
+              method="POST"
+              id="newsletterForm">
+            
+            <input type="email" 
+                   name="email" 
+                   placeholder="আপনার ইমেইল ঠিকানা" 
+                   required>
+            
+            <!-- Hidden fields for better email organization -->
+            <input type="hidden" name="_subject" value="নতুন নিউজলেটার সাবস্ক্রাইবার - TBMI">
+            <input type="hidden" name="_replyto" value="%email">
+            <input type="hidden" name="_next" value="https://mdzishan898989-art.github.io/Tbmi/?subscribe=success">
+            
+            <!-- Optional: Add a custom message -->
+            <input type="hidden" name="_message" value="একজন নতুন ব্যবহারকারী আপনার নিউজলেটারে সাবস্ক্রাইব করেছেন।">
+            
+            <button type="submit" class="btn btn-secondary">
+                <i class="fas fa-paper-plane"></i> সাবস্ক্রাইব
+            </button>
+        </form>
+        
+        <!-- Success message placeholder -->
+        <div id="subscribeMessage" style="display: none; margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;"></div>
+    </div>
+</section>
     
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
