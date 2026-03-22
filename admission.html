@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অ্যাডমিশন - TBMI</title>
+    <title>অ্যাডমিশন - TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #1e3c72;
+            --primary-dark: #0a2a4a;
             --secondary: #ff9800;
+            --accent: #2ecc71;
             --dark: #1a1a2e;
             --light: #f8f9fa;
+            --gray: #6c757d;
             --white: #ffffff;
             --shadow: 0 5px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
         body {
             font-family: 'Hind Siliguri', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
+        }
+        body.dark-mode {
+            --dark: #f8f9fa;
+            --light: #1a1a2e;
+            --white: #1e1e2e;
+            background: var(--light);
+            color: var(--dark);
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
@@ -39,25 +51,71 @@
             align-items: center;
             padding: 15px 0;
         }
-        .logo h1 { font-size: 1.5rem; color: var(--primary); }
-        .logo p { font-size: 0.8rem; color: var(--secondary); }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-image: url(''); /* আপনার লোগোর লিংক এখানে দিন */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+        }
+        .logo-text h1 { font-size: 1.5rem; color: var(--primary); }
+        .logo-text p { font-size: 0.8rem; color: var(--secondary); }
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
+            transition: var(--transition);
         }
         .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .dark-mode-toggle, .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        .menu-toggle { display: none; }
+        
+        /* Dropdown */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
         
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, var(--primary), #0a2a4a);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
             padding: 120px 0 60px;
             text-align: center;
             margin-top: 80px;
@@ -100,7 +158,7 @@
             width: 50px;
             height: 50px;
             background: var(--secondary);
-            color: white;
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -117,6 +175,7 @@
             box-shadow: var(--shadow);
         }
         .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
@@ -131,12 +190,14 @@
         }
         .btn-submit {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 14px 30px;
             border: none;
             border-radius: 30px;
             cursor: pointer;
+            transition: var(--transition);
         }
+        .btn-submit:hover { background: var(--secondary); }
         
         /* Fee Table */
         .fee-table {
@@ -149,12 +210,26 @@
             border: 1px solid #ddd;
             text-align: left;
         }
-        .fee-table th { background: var(--primary); color: white; }
+        .fee-table th { background: var(--primary); color: var(--white); }
+        
+        /* Scholarship Cards */
+        .scholarship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .scholarship-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary);
+        }
         
         /* Footer */
         footer {
             background: var(--dark);
-            color: white;
+            color: var(--white);
             padding: 60px 0 20px;
         }
         .footer-grid {
@@ -166,7 +241,8 @@
         .footer-col h3 { margin-bottom: 20px; color: var(--secondary); }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; }
+        .footer-col ul li a { color: var(--white); text-decoration: none; }
+        .footer-col ul li a:hover { color: var(--secondary); }
         .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         
         @media (max-width: 992px) {
@@ -175,22 +251,20 @@
                 top: 80px;
                 left: -100%;
                 width: 80%;
-                background: white;
+                height: calc(100vh - 80px);
+                background: var(--white);
                 flex-direction: column;
                 padding: 40px;
-                transition: 0.3s;
+                transition: var(--transition);
             }
             .nav-links.active { left: 0; }
             .menu-toggle { display: block; }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+            }
             .form-row { grid-template-columns: 1fr; }
-        }
-        
-        body.dark-mode {
-            --dark: #f8f9fa;
-            --light: #1a1a2e;
-            --white: #1e1e2e;
-            background: var(--light);
-            color: var(--dark);
         }
     </style>
 </head>
@@ -200,18 +274,43 @@
     <div class="container">
         <div class="nav-bar">
             <div class="logo">
-                <h1>TBMI</h1>
-                <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                <div class="logo-img"></div>
+                <div class="logo-text">
+                    <h1>TBMI</h1>
+                    <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                </div>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">হোম</a></li>
-                <li><a href="admission.html" class="active">অ্যাডমিশন</a></li>
-                <li><a href="academic.html">একাডেমিক</a></li>
+                <li class="dropdown">
+                    <a href="#">অ্যাডমিশন <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="admission.html">অনলাইন আবেদন</a>
+                        <a href="admission.html#fee">ফি স্ট্রাকচার</a>
+                        <a href="admission.html#scholarship">স্কলারশিপ</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">একাডেমিক <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="academic.html">বিভাগ সমূহ</a>
+                        <a href="departments/computer-technology.html">কম্পিউটার টেকনোলজি</a>
+                        <a href="departments/digital-business.html">ডিজিটাল টেকনোলজি ইন বিজনেস</a>
+                        <a href="departments/hrd.html">হিউম্যান রিসোর্স ডেভেলপমেন্ট</a>
+                    </div>
+                </li>
                 <li><a href="placement.html">প্লেসমেন্ট</a></li>
                 <li><a href="gallery.html">গ্যালারি</a></li>
+                <li><a href="notice-board.html">নোটিশ বোর্ড</a></li>
+                <li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li>
+                <li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li>
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">যোগাযোগ</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-icons">
+                <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
     </div>
 </header>
@@ -225,8 +324,9 @@
 
 <section class="section">
     <div class="container">
-        <h2 class="section-title">অ্যাডমিশন প্রক্রিয়া</h2>
-        <div class="steps-grid">
+        <h2 class="section-title" data-aos="fade-up">অ্যাডমিশন প্রক্রিয়া</h2>
+        <p data-aos="fade-up">সহজ ও স্বচ্ছ ভর্তি প্রক্রিয়ায় অংশগ্রহণ করুন</p>
+        <div class="steps-grid" data-aos="fade-up">
             <div class="step-card"><div class="step-number">১</div><h3>অনলাইন আবেদন</h3><p>ওয়েবসাইটের মাধ্যমে অনলাইন ফর্ম পূরণ করুন</p></div>
             <div class="step-card"><div class="step-number">২</div><h3>ডকুমেন্ট জমা</h3><p>প্রয়োজনীয় কাগজপত্র জমা দিন</p></div>
             <div class="step-card"><div class="step-number">৩</div><h3>অ্যাডমিশন টেস্ট</h3><p>লিখিত ও মৌখিক পরীক্ষায় অংশগ্রহণ</p></div>
@@ -237,41 +337,73 @@
 
 <section class="section" style="background: var(--light);">
     <div class="container">
-        <h2 class="section-title">অনলাইন আবেদন ফর্ম</h2>
-        <form class="admission-form" id="admissionForm">
+        <h2 class="section-title" data-aos="fade-up">অনলাইন আবেদন ফর্ম</h2>
+        <p data-aos="fade-up">নিচের ফর্মটি পূরণ করে আবেদন করুন</p>
+        <form class="admission-form" id="admissionForm" data-aos="fade-up">
             <div class="form-row">
-                <div class="form-group"><label>পূর্ণ নাম (বাংলা)</label><input type="text" required></div>
-                <div class="form-group"><label>পূর্ণ নাম (ইংরেজি)</label><input type="text" required></div>
+                <div class="form-group"><label>পূর্ণ নাম (বাংলা) *</label><input type="text" required></div>
+                <div class="form-group"><label>পূর্ণ নাম (ইংরেজি) *</label><input type="text" required></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>পিতার নাম</label><input type="text" required></div>
-                <div class="form-group"><label>মাতার নাম</label><input type="text" required></div>
+                <div class="form-group"><label>পিতার নাম *</label><input type="text" required></div>
+                <div class="form-group"><label>মাতার নাম *</label><input type="text" required></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>জন্ম তারিখ</label><input type="date" required></div>
-                <div class="form-group"><label>মোবাইল নম্বর</label><input type="tel" required></div>
+                <div class="form-group"><label>জন্ম তারিখ *</label><input type="date" required></div>
+                <div class="form-group"><label>মোবাইল নম্বর *</label><input type="tel" required></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>ইমেইল</label><input type="email" required></div>
-                <div class="form-group"><label>পছন্দের বিভাগ</label><select><option>কম্পিউটার টেকনোলজি</option><option>ডিজিটাল টেকনোলজি ইন বিজনেস</option><option>হিউম্যান রিসোর্স ডেভেলপমেন্ট</option></select></div>
+                <div class="form-group"><label>ইমেইল *</label><input type="email" required></div>
+                <div class="form-group"><label>পছন্দের বিভাগ *</label><select><option>কম্পিউটার টেকনোলজি</option><option>ডিজিটাল টেকনোলজি ইন বিজনেস</option><option>হিউম্যান রিসোর্স ডেভেলপমেন্ট</option></select></div>
             </div>
-            <div class="form-group"><label>ঠিকানা</label><textarea rows="3"></textarea></div>
+            <div class="form-row">
+                <div class="form-group"><label>SSC/GPA *</label><input placeholder="বোর্ড, রোল, GPA" required></div>
+                <div class="form-group"><label>HSC/GPA *</label><input placeholder="বোর্ড, রোল, GPA" required></div>
+            </div>
+            <div class="form-group"><label>বর্তমান ঠিকানা *</label><textarea rows="3" required></textarea></div>
+            <div class="form-group"><label>কোটা (যদি প্রযোজ্য)</label><select><option>কোন কোটা নয়</option><option>মুক্তিযোদ্ধা কোটা</option><option>উপজাতি কোটা</option><option>শারীরিক প্রতিবন্ধী কোটা</option></select></div>
             <button type="submit" class="btn-submit">আবেদন জমা দিন</button>
         </form>
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="fee">
     <div class="container">
-        <h2 class="section-title">ফি স্ট্রাকচার</h2>
-        <table class="fee-table">
+        <h2 class="section-title" data-aos="fade-up">ফি স্ট্রাকচার</h2>
+        <p data-aos="fade-up">বিভাগভিত্তিক টিউশন ফি ও অন্যান্য খরচ</p>
+        <table class="fee-table" data-aos="fade-up">
             <thead><tr><th>বিবরণ</th><th>কম্পিউটার টেকনোলজি</th><th>ডিজিটাল বিজনেস</th><th>এইচআরডি</th></tr></thead>
             <tbody>
                 <tr><td>অ্যাডমিশন ফি</td><td>৫,০০০/-</td><td>৫,০০০/-</td><td>৫,০০০/-</td></tr>
                 <tr><td>টিউশন ফি (প্রতি সেমিস্টার)</td><td>১২,০০০/-</td><td>১২,০০০/-</td><td>১২,০০০/-</td></tr>
+                <tr><td>ল্যাব ফি (প্রতি সেমিস্টার)</td><td>৩,০০০/-</td><td>২,০০০/-</td><td>১,৫০০/-</td></tr>
                 <tr><td><strong>মোট (প্রথম সেমিস্টার)</strong></td><td><strong>২১,০০০/-</strong></td><td><strong>২০,০০০/-</strong></td><td><strong>১৯,৫০০/-</strong></td></tr>
             </tbody>
         </table>
+    </div>
+</section>
+
+<section class="section" style="background: var(--light);" id="scholarship">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">স্কলারশিপ সুবিধা</h2>
+        <p data-aos="fade-up">মেধাবী ও অর্থনৈতিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের জন্য বিশেষ বৃত্তি</p>
+        <div class="scholarship-grid" data-aos="fade-up">
+            <div class="scholarship-card"><i class="fas fa-star" style="color: var(--secondary); font-size: 2rem;"></i><h3>মেধাভিত্তিক স্কলারশিপ</h3><p>SSC/HSC-তে প্রাপ্ত GPA অনুযায়ী ২৫% থেকে ১০০% পর্যন্ত বৃত্তি প্রদান করা হয়।</p></div>
+            <div class="scholarship-card"><i class="fas fa-hand-holding-heart" style="color: var(--secondary); font-size: 2rem;"></i><h3>অর্থনৈতিক ভিত্তিক স্কলারশিপ</h3><p>অর্থনৈতিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের জন্য বিশেষ বৃত্তির ব্যবস্থা।</p></div>
+            <div class="scholarship-card"><i class="fas fa-trophy" style="color: var(--secondary); font-size: 2rem;"></i><h3>মেধাবৃত্তি পরীক্ষা</h3><p>বার্ষিক মেধাবৃত্তি পরীক্ষার মাধ্যমে বিশেষ পুরস্কার প্রদান।</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">প্রয়োজনীয় ডকুমেন্ট</h2>
+        <div class="steps-grid" data-aos="fade-up">
+            <div class="step-card"><i class="fas fa-id-card" style="font-size: 2rem; color: var(--secondary);"></i><h3>জাতীয় পরিচয়পত্র</h3><p>অভিভাবকের এনআইডি সহ</p></div>
+            <div class="step-card"><i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--secondary);"></i><h3>শিক্ষাগত সনদ</h3><p>SSC ও HSC সার্টিফিকেট</p></div>
+            <div class="step-card"><i class="fas fa-image" style="font-size: 2rem; color: var(--secondary);"></i><h3>ছবি</h3><p>৪ কপি পাসপোর্ট সাইজ ছবি</p></div>
+            <div class="step-card"><i class="fas fa-file-alt" style="font-size: 2rem; color: var(--secondary);"></i><h3>চরিত্র সনদ</h3><p>শেষ প্রতিষ্ঠান থেকে</p></div>
+        </div>
     </div>
 </section>
 
@@ -279,21 +411,22 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col"><h3>TBMI</h3><p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p></div>
-            <div class="footer-col"><h3>দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li></ul></div>
-            <div class="footer-col"><h3>যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li></ul></div>
+            <div class="footer-col"><h3>দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li><li><a href="placement.html">প্লেসমেন্ট</a></li></ul></div>
+            <div class="footer-col"><h3>যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li><li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li></ul></div>
         </div>
         <div class="copyright"><p>&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p></div>
     </div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    document.getElementById('menuToggle').addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.toggle('active');
-    });
-    document.getElementById('admissionForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('আপনার আবেদন সফলভাবে জমা হয়েছে।');
-    });
+    AOS.init({ duration: 1000, once: true });
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    document.getElementById('admissionForm').addEventListener('submit', (e) => { e.preventDefault(); alert('আপনার আবেদন সফলভাবে জমা হয়েছে।'); });
 </script>
 </body>
 </html>
