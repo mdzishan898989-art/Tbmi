@@ -2,21 +2,12 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
-    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান">
-    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, কম্পিউটার টেকনোলজি, HRD, পঞ্চগড়">
-    <meta name="author" content="TBMI">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Swiper Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
     <style>
         * {
             margin: 0;
@@ -31,12 +22,9 @@
             --secondary: #ff9800;
             --secondary-dark: #e68900;
             --accent: #2ecc71;
-            --accent-dark: #27ae60;
             --dark: #1a1a2e;
             --light: #f8f9fa;
-            --gray: #6c757d;
             --white: #ffffff;
-            --black: #000000;
             --shadow: 0 5px 30px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
@@ -46,109 +34,23 @@
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
-            overflow-x: hidden;
         }
 
-        /* Dark Mode */
         body.dark-mode {
             --dark: #f8f9fa;
             --light: #1a1a2e;
             --white: #1e1e2e;
-            --black: #ffffff;
             background: var(--light);
             color: var(--dark);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--light);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary);
-        }
-
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--white);
-        }
-        .btn-secondary:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-
-        /* Header & Navigation */
+        /* Header */
         header {
             background: var(--white);
             box-shadow: var(--shadow);
@@ -157,10 +59,6 @@
             top: 0;
             z-index: 1000;
             transition: var(--transition);
-        }
-        header.scrolled {
-            padding: 5px 0;
-            background: var(--white);
         }
         .nav-bar {
             display: flex;
@@ -187,8 +85,7 @@
             font-weight: 500;
             transition: var(--transition);
         }
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: var(--secondary);
         }
         .nav-icons {
@@ -196,23 +93,15 @@
             gap: 15px;
             align-items: center;
         }
-        .dark-mode-toggle,
-        .lang-toggle,
-        .menu-toggle {
+        .dark-mode-toggle, .menu-toggle {
             background: none;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--dark);
-            transition: var(--transition);
-        }
-        .dark-mode-toggle:hover,
-        .lang-toggle:hover {
-            color: var(--secondary);
         }
         .menu-toggle {
             display: none;
-            font-size: 1.5rem;
         }
 
         /* Hero Section */
@@ -226,7 +115,7 @@
             margin-top: 80px;
         }
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
         .hero-content .typed-text {
@@ -238,6 +127,31 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: transparent;
         }
 
         /* Counter Section */
@@ -254,14 +168,84 @@
         }
         .counter-item h3 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .counter-item p {
-            font-size: 1rem;
-            opacity: 0.9;
         }
 
-        /* Notice Board */
+        /* Section */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Courses */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .course-img {
+            height: 200px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .course-content {
+            padding: 20px;
+        }
+
+        /* Notice Tabs */
         .notice-section {
             background: var(--light);
         }
@@ -270,7 +254,6 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
         }
         .tab-btn {
             padding: 10px 25px;
@@ -278,12 +261,10 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
         }
         .tab-btn.active {
             background: var(--primary);
-            color: var(--white);
+            color: white;
         }
         .tab-content {
             display: none;
@@ -306,138 +287,6 @@
             flex-wrap: wrap;
             box-shadow: var(--shadow);
         }
-        .notice-info h4 {
-            margin-bottom: 5px;
-        }
-        .notice-date {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        .notice-category {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .feature-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        /* Courses */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .course-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .course-card:hover {
-            transform: translateY(-5px);
-        }
-        .course-img {
-            height: 200px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-        }
-        .course-content {
-            padding: 20px;
-        }
-        .course-content h3 {
-            margin-bottom: 10px;
-        }
-        .course-meta {
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-            color: var(--gray);
-        }
-
-        /* Teachers */
-        .teachers-slider {
-            padding: 20px 0;
-        }
-        .teacher-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-        .teacher-img {
-            width: 100%;
-            height: 250px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
-        }
-        .teacher-content {
-            padding: 20px;
-        }
-        .teacher-content h3 {
-            margin-bottom: 5px;
-        }
-        .teacher-content p {
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        /* Testimonials */
-        .testimonials-slider {
-            padding: 20px 0;
-        }
-        .testimonial-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-        .testimonial-card i {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .testimonial-card h4 {
-            margin-top: 15px;
-            color: var(--primary);
-        }
 
         /* FAQ */
         .faq-grid {
@@ -453,11 +302,10 @@
         .faq-question {
             padding: 20px;
             background: var(--primary);
-            color: var(--white);
+            color: white;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
         .faq-answer {
             padding: 0 20px;
@@ -468,33 +316,6 @@
         .faq-item.active .faq-answer {
             padding: 20px;
             max-height: 300px;
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
-            text-align: center;
-            padding: 60px 0;
-        }
-        .newsletter-form {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        .newsletter-form input {
-            padding: 12px 20px;
-            border-radius: 30px;
-            border: none;
-            width: 300px;
-            font-size: 1rem;
-        }
-        .newsletter-form button {
-            background: var(--secondary);
-            color: var(--white);
-            border: none;
         }
 
         /* Footer */
@@ -522,25 +343,6 @@
         .footer-col ul li a {
             color: var(--white);
             text-decoration: none;
-            transition: var(--transition);
-        }
-        .footer-col ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .social-links a {
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-        .social-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-3px);
         }
         .copyright {
             text-align: center;
@@ -554,7 +356,7 @@
             bottom: 30px;
             right: 30px;
             background: var(--secondary);
-            color: var(--white);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -572,71 +374,6 @@
             visibility: visible;
         }
 
-        /* Chat Widget */
-        .chat-widget {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            z-index: 999;
-        }
-        .chat-toggle {
-            background: var(--secondary);
-            color: var(--white);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-        .chat-toggle:hover {
-            transform: scale(1.05);
-        }
-        .chat-box {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 320px;
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            display: none;
-        }
-        .chat-box.active {
-            display: block;
-        }
-        .chat-header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 15px;
-        }
-        .chat-messages {
-            height: 300px;
-            overflow-y: auto;
-            padding: 15px;
-        }
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #eee;
-        }
-        .chat-input input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            outline: none;
-        }
-        .chat-input button {
-            background: var(--secondary);
-            color: var(--white);
-            border: none;
-            padding: 0 15px;
-            cursor: pointer;
-        }
-
         /* Responsive */
         @media (max-width: 992px) {
             .nav-links {
@@ -649,7 +386,6 @@
                 flex-direction: column;
                 padding: 40px;
                 transition: var(--transition);
-                box-shadow: var(--shadow);
             }
             .nav-links.active {
                 left: 0;
@@ -658,30 +394,9 @@
                 display: block;
             }
             .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .section-title {
                 font-size: 2rem;
             }
             .faq-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                margin-top: 70px;
-            }
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .counter-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            .courses-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -689,7 +404,6 @@
 </head>
 <body>
 
-<!-- Header -->
 <header>
     <div class="container">
         <div class="nav-bar">
@@ -698,14 +412,163 @@
                 <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
             </div>
             <ul class="nav-links">
-                <li><a href="#home" class="active">হোম</a></li>
-                <li><a href="#admission">অ্যাডমিশন</a></li>
-                <li><a href="#academic">একাডেমিক</a></li>
-                <li><a href="#placement">প্লেসমেন্ট</a></li>
-                <li><a href="#gallery">গ্যালারি</a></li>
-                <li><a href="#contact">যোগাযোগ</a></li>
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="admission.html">অ্যাডমিশন</a></li>
+                <li><a href="academic.html">একাডেমিক</a></li>
+                <li><a href="placement.html">প্লেসমেন্ট</a></li>
+                <li><a href="gallery.html">গ্যালারি</a></li>
+                <li><a href="contact.html">যোগাযোগ</a></li>
             </ul>
             <div class="nav-icons">
                 <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-                <button class="lang-toggle" id="langToggle">EN</button>
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</h1>
+            <div class="typed-text" id="typedText"></div>
+            <div class="hero-buttons">
+                <a href="admission.html" class="btn btn-primary">অনলাইন অ্যাডমিশন</a>
+                <a href="#" class="btn btn-outline">ভার্চুয়াল ট্যুর</a>
+                <a href="#" class="btn btn-secondary">ব্রোশার ডাউনলোড</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="counter-section">
+    <div class="container">
+        <div class="counter-grid">
+            <div class="counter-item">
+                <h3><span class="counter-num" data-target="350">0</span>+</h3>
+                <p>শিক্ষার্থী</p>
+            </div>
+            <div class="counter-item">
+                <h3><span class="counter-num" data-target="10">0</span>+</h3>
+                <p>শিক্ষক</p>
+            </div>
+            <div class="counter-item">
+                <h3><span class="counter-num" data-target="3">0</span></h3>
+                <p>বিভাগ</p>
+            </div>
+            <div class="counter-item">
+                <h3><span class="counter-num" data-target="85">0</span>%</h3>
+                <p>প্লেসমেন্ট রেট</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section notice-section">
+    <div class="container">
+        <h2 class="section-title">নোটিশ বোর্ড</h2>
+        <div class="notice-tabs">
+            <button class="tab-btn active" data-tab="notice">নোটিশ</button>
+            <button class="tab-btn" data-tab="event">ইভেন্ট</button>
+            <button class="tab-btn" data-tab="exam">পরীক্ষা</button>
+        </div>
+        <div class="tab-content active" id="notice-tab">
+            <div class="notice-list">
+                <div class="notice-item">
+                    <div><h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু</h4><small>তারিখ: ১৫ মার্চ, ২০২৫</small></div>
+                    <span class="notice-category">অ্যাডমিশন</span>
+                </div>
+                <div class="notice-item">
+                    <div><h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4><small>তারিখ: ১০ মার্চ, ২০২৫</small></div>
+                    <span class="notice-category">পরীক্ষা</span>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="event-tab">
+            <div class="notice-list">
+                <div class="notice-item">
+                    <div><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4><small>তারিখ: ২০ এপ্রিল, ২০২৫</small></div>
+                    <span class="notice-category">ক্রীড়া</span>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="exam-tab">
+            <div class="notice-list">
+                <div class="notice-item">
+                    <div><h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4><small>তারিখ: ১-১৫ এপ্রিল, ২০২৫</small></div>
+                    <span class="notice-category">রুটিন</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">আমাদের বৈশিষ্ট্য</h2>
+        <div class="features-grid">
+            <div class="feature-card"><i class="fas fa-laptop-code"></i><h3>আধুনিক ল্যাব</h3><p>অত্যাধুনিক কম্পিউটার ল্যাব সুবিধা</p></div>
+            <div class="feature-card"><i class="fas fa-wifi"></i><h3>ওয়াইফাই সুবিধা</h3><p>হাই-স্পিড ইন্টারনেট সংযোগ</p></div>
+            <div class="feature-card"><i class="fas fa-chalkboard-user"></i><h3>দক্ষ শিক্ষকমণ্ডলী</h3><p>অভিজ্ঞ শিক্ষকবৃন্দ</p></div>
+            <div class="feature-card"><i class="fas fa-briefcase"></i><h3>ক্যারিয়ার কাউন্সেলিং</h3><p>পেশাগত ক্যারিয়ার গঠনে সহায়তা</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--light);">
+    <div class="container">
+        <h2 class="section-title">আমাদের কোর্সসমূহ</h2>
+        <div class="courses-grid">
+            <div class="course-card"><div class="course-img"><i class="fas fa-computer"></i></div><div class="course-content"><h3>কম্পিউটার টেকনোলজি</h3><p>প্রোগ্রামিং, নেটওয়ার্কিং ও সিস্টেম ডিজাইন</p><a href="departments/computer-technology.html" class="btn-outline">বিস্তারিত</a></div></div>
+            <div class="course-card"><div class="course-img"><i class="fas fa-chart-line"></i></div><div class="course-content"><h3>ডিজিটাল টেকনোলজি ইন বিজনেস</h3><p>ই-কমার্স, ডিজিটাল মার্কেটিং</p><a href="departments/digital-business.html" class="btn-outline">বিস্তারিত</a></div></div>
+            <div class="course-card"><div class="course-img"><i class="fas fa-users-gear"></i></div><div class="course-content"><h3>হিউম্যান রিসোর্স ডেভেলপমেন্ট</h3><p>কৌশলগত এইচআর ও সংগঠন উন্নয়ন</p><a href="departments/hrd.html" class="btn-outline">বিস্তারিত</a></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">জিজ্ঞাসিত প্রশ্ন</h2>
+        <div class="faq-grid">
+            <div class="faq-item"><div class="faq-question"><span>কিভাবে অ্যাডমিশন নিতে হয়?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>অনলাইনে আবেদন ফর্ম পূরণ করে অথবা সরাসরি কলেজের অ্যাডমিশন অফিসে যোগাযোগ করুন।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>স্কলারশিপের সুযোগ আছে কি?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>হ্যাঁ, মেধাভিত্তিক ও অর্থনৈতিক ভিত্তিতে স্কলারশিপ প্রদান করা হয়।</p></div></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h3>TBMI</h3><p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
+            <div class="footer-col"><h3>দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li></ul></div>
+            <div class="footer-col"><h3>যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li><li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li></ul></div>
+        </div>
+        <div class="copyright"><p>&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p></div>
+    </div>
+</footer>
+
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    
+    // Typed Text Effect
+    const texts = ["Building Skilled Professionals for the Future", "প্রযুক্তি শিক্ষার সেরা ঠিকানা", "আপনার ক্যারিয়ার শুরু হোক আমাদের সাথে"];
+    let index = 0, charIndex = 0, currentText = "", isDeleting = false;
+    function typeEffect() {
+        const typedElement = document.getElementById("typedText");
+        if (!typedElement) return;
+        if (isDeleting) { currentText = texts[index].substring(0, charIndex - 1); charIndex--; }
+        else { currentText = texts[index].substring(0, charIndex + 1); charIndex++; }
+        typedElement.innerHTML = currentText;
+        if (!isDeleting && charIndex === texts[index].length) { isDeleting = true; setTimeout(typeEffect, 2000); }
+        else if (isDeleting && charIndex === 0) { isDeleting = false; index = (index + 1) % texts.length; setTimeout(typeEffect, 500); }
+        else { setTimeout(typeEffect, isDeleting ? 50 : 100); }
+    }
+    typeEffect();
+    
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter-num');
+    const startCounters = () => counters.forEach(counter => { let targe
