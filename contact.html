@@ -2,32 +2,54 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>যোগাযোগ - TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
+    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান">
+    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, কম্পিউটার টেকনোলজি, HRD, পঞ্চগড়, যোগাযোগ">
+    <meta name="author" content="TBMI">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #1e3c72;
             --primary-dark: #0a2a4a;
+            --primary-light: #2a5298;
             --secondary: #ff9800;
+            --secondary-dark: #e68900;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --gray: #6c757d;
             --white: #ffffff;
+            --black: #000000;
             --shadow: 0 5px 30px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
             --transition: all 0.3s ease;
         }
+
         body {
             font-family: 'Hind Siliguri', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
+            overflow-x: hidden;
         }
+
         body.dark-mode {
             --dark: #f8f9fa;
             --light: #1a1a2e;
@@ -35,8 +57,96 @@
             background: var(--light);
             color: var(--dark);
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Header */
         header {
             background: var(--white);
             box-shadow: var(--shadow);
@@ -44,6 +154,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
+        }
+        header.scrolled {
+            padding: 5px 0;
         }
         .nav-bar {
             display: flex;
@@ -54,19 +168,45 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         .logo-img {
-            width: 50px;
-            height: 50px;
-            background-image: url('');
+            width: 55px;
+            height: 55px;
+            background-image: url('https://image2url.com/r2/default/images/1774233082978-c54e338d-872a-4f38-94b8-c70d1350cdba.png');
             background-size: contain;
             background-repeat: no-repeat;
-            border-radius: 10px;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
-        .logo-text h1 { font-size: 1.5rem; color: var(--primary); }
-        .logo-text p { font-size: 0.8rem; color: var(--secondary); }
-        .est-year { font-size: 0.65rem; color: var(--gray); }
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+        .logo-text p {
+            font-size: 0.7rem;
+            color: var(--secondary);
+            margin-bottom: 2px;
+        }
+        .college-codes {
+            display: flex;
+            gap: 12px;
+            font-size: 0.65rem;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+        .college-codes span {
+            background: var(--light);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .est-year {
+            font-size: 0.65rem;
+            color: var(--gray);
+        }
         .nav-links {
             display: flex;
             list-style: none;
@@ -77,23 +217,36 @@
             color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
         .nav-icons {
             display: flex;
             gap: 15px;
             align-items: center;
         }
-        .dark-mode-toggle, .lang-toggle, .menu-toggle {
+        .dark-mode-toggle,
+        .lang-toggle,
+        .menu-toggle {
             background: none;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--dark);
+            transition: var(--transition);
         }
-        .menu-toggle { display: none; }
-        
-        .dropdown { position: relative; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -101,14 +254,25 @@
             left: 0;
             background: var(--white);
             min-width: 220px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             border-radius: 10px;
-            padding: 10px 0;
             z-index: 1000;
+            padding: 10px 0;
         }
-        .dropdown-content a { display: block; padding: 10px 20px; }
-        .dropdown:hover .dropdown-content { display: block; }
-        
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--dark);
+        }
+        .dropdown-content a:hover {
+            background: var(--light);
+            color: var(--secondary);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Page Header */
         .page-header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
@@ -116,25 +280,12 @@
             text-align: center;
             margin-top: 80px;
         }
-        .page-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
-        
-        .section { padding: 60px 0; }
-        .section-title {
-            font-size: 2rem;
+        .page-header h1 {
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: var(--primary);
-            position: relative;
         }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        
+
+        /* Contact Grid */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -162,14 +313,17 @@
             justify-content: center;
             font-size: 1.2rem;
         }
-        
+
+        /* Contact Form */
         .contact-form {
             background: var(--white);
             padding: 30px;
             border-radius: 10px;
             box-shadow: var(--shadow);
         }
-        .form-group { margin-bottom: 20px; }
+        .form-group {
+            margin-bottom: 20px;
+        }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px;
@@ -186,12 +340,15 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        .btn-submit:hover { background: var(--secondary); }
+        .btn-submit:hover {
+            background: var(--secondary);
+        }
         .btn-submit:disabled {
             opacity: 0.7;
             cursor: not-allowed;
         }
-        
+
+        /* Map */
         .map-container {
             margin-top: 40px;
             border-radius: 10px;
@@ -206,56 +363,8 @@
             flex-direction: column;
             gap: 10px;
         }
-        
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        .footer-col h3 { margin-bottom: 20px; color: var(--secondary); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: var(--white); text-decoration: none; }
-        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        
-        @media (max-width: 992px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
-                background: var(--white);
-                flex-direction: column;
-                padding: 40px;
-                transition: var(--transition);
-            }
-            .nav-links.active { left: 0; }
-            .menu-toggle { display: block; }
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                padding-left: 20px;
-            }
-            .contact-grid { grid-template-columns: 1fr; }
-        }
-        
-        /* Loading Spinner */
-        .fa-spinner {
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Success/Error Message */
+
+        /* Form Message */
         .form-message {
             margin-top: 15px;
             padding: 12px;
@@ -273,6 +382,110 @@
             color: white;
             display: block;
         }
+        .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                transition: var(--transition);
+                overflow-y: auto;
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+            .logo-text p {
+                font-size: 0.6rem;
+            }
+            .est-year, .college-codes span {
+                font-size: 0.55rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -284,7 +497,11 @@
                 <div class="logo-img"></div>
                 <div class="logo-text">
                     <h1>TBMI</h1>
-                    <p data-lang-key="logo_text">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <div class="college-codes">
+                        <span>College Code: 11011</span>
+                        <span>EIIN: 132253</span>
+                    </div>
                     <div class="est-year">Est. 2004</div>
                 </div>
             </div>
@@ -305,6 +522,7 @@
                         <a href="departments/computer-technology.html">কম্পিউটার টেকনোলজি</a>
                         <a href="departments/digital-business.html">ডিজিটাল টেকনোলজি ইন বিজনেস</a>
                         <a href="departments/hrd.html">হিউম্যান রিসোর্স ডেভেলপমেন্ট</a>
+                        <a href="academic.html#calendar">একাডেমিক ক্যালেন্ডার</a>
                     </div>
                 </li>
                 <li><a href="placement.html" data-lang-key="nav_placement">প্লেসমেন্ট</a></li>
@@ -335,31 +553,26 @@
     <div class="container">
         <div class="contact-grid">
             <div class="contact-info" data-aos="fade-right">
-                <h2 class="section-title" style="margin-top: 0;" data-lang-key="info_title">যোগাযোগের তথ্য</h2>
-                
+                <h2 class="section-title" style="margin-top: 0; text-align: left;" data-lang-key="info_title">যোগাযোগের তথ্য</h2>
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div><h3 data-lang-key="address_title">ঠিকানা</h3><p data-lang-key="address">ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</p></div>
                 </div>
-                
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-phone"></i></div>
                     <div><h3 data-lang-key="phone_title">ফোন নম্বর</h3><p>+8801309132253 (হটলাইন)</p><p>+8801309132253 (অ্যাডমিশন)</p></div>
                 </div>
-                
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <div><h3 data-lang-key="email_title">ইমেইল</h3><p>info@tbmi.edu.bd</p><p>admission@tbmi.edu.bd</p><p>placement@tbmi.edu.bd</p></div>
                 </div>
-                
                 <div class="info-item">
                     <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
                     <div><h3 data-lang-key="whatsapp_title">হোয়াটসঅ্যাপ</h3><p>+8801309132253</p></div>
                 </div>
             </div>
-            
             <div class="contact-form" data-aos="fade-left">
-                <h2 class="section-title" style="margin-top: 0;" data-lang-key="form_title">বার্তা পাঠান</h2>
+                <h2 class="section-title" style="margin-top: 0; text-align: left;" data-lang-key="form_title">বার্তা পাঠান</h2>
                 <form id="contactForm">
                     <div class="form-group">
                         <input type="text" id="name" placeholder="আপনার নাম *" required data-lang-key="name_placeholder">
@@ -389,7 +602,6 @@
                 </form>
             </div>
         </div>
-        
         <div class="map-container" data-aos="fade-up">
             <h2 class="section-title" data-lang-key="map_title">আমাদের অবস্থান</h2>
             <div class="map-placeholder">
@@ -407,7 +619,6 @@
             <div class="footer-col">
                 <h3>TBMI</h3>
                 <p data-lang-key="footer_about">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
-                <p>প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -419,14 +630,6 @@
                 <h3 data-lang-key="footer_quicklinks">দ্রুত লিংক</h3>
                 <ul>
                     <li><a href="index.html">হোম</a></li>
-                    <li><a href="admission.html">অ্যাডমিশন</a></li>
-                    <li><a href="academic.html">একাডেমিক</a></li>
-                    <li><a href="placement.html">প্লেসমেন্ট</a></li>
-                    <li><a href="gallery.html">গ্যালারি</a></li>
-                    <li><a href="notice-board.html">নোটিশ বোর্ড</a></li>
-                    <li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li>
-                    <li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html">যোগাযোগ</a></li>
                 </ul>
             </div>
@@ -436,15 +639,6 @@
                     <li><i class="fas fa-phone"></i> +8801309132253</li>
                     <li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li>
                     <li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3 data-lang-key="footer_support">শিক্ষা সহায়তা</h3>
-                <ul>
-                    <li><a href="privacy-policy.html">প্রাইভেসি পলিসি</a></li>
-                    <li><a href="terms.html">টার্মস অ্যান্ড কন্ডিশন</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li>
                 </ul>
             </div>
         </div>
@@ -457,29 +651,26 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 1000, once: true });
-    
-    // ========== EmailJS Initialization ==========
+
+    // EmailJS Initialization
     emailjs.init({
         publicKey: "MC1eU-jdGSEtLoqms"
     });
-    
-    // ========== Contact Form Submission ==========
+
+    // Contact Form Submission
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
-    
+
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
-            
-            // Validate
+
             if (!name || !email || !message) {
                 formMessage.className = 'form-message error';
                 formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> দয়া করে নাম, ইমেইল এবং বার্তা পূরণ করুন।';
@@ -487,8 +678,7 @@
                 setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
                 return;
             }
-            
-            // Prepare template parameters
+
             const templateParams = {
                 name: name,
                 email: email,
@@ -496,31 +686,23 @@
                 subject: subject,
                 message: message
             };
-            
-            // Show loading state
+
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
             submitBtn.disabled = true;
-            
+
             try {
                 const response = await emailjs.send(
-                    'service_tmvza85',      // Service ID
-                    'template_j7pil9e',     // Template ID
+                    'service_tmvza85',
+                    'template_j7pil9e',
                     templateParams
                 );
-                
                 if (response.status === 200) {
-                    // Success
                     formMessage.className = 'form-message success';
                     formMessage.innerHTML = '<i class="fas fa-check-circle"></i> আপনার বার্তা সফলভাবে পাঠানো হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।';
                     formMessage.style.display = 'block';
-                    
-                    // Clear form
                     contactForm.reset();
-                    
-                    setTimeout(() => {
-                        formMessage.style.display = 'none';
-                    }, 5000);
+                    setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
                 } else {
                     throw new Error('Failed');
                 }
@@ -529,20 +711,16 @@
                 formMessage.className = 'form-message error';
                 formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> দুঃখিত! বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
                 formMessage.style.display = 'block';
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
+                setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
             } finally {
-                // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
         });
     }
-    
-    // ========== Language Translations ==========
+
+    // Language Translations
     const translations = {
-        logo_text: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         nav_home: { bn: "হোম", en: "Home" },
         nav_admission: { bn: "অ্যাডমিশন", en: "Admission" },
         nav_academic: { bn: "একাডেমিক", en: "Academic" },
@@ -573,17 +751,15 @@
         footer_about: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         footer_quicklinks: { bn: "দ্রুত লিংক", en: "Quick Links" },
         footer_contact: { bn: "যোগাযোগ", en: "Contact" },
-        footer_support: { bn: "শিক্ষা সহায়তা", en: "Education Support" },
         footer_copyright: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।", en: "Technical & Business Management Institute. All rights reserved." }
     };
-    
+
     let currentLang = localStorage.getItem('tbmi_lang') || 'bn';
     const langToggle = document.getElementById('langToggle');
-    
+
     function changeLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('tbmi_lang', lang);
-        
         document.querySelectorAll('[data-lang-key]').forEach(el => {
             const key = el.getAttribute('data-lang-key');
             if (translations[key] && translations[key][lang]) {
@@ -594,57 +770,47 @@
                 }
             }
         });
-        
         // Update select options
         const subjectSelect = document.getElementById('subject');
-        if (subjectSelect && translations.subject_placeholder) {
-            const options = subjectSelect.options;
+        if (subjectSelect) {
             if (lang === 'bn') {
-                options[0].text = 'বিষয় নির্বাচন করুন';
-                options[1].text = 'অ্যাডমিশন সংক্রান্ত';
-                options[2].text = 'প্লেসমেন্ট সংক্রান্ত';
-                options[3].text = 'সাধারণ তথ্য';
-                options[4].text = 'অভিযোগ';
+                subjectSelect.options[0].text = 'বিষয় নির্বাচন করুন';
+                subjectSelect.options[1].text = 'অ্যাডমিশন সংক্রান্ত';
+                subjectSelect.options[2].text = 'প্লেসমেন্ট সংক্রান্ত';
+                subjectSelect.options[3].text = 'সাধারণ তথ্য';
+                subjectSelect.options[4].text = 'অভিযোগ';
             } else {
-                options[0].text = 'Select Subject';
-                options[1].text = 'Admission Related';
-                options[2].text = 'Placement Related';
-                options[3].text = 'General Information';
-                options[4].text = 'Complaint';
+                subjectSelect.options[0].text = 'Select Subject';
+                subjectSelect.options[1].text = 'Admission Related';
+                subjectSelect.options[2].text = 'Placement Related';
+                subjectSelect.options[3].text = 'General Information';
+                subjectSelect.options[4].text = 'Complaint';
             }
         }
-        
         langToggle.textContent = lang === 'bn' ? 'EN' : 'BN';
     }
-    
+
     langToggle.addEventListener('click', () => {
         changeLanguage(currentLang === 'bn' ? 'en' : 'bn');
     });
-    
-    // ========== Dark Mode Toggle ==========
+
+    // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const icon = darkModeToggle.querySelector('i');
-        if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
+        icon.classList.toggle('fa-moon');
+        icon.classList.toggle('fa-sun');
     });
-    
-    // ========== Mobile Menu Toggle ==========
+
+    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-    
-    // ========== Apply saved language on load ==========
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Apply saved language
     changeLanguage(currentLang);
 </script>
 </body>
