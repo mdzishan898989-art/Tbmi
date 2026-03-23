@@ -58,7 +58,6 @@
             color: var(--dark);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -79,7 +78,6 @@
             padding: 0 20px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -118,7 +116,6 @@
             color: var(--white);
         }
 
-        /* Section Styles */
         .section {
             padding: 80px 0;
         }
@@ -243,7 +240,6 @@
             font-size: 1.5rem;
         }
 
-        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -324,7 +320,9 @@
         .form-group {
             margin-bottom: 20px;
         }
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -441,7 +439,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
                 position: fixed;
@@ -469,9 +466,6 @@
             }
             .contact-grid {
                 grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 2rem;
             }
         }
 
@@ -554,23 +548,28 @@
         <div class="contact-grid">
             <div class="contact-info" data-aos="fade-right">
                 <h2 class="section-title" style="margin-top: 0; text-align: left;" data-lang-key="info_title">যোগাযোগের তথ্য</h2>
+                
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div><h3 data-lang-key="address_title">ঠিকানা</h3><p data-lang-key="address">ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</p></div>
                 </div>
+                
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-phone"></i></div>
                     <div><h3 data-lang-key="phone_title">ফোন নম্বর</h3><p>+8801309132253 (হটলাইন)</p><p>+8801309132253 (অ্যাডমিশন)</p></div>
                 </div>
+                
                 <div class="info-item">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <div><h3 data-lang-key="email_title">ইমেইল</h3><p>info@tbmi.edu.bd</p><p>admission@tbmi.edu.bd</p><p>placement@tbmi.edu.bd</p></div>
                 </div>
+                
                 <div class="info-item">
                     <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
                     <div><h3 data-lang-key="whatsapp_title">হোয়াটসঅ্যাপ</h3><p>+8801309132253</p></div>
                 </div>
             </div>
+            
             <div class="contact-form" data-aos="fade-left">
                 <h2 class="section-title" style="margin-top: 0; text-align: left;" data-lang-key="form_title">বার্তা পাঠান</h2>
                 <form id="contactForm">
@@ -602,6 +601,7 @@
                 </form>
             </div>
         </div>
+        
         <div class="map-container" data-aos="fade-up">
             <h2 class="section-title" data-lang-key="map_title">আমাদের অবস্থান</h2>
             <div class="map-placeholder">
@@ -665,6 +665,7 @@
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
