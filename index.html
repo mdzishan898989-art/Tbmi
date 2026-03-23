@@ -183,13 +183,14 @@
             gap: 12px;
         }
         .logo-img {
-            width: 50px;
-            height: 50px;
-            background-image: url('');
+            width: 55px;
+            height: 55px;
+            background-image: url('https://image2url.com/r2/default/images/1774233082978-c54e338d-872a-4f38-94b8-c70d1350cdba.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 10px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
         .logo-text h1 {
             font-size: 1.5rem;
@@ -200,6 +201,19 @@
             font-size: 0.7rem;
             color: var(--secondary);
             margin-bottom: 2px;
+        }
+        .college-codes {
+            display: flex;
+            gap: 12px;
+            font-size: 0.65rem;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+        .college-codes span {
+            background: var(--light);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
         }
         .est-year {
             font-size: 0.65rem;
@@ -285,15 +299,7 @@
             color: var(--white);
             margin-top: 80px;
             overflow: hidden;
-        }
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
+            background: url('https://image2url.com/r2/default/images/1774233383665-9ff2c18d-ec3b-4a73-b684-2d7f4b2a008c.jpg') center/cover no-repeat;
         }
         .hero-overlay {
             position: absolute;
@@ -467,12 +473,9 @@
         }
         .course-img {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .course-content {
             padding: 20px;
@@ -501,12 +504,9 @@
         .teacher-img {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .teacher-content {
             padding: 20px;
@@ -540,9 +540,9 @@
             height: 80px;
             border-radius: 50%;
             margin: 0 auto 15px;
-            background: var(--primary);
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
         .testimonial-card h4 {
             margin-top: 15px;
@@ -561,22 +561,14 @@
             width: 100px;
             height: 100px;
             margin: 0 auto;
-            background: var(--light);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            border-radius: 10px;
         }
-        .partner-logo i {
-            font-size: 3rem;
-            color: var(--gray);
-            transition: var(--transition);
-        }
-        .partner-logo:hover i {
-            color: var(--secondary);
+        .partner-logo p {
+            margin-top: 10px;
+            font-weight: 500;
         }
 
         /* Quick Links Grid */
@@ -606,7 +598,7 @@
             margin-bottom: 15px;
         }
 
-        /* Gallery Section Preview */
+        /* Gallery Preview */
         .gallery-preview {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -617,7 +609,6 @@
             overflow: hidden;
             border-radius: 10px;
             height: 200px;
-            background: var(--primary);
             background-size: cover;
             background-position: center;
             cursor: pointer;
@@ -637,7 +628,7 @@
             transform: translateY(0);
         }
 
-        /* FAQ Section */
+        /* FAQ */
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -904,7 +895,6 @@
             transform: scale(1.05);
         }
 
-        /* Newsletter Success/Error Message Styles */
         .success-message {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: white;
@@ -926,7 +916,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive - মোবাইল ফিক্স */
         @media (max-width: 1100px) {
             .nav-links {
                 position: fixed;
@@ -941,83 +930,34 @@
                 overflow-y: auto;
                 z-index: 999;
             }
-            .nav-links.active {
-                left: 0;
-            }
-            .menu-toggle {
-                display: block;
-            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: block; }
             .dropdown-content {
                 position: static;
                 box-shadow: none;
                 padding-left: 20px;
             }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .hero-content .typed-text {
-                font-size: 1.2rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content .typed-text { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .faq-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                margin-top: 70px;
-            }
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-            .counter-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-            .quick-links-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-preview {
-                grid-template-columns: 1fr;
-            }
-            .logo-text h1 {
-                font-size: 1.1rem;
-            }
-            .logo-text p {
-                font-size: 0.6rem;
-            }
-            .est-year {
-                font-size: 0.55rem;
-            }
+            .hero { margin-top: 70px; }
+            .hero-content h1 { font-size: 1.6rem; }
+            .counter-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid, .courses-grid, .quick-links-grid, .gallery-preview { grid-template-columns: 1fr; }
+            .logo-text h1 { font-size: 1.1rem; }
+            .logo-text p { font-size: 0.6rem; }
+            .est-year, .college-codes span { font-size: 0.55rem; }
         }
 
         @media (max-width: 576px) {
-            .chat-box {
-                width: 300px;
-                height: 400px;
-                right: 10px;
-                bottom: 130px;
-            }
-            .chat-widget {
-                bottom: 70px;
-                right: 10px;
-            }
-            .chat-toggle {
-                width: 50px;
-                height: 50px;
-            }
-            .hero-buttons .btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
+            .chat-box { width: 300px; height: 400px; right: 10px; bottom: 130px; }
+            .chat-widget { bottom: 70px; right: 10px; }
+            .chat-toggle { width: 50px; height: 50px; }
+            .hero-buttons .btn { padding: 8px 16px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -1032,6 +972,10 @@
                 <div class="logo-text">
                     <h1>TBMI</h1>
                     <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <div class="college-codes">
+                        <span>College Code: 11011</span>
+                        <span>EIIN: 132253</span>
+                    </div>
                     <div class="est-year">Est. 2004</div>
                 </div>
             </div>
@@ -1074,9 +1018,6 @@
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-    <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-students-studying-together-in-a-library-39858-large.mp4" type="video/mp4">
-    </video>
     <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
@@ -1095,22 +1036,10 @@
 <section class="counter-section">
     <div class="container">
         <div class="counter-grid">
-            <div class="counter-item" data-aos="zoom-in">
-                <h3><span class="counter-num" data-target="350">0</span>+</h3>
-                <p data-lang-key="counter_students">শিক্ষার্থী</p>
-            </div>
-            <div class="counter-item" data-aos="zoom-in" data-aos-delay="100">
-                <h3><span class="counter-num" data-target="10">0</span>+</h3>
-                <p data-lang-key="counter_teachers">শিক্ষক</p>
-            </div>
-            <div class="counter-item" data-aos="zoom-in" data-aos-delay="200">
-                <h3><span class="counter-num" data-target="3">0</span></h3>
-                <p data-lang-key="counter_departments">বিভাগ</p>
-            </div>
-            <div class="counter-item" data-aos="zoom-in" data-aos-delay="300">
-                <h3><span class="counter-num" data-target="85">0</span>%</h3>
-                <p data-lang-key="counter_placement">প্লেসমেন্ট রেট</p>
-            </div>
+            <div class="counter-item" data-aos="zoom-in"><h3><span class="counter-num" data-target="350">0</span>+</h3><p data-lang-key="counter_students">শিক্ষার্থী</p></div>
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="100"><h3><span class="counter-num" data-target="10">0</span>+</h3><p data-lang-key="counter_teachers">শিক্ষক</p></div>
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="200"><h3><span class="counter-num" data-target="3">0</span></h3><p data-lang-key="counter_departments">বিভাগ</p></div>
+            <div class="counter-item" data-aos="zoom-in" data-aos-delay="300"><h3><span class="counter-num" data-target="85">0</span>%</h3><p data-lang-key="counter_placement">প্লেসমেন্ট রেট</p></div>
         </div>
     </div>
 </section>
@@ -1120,88 +1049,30 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="notice_title">নোটিশ বোর্ড</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="notice_subtitle">সর্বশেষ বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তথ্য</p>
-        
         <div class="notice-tabs" data-aos="fade-up">
             <button class="tab-btn active" data-tab="notice" data-lang-key="tab_notice">নোটিশ</button>
             <button class="tab-btn" data-tab="event" data-lang-key="tab_event">ইভেন্ট</button>
             <button class="tab-btn" data-tab="exam" data-lang-key="tab_exam">পরীক্ষা</button>
         </div>
-        
         <div class="tab-content active" id="notice-tab">
             <div class="notice-list">
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন বিজ্ঞপ্তি প্রকাশ</h4>
-                        <p class="notice-date">তারিখ: ১৫ মার্চ, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">অ্যাডমিশন</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4>
-                        <p class="notice-date">তারিখ: ১০ মার্চ, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">পরীক্ষা</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>মেধাবৃত্তির আবেদন শুরু</h4>
-                        <p class="notice-date">তারিখ: ৫ মার্চ, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">স্কলারশিপ</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>নতুন সেমিস্টারের ক্লাস শুরু</h4>
-                        <p class="notice-date">তারিখ: ১ এপ্রিল, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">একাডেমিক</span>
-                </div>
+                <div class="notice-item"><div class="notice-info"><h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন বিজ্ঞপ্তি প্রকাশ</h4><p class="notice-date">তারিখ: ১৫ মার্চ, ২০২৫</p></div><span class="notice-category">অ্যাডমিশন</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4><p class="notice-date">তারিখ: ১০ মার্চ, ২০২৫</p></div><span class="notice-category">পরীক্ষা</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>মেধাবৃত্তির আবেদন শুরু</h4><p class="notice-date">তারিখ: ৫ মার্চ, ২০২৫</p></div><span class="notice-category">স্কলারশিপ</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>নতুন সেমিস্টারের ক্লাস শুরু</h4><p class="notice-date">তারিখ: ১ এপ্রিল, ২০২৫</p></div><span class="notice-category">একাডেমিক</span></div>
             </div>
         </div>
-        
         <div class="tab-content" id="event-tab">
             <div class="notice-list">
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4>
-                        <p class="notice-date">তারিখ: ২০ এপ্রিল, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">ক্রীড়া</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>ক্যারিয়ার ফেয়ার ২০২৫</h4>
-                        <p class="notice-date">তারিখ: ৫ এপ্রিল, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">প্লেসমেন্ট</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>বিজ্ঞান মেলা ও প্রদর্শনী</h4>
-                        <p class="notice-date">তারিখ: ২৫ এপ্রিল, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">ইভেন্ট</span>
-                </div>
+                <div class="notice-item"><div class="notice-info"><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4><p class="notice-date">তারিখ: ২০ এপ্রিল, ২০২৫</p></div><span class="notice-category">ক্রীড়া</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>ক্যারিয়ার ফেয়ার ২০২৫</h4><p class="notice-date">তারিখ: ৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">প্লেসমেন্ট</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>বিজ্ঞান মেলা ও প্রদর্শনী</h4><p class="notice-date">তারিখ: ২৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">ইভেন্ট</span></div>
             </div>
         </div>
-        
         <div class="tab-content" id="exam-tab">
             <div class="notice-list">
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4>
-                        <p class="notice-date">তারিখ: ১-১৫ এপ্রিল, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">রুটিন</span>
-                </div>
-                <div class="notice-item">
-                    <div class="notice-info">
-                        <h4>মধ্যকালীন পরীক্ষার ফলাফল প্রকাশ</h4>
-                        <p class="notice-date">তারিখ: ২০ মার্চ, ২০২৫</p>
-                    </div>
-                    <span class="notice-category">রেজাল্ট</span>
-                </div>
+                <div class="notice-item"><div class="notice-info"><h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4><p class="notice-date">তারিখ: ১-১৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">রুটিন</span></div>
+                <div class="notice-item"><div class="notice-info"><h4>মধ্যকালীন পরীক্ষার ফলাফল প্রকাশ</h4><p class="notice-date">তারিখ: ২০ মার্চ, ২০২৫</p></div><span class="notice-category">রেজাল্ট</span></div>
             </div>
         </div>
     </div>
@@ -1212,38 +1083,13 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="features_title">আমাদের বৈশিষ্ট্য</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="features_subtitle">কেন বেছে নেবেন টিবিএমআই</p>
-        
         <div class="features-grid">
-            <div class="feature-card" data-aos="flip-left">
-                <i class="fas fa-laptop-code"></i>
-                <h3 data-lang-key="feature_lab">আধুনিক কম্পিউটার ল্যাব</h3>
-                <p>অত্যাধুনিক কম্পিউটার ল্যাব ও উন্নত প্রযুক্তি সুবিধা</p>
-            </div>
-            <div class="feature-card" data-aos="flip-left" data-aos-delay="100">
-                <i class="fas fa-wifi"></i>
-                <h3 data-lang-key="feature_wifi">ওয়াইফাই সুবিধা</h3>
-                <p>ক্যাম্পাস জুড়ে হাই-স্পিড ইন্টারনেট সংযোগ</p>
-            </div>
-            <div class="feature-card" data-aos="flip-left" data-aos-delay="200">
-                <i class="fas fa-chalkboard-user"></i>
-                <h3 data-lang-key="feature_teachers">দক্ষ শিক্ষকমণ্ডলী</h3>
-                <p>অভিজ্ঞ ও দক্ষ শিক্ষকদের দ্বারা পাঠদান</p>
-            </div>
-            <div class="feature-card" data-aos="flip-left" data-aos-delay="300">
-                <i class="fas fa-briefcase"></i>
-                <h3 data-lang-key="feature_career">ক্যারিয়ার কাউন্সেলিং সেল</h3>
-                <p>পেশাগত ক্যারিয়ার গঠনে বিশেষ পরামর্শ ও সহায়তা</p>
-            </div>
-            <div class="feature-card" data-aos="flip-left" data-aos-delay="400">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>মেধাবৃত্তি সুবিধা</h3>
-                <p>মেধাবী ও অর্থনৈতিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের জন্য বৃত্তি</p>
-            </div>
-            <div class="feature-card" data-aos="flip-left" data-aos-delay="500">
-                <i class="fas fa-handshake"></i>
-                <h3>শিল্প সংযোগ</h3>
-                <p>শীর্ষস্থানীয় কোম্পানির সাথে শক্তিশালী নেটওয়ার্ক</p>
-            </div>
+            <div class="feature-card" data-aos="flip-left"><i class="fas fa-laptop-code"></i><h3 data-lang-key="feature_lab">আধুনিক কম্পিউটার ল্যাব</h3><p>অত্যাধুনিক কম্পিউটার ল্যাব ও উন্নত প্রযুক্তি সুবিধা</p></div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-wifi"></i><h3 data-lang-key="feature_wifi">ওয়াইফাই সুবিধা</h3><p>ক্যাম্পাস জুড়ে হাই-স্পিড ইন্টারনেট সংযোগ</p></div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-chalkboard-user"></i><h3 data-lang-key="feature_teachers">দক্ষ শিক্ষকমণ্ডলী</h3><p>অভিজ্ঞ ও দক্ষ শিক্ষকদের দ্বারা পাঠদান</p></div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-briefcase"></i><h3 data-lang-key="feature_career">ক্যারিয়ার কাউন্সেলিং সেল</h3><p>পেশাগত ক্যারিয়ার গঠনে বিশেষ পরামর্শ ও সহায়তা</p></div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="400"><i class="fas fa-graduation-cap"></i><h3>মেধাবৃত্তি সুবিধা</h3><p>মেধাবী ও অর্থনৈতিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের জন্য বৃত্তি</p></div>
+            <div class="feature-card" data-aos="flip-left" data-aos-delay="500"><i class="fas fa-handshake"></i><h3>শিল্প সংযোগ</h3><p>শীর্ষস্থানীয় কোম্পানির সাথে শক্তিশালী নেটওয়ার্ক</p></div>
         </div>
     </div>
 </section>
@@ -1253,43 +1099,18 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="courses_title">আমাদের কোর্সসমূহ</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="courses_subtitle">আপনার ক্যারিয়ার গড়তে চয়েস করুন পছন্দের বিভাগ</p>
-        
         <div class="courses-grid">
             <div class="course-card" data-aos="zoom-in">
-                <div class="course-img"><i class="fas fa-computer"></i></div>
-                <div class="course-content">
-                    <h3 data-lang-key="course_ct">কম্পিউটার টেকনোলজি</h3>
-                    <p>প্রোগ্রামিং, নেটওয়ার্কিং, ডাটাবেস, ওয়েব ডেভেলপমেন্ট ও সিস্টেম ডিজাইন বিষয়ে দক্ষ করে গড়ে তোলা হয় শিক্ষার্থীদের।</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> ৪ বছর</span>
-                        <span><i class="fas fa-users"></i> ৬০ সিট</span>
-                    </div>
-                    <a href="departments/computer-technology.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a>
-                </div>
+                <div class="course-img" style="background-image: url('https://i.postimg.cc/9fYyTPkK/unnamed-(13).jpg');"></div>
+                <div class="course-content"><h3 data-lang-key="course_ct">কম্পিউটার টেকনোলজি</h3><p>প্রোগ্রামিং, নেটওয়ার্কিং, ডাটাবেস, ওয়েব ডেভেলপমেন্ট ও সিস্টেম ডিজাইন বিষয়ে দক্ষ করে গড়ে তোলা হয় শিক্ষার্থীদের।</p><div class="course-meta"><span><i class="far fa-clock"></i> ৪ বছর</span><span><i class="fas fa-users"></i> ৬০ সিট</span></div><a href="departments/computer-technology.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a></div>
             </div>
             <div class="course-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="course-img"><i class="fas fa-chart-line"></i></div>
-                <div class="course-content">
-                    <h3 data-lang-key="course_dtb">ডিজিটাল টেকনোলজি ইন বিজনেস</h3>
-                    <p>ই-কমার্স, ডিজিটাল মার্কেটিং, বিজনেস অ্যানালিটিক্স, ডেটা সায়েন্স ও ব্যবসায়িক প্রযুক্তি বিষয়ে দক্ষতা অর্জন।</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> ৪ বছর</span>
-                        <span><i class="fas fa-users"></i> ৫০ সিট</span>
-                    </div>
-                    <a href="departments/digital-business.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a>
-                </div>
+                <div class="course-img" style="background-image: url('https://i.postimg.cc/vmt597jR/unnamed-(16).jpg');"></div>
+                <div class="course-content"><h3 data-lang-key="course_dtb">ডিজিটাল টেকনোলজি ইন বিজনেস</h3><p>ই-কমার্স, ডিজিটাল মার্কেটিং, বিজনেস অ্যানালিটিক্স, ডেটা সায়েন্স ও ব্যবসায়িক প্রযুক্তি বিষয়ে দক্ষতা অর্জন।</p><div class="course-meta"><span><i class="far fa-clock"></i> ৪ বছর</span><span><i class="fas fa-users"></i> ৫০ সিট</span></div><a href="departments/digital-business.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a></div>
             </div>
             <div class="course-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="course-img"><i class="fas fa-users-gear"></i></div>
-                <div class="course-content">
-                    <h3 data-lang-key="course_hrd">হিউম্যান রিসোর্স ডেভেলপমেন্ট</h3>
-                    <p>কৌশলগত এইচআর, সংগঠন উন্নয়ন, নেতৃত্ব, রিক্রুটমেন্ট ও প্রশিক্ষণ বিষয়ে দক্ষতা অর্জন।</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> ৪ বছর</span>
-                        <span><i class="fas fa-users"></i> ৫০ সিট</span>
-                    </div>
-                    <a href="departments/hrd.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a>
-                </div>
+                <div class="course-img" style="background-image: url('https://i.postimg.cc/xd3LHG7D/unnamed-(17).jpg');"></div>
+                <div class="course-content"><h3 data-lang-key="course_hrd">হিউম্যান রিসোর্স ডেভেলপমেন্ট</h3><p>কৌশলগত এইচআর, সংগঠন উন্নয়ন, নেতৃত্ব, রিক্রুটমেন্ট ও প্রশিক্ষণ বিষয়ে দক্ষতা অর্জন।</p><div class="course-meta"><span><i class="far fa-clock"></i> ৪ বছর</span><span><i class="fas fa-users"></i> ৫০ সিট</span></div><a href="departments/hrd.html" class="btn btn-outline" style="margin-top: 10px; display: inline-block;" data-lang-key="btn_details">বিস্তারিত</a></div>
             </div>
         </div>
     </div>
@@ -1300,55 +1121,16 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="teachers_title">শিক্ষকমণ্ডলী</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="teachers_subtitle">আমাদের অভিজ্ঞ শিক্ষকবৃন্দ</p>
-        
         <div class="swiper teachers-slider" data-aos="fade-up">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="teacher-card">
-                        <div class="teacher-img"><i class="fas fa-user-graduate"></i></div>
-                        <div class="teacher-content">
-                            <h3>মোঃ আহসান হাবিব</h3>
-                            <p>অধ্যক্ষ</p>
-                            <p>২০+ বছর অভিজ্ঞতা</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="teacher-card">
-                        <div class="teacher-img"><i class="fas fa-chalkboard-user"></i></div>
-                        <div class="teacher-content">
-                            <h3>গোলাম মাওলা</h3>
-                            <p>প্রভাষক (এইচআরডি)</p>
-                            <p>এইচআর ম্যানেজমেন্ট বিশেষজ্ঞ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="teacher-card">
-                        <div class="teacher-img"><i class="fas fa-laptop-code"></i></div>
-                        <div class="teacher-content">
-                            <h3>মোঃ সাদিকুর রহমান</h3>
-                            <p>প্রভাষক (কম্পিউটার)</p>
-                            <p>প্রোগ্রামিং ও নেটওয়ার্কিং বিশেষজ্ঞ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="teacher-card">
-                        <div class="teacher-img"><i class="fas fa-chart-simple"></i></div>
-                        <div class="teacher-content">
-                            <h3>নাজমা আক্তার</h3>
-                            <p>প্রভাষক (ডিজিটাল বিজনেস)</p>
-                            <p>ডিজিটাল মার্কেটিং বিশেষজ্ঞ</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="swiper-slide"><div class="teacher-card"><div class="teacher-img" style="background-image: url('https://i.postimg.cc/cCpvP6j7/Gemini-Generated-Image-v5117zv5117zv511.png');"></div><div class="teacher-content"><h3>মোঃ আহসান হাবিব</h3><p>অধ্যক্ষ</p><p>২০+ বছর অভিজ্ঞতা</p></div></div></div>
+                <div class="swiper-slide"><div class="teacher-card"><div class="teacher-img" style="background-image: url('');"></div><div class="teacher-content"><h3>গোলাম মাওলা</h3><p>প্রভাষক (এইচআরডি)</p><p>এইচআর ম্যানেজমেন্ট বিশেষজ্ঞ</p></div></div></div>
+                <div class="swiper-slide"><div class="teacher-card"><div class="teacher-img" style="background-image: url('');"></div><div class="teacher-content"><h3>মোঃ সাদিকুর রহমান</h3><p>প্রভাষক (কম্পিউটার)</p><p>প্রোগ্রামিং ও নেটওয়ার্কিং বিশেষজ্ঞ</p></div></div></div>
+                <div class="swiper-slide"><div class="teacher-card"><div class="teacher-img" style="background-image: url('');"></div><div class="teacher-content"><h3>নাজমা আক্তার</h3><p>প্রভাষক (ডিজিটাল বিজনেস)</p><p>ডিজিটাল মার্কেটিং বিশেষজ্ঞ</p></div></div></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <div class="text-center" style="text-align:center; margin-top:30px">
-            <a href="teachers.html" class="btn btn-primary" data-lang-key="btn_all_teachers">সকল শিক্ষক দেখুন →</a>
-        </div>
+        <div class="text-center" style="text-align:center; margin-top:30px"><a href="teachers.html" class="btn btn-primary" data-lang-key="btn_all_teachers">সকল শিক্ষক দেখুন →</a></div>
     </div>
 </section>
 
@@ -1357,42 +1139,15 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="testimonials_title">সাফল্যের গল্প</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="testimonials_subtitle">আমাদের প্রাক্তন শিক্ষার্থীদের সাফল্য</p>
-        
         <div class="swiper testimonials-slider" data-aos="fade-up">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img"></div>
-                        <i class="fas fa-quote-right"></i>
-                        <p>টিবিএমআই-তে পড়াশোনা আমার ক্যারিয়ারের ভিত্তি গড়ে দিয়েছে। এখানকার ব্যবহারিক শিক্ষা পদ্ধতি আমাকে বাস্তব কর্মক্ষেত্রে দ্রুত মানিয়ে নিতে সাহায্য করেছে।</p>
-                        <h4>মোঃ রাকিব হাসান</h4>
-                        <p>সিনিয়র সফটওয়্যার ইঞ্জিনিয়ার, টেকনোলজি হাব লিমিটেড</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img"></div>
-                        <i class="fas fa-quote-right"></i>
-                        <p>ডিজিটাল মার্কেটিং-এ আমার ক্যারিয়ার গড়তে টিবিএমআই-এর শিক্ষা পদ্ধতি ও শিক্ষকদের অবদান অনস্বীকার্য।</p>
-                        <h4>ফাতেমা আক্তার</h4>
-                        <p>ডিজিটাল মার্কেটিং ম্যানেজার, ডিজিটাল সলিউশন বিডি</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img"></div>
-                        <i class="fas fa-quote-right"></i>
-                        <p>এইচআরডি বিভাগ থেকে পড়াশোনা শেষ করে আমি আজ একজন সফল এইচআর ম্যানেজার। টিবিএমআই-এর ক্যারিয়ার কাউন্সেলিং সেল আমার ক্যারিয়ার গঠনে গুরুত্বপূর্ণ ভূমিকা রেখেছে।</p>
-                        <h4>মোঃ সোহেল রানা</h4>
-                        <p>এইচআর ম্যানেজার, এইচআর কনসালটেন্সি বিডি</p>
-                    </div>
-                </div>
+                <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-img" style="background-image: url('');"></div><i class="fas fa-quote-right"></i><p>টিবিএমআই-তে পড়াশোনা আমার ক্যারিয়ারের ভিত্তি গড়ে দিয়েছে। এখানকার ব্যবহারিক শিক্ষা পদ্ধতি আমাকে বাস্তব কর্মক্ষেত্রে দ্রুত মানিয়ে নিতে সাহায্য করেছে।</p><h4>মোঃ রাকিব হাসান</h4><p>সিনিয়র সফটওয়্যার ইঞ্জিনিয়ার, টেকনোলজি হাব লিমিটেড</p></div></div>
+                <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-img" style="background-image: url('');"></div><i class="fas fa-quote-right"></i><p>ডিজিটাল মার্কেটিং-এ আমার ক্যারিয়ার গড়তে টিবিএমআই-এর শিক্ষা পদ্ধতি ও শিক্ষকদের অবদান অনস্বীকার্য।</p><h4>ফাতেমা আক্তার</h4><p>ডিজিটাল মার্কেটিং ম্যানেজার, ডিজিটাল সলিউশন বিডি</p></div></div>
+                <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-img" style="background-image: url('');"></div><i class="fas fa-quote-right"></i><p>এইচআরডি বিভাগ থেকে পড়াশোনা শেষ করে আমি আজ একজন সফল এইচআর ম্যানেজার। টিবিএমআই-এর ক্যারিয়ার কাউন্সেলিং সেল আমার ক্যারিয়ার গঠনে গুরুত্বপূর্ণ ভূমিকা রেখেছে।</p><h4>মোঃ সোহেল রানা</h4><p>এইচআর ম্যানেজার, এইচআর কনসালটেন্সি বিডি</p></div></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <div class="text-center" style="text-align:center; margin-top:30px">
-            <a href="alumni.html" class="btn btn-primary" data-lang-key="btn_more_stories">আরও সাফল্যের গল্প →</a>
-        </div>
+        <div class="text-center" style="text-align:center; margin-top:30px"><a href="alumni.html" class="btn btn-primary" data-lang-key="btn_more_stories">আরও সাফল্যের গল্প →</a></div>
     </div>
 </section>
 
@@ -1401,14 +1156,13 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">আমাদের শিল্প সহযোগী</h2>
         <p class="section-subtitle" data-aos="fade-up">আমাদের শিক্ষার্থীরা যেসব প্রতিষ্ঠানে কাজ করছে</p>
-        
         <div class="swiper partners-slider" data-aos="fade-up">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img"></div><p>টেকনোলজি হাব</p></div></div>
-                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img"></div><p>ডিজিটাল সলিউশন</p></div></div>
-                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img"></div><p>এইচআর কনসালটেন্সি</p></div></div>
-                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img"></div><p>নেটওয়ার্ক সলিউশন</p></div></div>
-                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img"></div><p>সফটওয়্যার ডেভেলপমেন্ট বিডি</p></div></div>
+                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img" style="background-image: url('https://i.postimg.cc/nhRsqHYs/unnamed-(3).jpg');"></div><p>টেকনোলজি হাব</p></div></div>
+                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img" style="background-image: url('https://i.postimg.cc/VkGSXYBM/unnamed-(4).jpg');"></div><p>ডিজিটাল সলিউশন</p></div></div>
+                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img" style="background-image: url('https://i.postimg.cc/g2Sw3YqZ/unnamed-(5).jpg');"></div><p>এইচআর কনসালটেন্সি</p></div></div>
+                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img" style="background-image: url('https://i.postimg.cc/qvbt2kXK/unnamed-(6).jpg');"></div><p>নেটওয়ার্ক সলিউশন</p></div></div>
+                <div class="swiper-slide"><div class="partner-logo"><div class="partner-img" style="background-image: url('');"></div><p>সফটওয়্যার ডেভেলপমেন্ট বিডি</p></div></div>
             </div>
         </div>
     </div>
@@ -1420,14 +1174,14 @@
         <h2 class="section-title" data-aos="fade-up" data-lang-key="quicklinks_title">গুরুত্বপূর্ণ লিংক</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="quicklinks_subtitle">প্রয়োজনীয় তথ্য দ্রুত পেতে নিচের লিংকে ক্লিক করুন</p>
         <div class="quick-links-grid">
-            <a href="admission.html" class="quick-link-card" data-aos="fade-up"><i class="fas fa-user-graduate"></i><h3>অনলাইন অ্যাডমিশন</h3><p>এখনই আবেদন করুন</p></a>
-            <a href="notice-board.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="50"><i class="fas fa-bullhorn"></i><h3>নোটিশ বোর্ড</h3><p>সর্বশেষ বিজ্ঞপ্তি দেখুন</p></a>
-            <a href="placement.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-briefcase"></i><h3>প্লেসমেন্ট</h3><p>ক্যারিয়ারের সুযোগ</p></a>
-            <a href="teachers.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="150"><i class="fas fa-chalkboard-user"></i><h3>শিক্ষকমণ্ডলী</h3><p>আমাদের শিক্ষকবৃন্দ</p></a>
-            <a href="gallery.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-images"></i><h3>গ্যালারি</h3><p>ক্যাম্পাসের ছবি</p></a>
-            <a href="alumni.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="250"><i class="fas fa-users"></i><h3>প্রাক্তন শিক্ষার্থী</h3><p>সাফল্যের গল্প</p></a>
-            <a href="faq.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-question-circle"></i><h3>FAQ</h3><p>জিজ্ঞাসিত প্রশ্ন</p></a>
-            <a href="contact.html" class="quick-link-card" data-aos="fade-up" data-aos-delay="350"><i class="fas fa-envelope"></i><h3>যোগাযোগ</h3><p>আমাদের সাথে যোগাযোগ করুন</p></a>
+            <a href="admission.html" class="quick-link-card"><i class="fas fa-user-graduate"></i><h3>অনলাইন অ্যাডমিশন</h3><p>এখনই আবেদন করুন</p></a>
+            <a href="notice-board.html" class="quick-link-card"><i class="fas fa-bullhorn"></i><h3>নোটিশ বোর্ড</h3><p>সর্বশেষ বিজ্ঞপ্তি দেখুন</p></a>
+            <a href="placement.html" class="quick-link-card"><i class="fas fa-briefcase"></i><h3>প্লেসমেন্ট</h3><p>ক্যারিয়ারের সুযোগ</p></a>
+            <a href="teachers.html" class="quick-link-card"><i class="fas fa-chalkboard-user"></i><h3>শিক্ষকমণ্ডলী</h3><p>আমাদের শিক্ষকবৃন্দ</p></a>
+            <a href="gallery.html" class="quick-link-card"><i class="fas fa-images"></i><h3>গ্যালারি</h3><p>ক্যাম্পাসের ছবি</p></a>
+            <a href="alumni.html" class="quick-link-card"><i class="fas fa-users"></i><h3>প্রাক্তন শিক্ষার্থী</h3><p>সাফল্যের গল্প</p></a>
+            <a href="faq.html" class="quick-link-card"><i class="fas fa-question-circle"></i><h3>FAQ</h3><p>জিজ্ঞাসিত প্রশ্ন</p></a>
+            <a href="contact.html" class="quick-link-card"><i class="fas fa-envelope"></i><h3>যোগাযোগ</h3><p>আমাদের সাথে যোগাযোগ করুন</p></a>
         </div>
     </div>
 </section>
@@ -1437,16 +1191,13 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">গ্যালারি</h2>
         <p class="section-subtitle" data-aos="fade-up">আমাদের ক্যাম্পাসের কিছু মুহূর্ত</p>
-        
         <div class="gallery-preview" data-aos="fade-up">
-            <div class="gallery-item" style="background-image: url('');"><div class="gallery-overlay"><h3>ক্যাম্পাস ভিউ</h3><p>আমাদের সুন্দর ক্যাম্পাস</p></div></div>
-            <div class="gallery-item" style="background-image: url('');"><div class="gallery-overlay"><h3>কম্পিউটার ল্যাব</h3><p>আধুনিক প্রযুক্তি ল্যাব</p></div></div>
-            <div class="gallery-item" style="background-image: url('');"><div class="gallery-overlay"><h3>বার্ষিক ক্রীড়া প্রতিযোগিতা</h3><p>২০২৪ সালের ক্রীড়া অনুষ্ঠান</p></div></div>
-            <div class="gallery-item" style="background-image: url('');"><div class="gallery-overlay"><h3>ওরিয়েন্টেশন প্রোগ্রাম</h3><p>নতুন শিক্ষার্থীদের স্বাগতম</p></div></div>
+            <div class="gallery-item" style="background-image: url('https://i.postimg.cc/Z5T3rskK/unnamed-(10).jpg');"><div class="gallery-overlay"><h3>ক্যাম্পাস ভিউ</h3><p>আমাদের সুন্দর ক্যাম্পাস</p></div></div>
+            <div class="gallery-item" style="background-image: url('https://i.postimg.cc/FH9cjCtF/unnamed-(11).jpg');"><div class="gallery-overlay"><h3>কম্পিউটার ল্যাব</h3><p>আধুনিক প্রযুক্তি ল্যাব</p></div></div>
+            <div class="gallery-item" style="background-image: url('https://i.postimg.cc/qvkn8Df7/unnamed-(8).jpg');"><div class="gallery-overlay"><h3>বার্ষিক ক্রীড়া প্রতিযোগিতা</h3><p>২০২৪ সালের ক্রীড়া অনুষ্ঠান</p></div></div>
+            <div class="gallery-item" style="background-image: url('https://i.postimg.cc/Jz1JbYwm/unnamed-(9).jpg');"><div class="gallery-overlay"><h3>ওরিয়েন্টেশন প্রোগ্রাম</h3><p>নতুন শিক্ষার্থীদের স্বাগতম</p></div></div>
         </div>
-        <div class="text-center" style="text-align:center; margin-top:30px">
-            <a href="gallery.html" class="btn btn-primary">সম্পূর্ণ গ্যালারি দেখুন →</a>
-        </div>
+        <div class="text-center" style="text-align:center; margin-top:30px"><a href="gallery.html" class="btn btn-primary">সম্পূর্ণ গ্যালারি দেখুন →</a></div>
     </div>
 </section>
 
@@ -1455,36 +1206,15 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="faq_title">জিজ্ঞাসিত প্রশ্ন</h2>
         <p class="section-subtitle" data-aos="fade-up" data-lang-key="faq_subtitle">আপনার জিজ্ঞাসার উত্তর</p>
-        
         <div class="faq-grid">
-            <div class="faq-item" data-aos="fade-right">
-                <div class="faq-question"><span>কিভাবে অ্যাডমিশন নিতে হয়?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>অনলাইনে আবেদন ফর্ম পূরণ করে অথবা সরাসরি কলেজের অ্যাডমিশন অফিসে যোগাযোগ করে অ্যাডমিশন নিতে পারেন। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div>
-            </div>
-            <div class="faq-item" data-aos="fade-left">
-                <div class="faq-question"><span>স্কলারশিপের সুযোগ আছে কি?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>হ্যাঁ, মেধাভিত্তিক ও অর্থনৈতিক ভিত্তিতে স্কলারশিপ প্রদান করা হয়। বিস্তারিত জানতে অ্যাডমিশন অফিসে যোগাযোগ করুন।</p></div>
-            </div>
-            <div class="faq-item" data-aos="fade-right">
-                <div class="faq-question"><span>হোস্টেল সুবিধা আছে কি?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>বর্তমানে হোস্টেল সুবিধা নেই। তবে আগামী শিক্ষাবর্ষে হোস্টেল চালু করার পরিকল্পনা রয়েছে।</p></div>
-            </div>
-            <div class="faq-item" data-aos="fade-left">
-                <div class="faq-question"><span>প্লেসমেন্টের হার কেমন?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>আমাদের শিক্ষার্থীদের প্লেসমেন্ট হার প্রায় ৮৫%। শীর্ষস্থানীয় কোম্পানিতে আমাদের শিক্ষার্থীরা কাজ করছে।</p></div>
-            </div>
-            <div class="faq-item" data-aos="fade-right">
-                <div class="faq-question"><span>ভর্তির জন্য কি কি ডকুমেন্ট লাগে?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>SSC ও HSC সার্টিফিকেট, জাতীয় পরিচয়পত্র, ৪ কপি পাসপোর্ট সাইজ ছবি, চরিত্র সনদ প্রভৃতি। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div>
-            </div>
-            <div class="faq-item" data-aos="fade-left">
-                <div class="faq-question"><span>কোর্সের ফি কত?</span><i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>বিভাগ অনুযায়ী ফি ভিন্ন। বিস্তারিত ফি স্ট্রাকচারের জন্য অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div>
-            </div>
+            <div class="faq-item"><div class="faq-question"><span>কিভাবে অ্যাডমিশন নিতে হয়?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>অনলাইনে আবেদন ফর্ম পূরণ করে অথবা সরাসরি কলেজের অ্যাডমিশন অফিসে যোগাযোগ করে অ্যাডমিশন নিতে পারেন। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>স্কলারশিপের সুযোগ আছে কি?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>হ্যাঁ, মেধাভিত্তিক ও অর্থনৈতিক ভিত্তিতে স্কলারশিপ প্রদান করা হয়। বিস্তারিত জানতে অ্যাডমিশন অফিসে যোগাযোগ করুন।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>হোস্টেল সুবিধা আছে কি?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>বর্তমানে হোস্টেল সুবিধা নেই। তবে আগামী শিক্ষাবর্ষে হোস্টেল চালু করার পরিকল্পনা রয়েছে।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>প্লেসমেন্টের হার কেমন?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>আমাদের শিক্ষার্থীদের প্লেসমেন্ট হার প্রায় ৮৫%। শীর্ষস্থানীয় কোম্পানিতে আমাদের শিক্ষার্থীরা কাজ করছে।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>ভর্তির জন্য কি কি ডকুমেন্ট লাগে?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>SSC ও HSC সার্টিফিকেট, জাতীয় পরিচয়পত্র, ৪ কপি পাসপোর্ট সাইজ ছবি, চরিত্র সনদ প্রভৃতি। বিস্তারিত জানতে অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>কোর্সের ফি কত?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>বিভাগ অনুযায়ী ফি ভিন্ন। বিস্তারিত ফি স্ট্রাকচারের জন্য অ্যাডমিশন পৃষ্ঠা দেখুন।</p></div></div>
         </div>
-        <div class="text-center" style="text-align:center; margin-top:30px">
-            <a href="faq.html" class="btn btn-primary" data-lang-key="btn_all_faq">সকল প্রশ্ন দেখুন →</a>
-        </div>
+        <div class="text-center" style="text-align:center; margin-top:30px"><a href="faq.html" class="btn btn-primary" data-lang-key="btn_all_faq">সকল প্রশ্ন দেখুন →</a></div>
     </div>
 </section>
 
@@ -1493,7 +1223,6 @@
     <div class="container">
         <h2 data-aos="fade-up" data-lang-key="newsletter_title">নিউজলেটার সাবস্ক্রাইব করুন</h2>
         <p data-aos="fade-up" data-lang-key="newsletter_subtitle">সকল আপডেট প্রথমে পেতে সাবস্ক্রাইব করুন</p>
-        
         <form class="newsletter-form" data-aos="fade-up" action="https://formspree.io/f/xbdzebwr" method="POST" id="newsletterForm">
             <input type="email" name="email" placeholder="আপনার ইমেইল ঠিকানা" required data-lang-key="newsletter_placeholder">
             <input type="hidden" name="_subject" value="নতুন নিউজলেটার সাবস্ক্রাইবার - TBMI">
@@ -1502,7 +1231,6 @@
             <input type="hidden" name="_message" value="একজন নতুন ব্যবহারকারী আপনার নিউজলেটারে সাবস্ক্রাইব করেছেন।">
             <button type="submit" class="btn btn-secondary" data-lang-key="btn_subscribe"><i class="fas fa-paper-plane"></i> সাবস্ক্রাইব</button>
         </form>
-        
         <div id="subscribeMessage" style="display: none; margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;"></div>
     </div>
 </section>
@@ -1511,62 +1239,17 @@
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>TBMI</h3>
-                <p data-lang-key="footer_about">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
-                <p>প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h3 data-lang-key="footer_quicklinks">দ্রুত লিংক</h3>
-                <ul>
-                    <li><a href="index.html">হোম</a></li>
-                    <li><a href="admission.html">অ্যাডমিশন</a></li>
-                    <li><a href="academic.html">একাডেমিক</a></li>
-                    <li><a href="placement.html">প্লেসমেন্ট</a></li>
-                    <li><a href="gallery.html">গ্যালারি</a></li>
-                    <li><a href="notice-board.html">নোটিশ বোর্ড</a></li>
-                    <li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li>
-                    <li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">যোগাযোগ</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3 data-lang-key="footer_contact">যোগাযোগ</h3>
-                <ul>
-                    <li><i class="fas fa-phone"></i> +8801309132253</li>
-                    <li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li>
-                    <li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li>
-                    <li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li>
-                    <li><i class="fab fa-whatsapp"></i> +8801309132253</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3 data-lang-key="footer_support">শিক্ষা সহায়তা</h3>
-                <ul>
-                    <li><a href="privacy-policy.html">প্রাইভেসি পলিসি</a></li>
-                    <li><a href="terms.html">টার্মস অ্যান্ড কন্ডিশন</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li>
-                </ul>
-            </div>
+            <div class="footer-col"><h3>TBMI</h3><p data-lang-key="footer_about">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p><p>প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+            <div class="footer-col"><h3 data-lang-key="footer_quicklinks">দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li><li><a href="placement.html">প্লেসমেন্ট</a></li><li><a href="gallery.html">গ্যালারি</a></li><li><a href="notice-board.html">নোটিশ বোর্ড</a></li><li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li><li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">যোগাযোগ</a></li></ul></div>
+            <div class="footer-col"><h3 data-lang-key="footer_contact">যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li><li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li><li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li><li><i class="fab fa-whatsapp"></i> +8801309132253</li></ul></div>
+            <div class="footer-col"><h3 data-lang-key="footer_support">শিক্ষা সহায়তা</h3><ul><li><a href="privacy-policy.html">প্রাইভেসি পলিসি</a></li><li><a href="terms.html">টার্মস অ্যান্ড কন্ডিশন</a></li><li><a href="faq.html">FAQ</a></li><li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li></ul></div>
         </div>
-        <div class="copyright">
-            <p data-lang-key="footer_copyright">&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।</p>
-        </div>
+        <div class="copyright"><p data-lang-key="footer_copyright">&copy; 2025 টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।</p></div>
     </div>
 </footer>
 
-<!-- Back to Top -->
 <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-<!-- Chat Widget -->
 <div class="chat-widget">
     <div class="chat-toggle" id="chatToggle"><i class="fas fa-comment-dots"></i></div>
     <div class="chat-box" id="chatBox">
@@ -1581,13 +1264,11 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Typed Text Effect
     const textsBn = ["প্রযুক্তি শিক্ষার সেরা ঠিকানা", "আপনার ক্যারিয়ার শুরু হোক আমাদের সাথে"];
     const textsEn = ["Best Place for Technical Education", "Start Your Career With Us"];
     let currentTexts = textsBn;
@@ -1617,66 +1298,21 @@
     }
     typeEffect();
     
-    // Language Translations
     const translations = {
-        nav_home: { bn: "হোম", en: "Home" },
-        nav_admission: { bn: "অ্যাডমিশন", en: "Admission" },
-        nav_academic: { bn: "একাডেমিক", en: "Academic" },
-        nav_placement: { bn: "প্লেসমেন্ট", en: "Placement" },
-        nav_gallery: { bn: "গ্যালারি", en: "Gallery" },
-        nav_notice: { bn: "নোটিশ বোর্ড", en: "Notice Board" },
-        nav_teachers: { bn: "শিক্ষকমণ্ডলী", en: "Teachers" },
-        nav_alumni: { bn: "প্রাক্তন শিক্ষার্থী", en: "Alumni" },
-        nav_faq: { bn: "FAQ", en: "FAQ" },
-        nav_contact: { bn: "যোগাযোগ", en: "Contact" },
+        nav_home: { bn: "হোম", en: "Home" }, nav_admission: { bn: "অ্যাডমিশন", en: "Admission" }, nav_academic: { bn: "একাডেমিক", en: "Academic" }, nav_placement: { bn: "প্লেসমেন্ট", en: "Placement" }, nav_gallery: { bn: "গ্যালারি", en: "Gallery" }, nav_notice: { bn: "নোটিশ বোর্ড", en: "Notice Board" }, nav_teachers: { bn: "শিক্ষকমণ্ডলী", en: "Teachers" }, nav_alumni: { bn: "প্রাক্তন শিক্ষার্থী", en: "Alumni" }, nav_faq: { bn: "FAQ", en: "FAQ" }, nav_contact: { bn: "যোগাযোগ", en: "Contact" },
         hero_title: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
-        btn_admission: { bn: "অনলাইন অ্যাডমিশন", en: "Online Admission" },
-        btn_tour: { bn: "ভার্চুয়াল ট্যুর", en: "Virtual Tour" },
-        btn_brochure: { bn: "ব্রোশার ডাউনলোড", en: "Download Brochure" },
-        counter_students: { bn: "শিক্ষার্থী", en: "Students" },
-        counter_teachers: { bn: "শিক্ষক", en: "Teachers" },
-        counter_departments: { bn: "বিভাগ", en: "Departments" },
-        counter_placement: { bn: "প্লেসমেন্ট রেট", en: "Placement Rate" },
-        notice_title: { bn: "নোটিশ বোর্ড", en: "Notice Board" },
-        notice_subtitle: { bn: "সর্বশেষ বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তথ্য", en: "Latest Notices & Important Information" },
-        tab_notice: { bn: "নোটিশ", en: "Notices" },
-        tab_event: { bn: "ইভেন্ট", en: "Events" },
-        tab_exam: { bn: "পরীক্ষা", en: "Exams" },
-        features_title: { bn: "আমাদের বৈশিষ্ট্য", en: "Our Features" },
-        features_subtitle: { bn: "কেন বেছে নেবেন টিবিএমআই", en: "Why Choose TBMI" },
-        feature_lab: { bn: "আধুনিক কম্পিউটার ল্যাব", en: "Modern Computer Lab" },
-        feature_wifi: { bn: "ওয়াইফাই সুবিধা", en: "WiFi Facility" },
-        feature_teachers: { bn: "দক্ষ শিক্ষকমণ্ডলী", en: "Expert Faculty" },
-        feature_career: { bn: "ক্যারিয়ার কাউন্সেলিং", en: "Career Counseling" },
-        courses_title: { bn: "আমাদের কোর্সসমূহ", en: "Our Courses" },
-        courses_subtitle: { bn: "আপনার ক্যারিয়ার গড়তে চয়েস করুন পছন্দের বিভাগ", en: "Choose Your Preferred Department" },
-        course_ct: { bn: "কম্পিউটার টেকনোলজি", en: "Computer Technology" },
-        course_dtb: { bn: "ডিজিটাল টেকনোলজি ইন বিজনেস", en: "Digital Technology in Business" },
-        course_hrd: { bn: "হিউম্যান রিসোর্স ডেভেলপমেন্ট", en: "Human Resource Development" },
-        btn_details: { bn: "বিস্তারিত", en: "Details" },
-        teachers_title: { bn: "শিক্ষকমণ্ডলী", en: "Our Teachers" },
-        teachers_subtitle: { bn: "আমাদের অভিজ্ঞ শিক্ষকবৃন্দ", en: "Our Experienced Faculty" },
-        btn_all_teachers: { bn: "সকল শিক্ষক দেখুন", en: "View All Teachers" },
-        testimonials_title: { bn: "সাফল্যের গল্প", en: "Success Stories" },
-        testimonials_subtitle: { bn: "আমাদের প্রাক্তন শিক্ষার্থীদের সাফল্য", en: "Our Alumni Success Stories" },
-        btn_more_stories: { bn: "আরও সাফল্যের গল্প", en: "More Success Stories" },
-        quicklinks_title: { bn: "গুরুত্বপূর্ণ লিংক", en: "Important Links" },
-        quicklinks_subtitle: { bn: "প্রয়োজনীয় তথ্য দ্রুত পেতে নিচের লিংকে ক্লিক করুন", en: "Click the links below for quick access" },
-        faq_title: { bn: "জিজ্ঞাসিত প্রশ্ন", en: "Frequently Asked Questions" },
-        faq_subtitle: { bn: "আপনার জিজ্ঞাসার উত্তর", en: "Answers to Your Questions" },
-        btn_all_faq: { bn: "সকল প্রশ্ন দেখুন", en: "View All FAQs" },
-        newsletter_title: { bn: "নিউজলেটার সাবস্ক্রাইব করুন", en: "Subscribe to Newsletter" },
-        newsletter_subtitle: { bn: "সকল আপডেট প্রথমে পেতে সাবস্ক্রাইব করুন", en: "Subscribe to get all updates first" },
-        newsletter_placeholder: { bn: "আপনার ইমেইল ঠিকানা", en: "Your email address" },
-        btn_subscribe: { bn: "সাবস্ক্রাইব", en: "Subscribe" },
-        footer_about: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
-        footer_quicklinks: { bn: "দ্রুত লিংক", en: "Quick Links" },
-        footer_contact: { bn: "যোগাযোগ", en: "Contact" },
-        footer_support: { bn: "শিক্ষা সহায়তা", en: "Education Support" },
-        footer_copyright: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।", en: "Technical & Business Management Institute. All rights reserved." },
-        chat_title: { bn: "সহায়তা কেন্দ্র", en: "Help Center" },
-        chat_welcome: { bn: "👋 হ্যালো! আপনার প্রশ্ন লিখুন, আমরা সাহায্য করতে প্রস্তুত।", en: "👋 Hello! Write your question, we are ready to help." },
-        chat_placeholder: { bn: "আপনার বার্তা লিখুন...", en: "Write your message..." }
+        btn_admission: { bn: "অনলাইন অ্যাডমিশন", en: "Online Admission" }, btn_tour: { bn: "ভার্চুয়াল ট্যুর", en: "Virtual Tour" }, btn_brochure: { bn: "ব্রোশার ডাউনলোড", en: "Download Brochure" },
+        counter_students: { bn: "শিক্ষার্থী", en: "Students" }, counter_teachers: { bn: "শিক্ষক", en: "Teachers" }, counter_departments: { bn: "বিভাগ", en: "Departments" }, counter_placement: { bn: "প্লেসমেন্ট রেট", en: "Placement Rate" },
+        notice_title: { bn: "নোটিশ বোর্ড", en: "Notice Board" }, notice_subtitle: { bn: "সর্বশেষ বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তথ্য", en: "Latest Notices & Important Information" }, tab_notice: { bn: "নোটিশ", en: "Notices" }, tab_event: { bn: "ইভেন্ট", en: "Events" }, tab_exam: { bn: "পরীক্ষা", en: "Exams" },
+        features_title: { bn: "আমাদের বৈশিষ্ট্য", en: "Our Features" }, features_subtitle: { bn: "কেন বেছে নেবেন টিবিএমআই", en: "Why Choose TBMI" }, feature_lab: { bn: "আধুনিক কম্পিউটার ল্যাব", en: "Modern Computer Lab" }, feature_wifi: { bn: "ওয়াইফাই সুবিধা", en: "WiFi Facility" }, feature_teachers: { bn: "দক্ষ শিক্ষকমণ্ডলী", en: "Expert Faculty" }, feature_career: { bn: "ক্যারিয়ার কাউন্সেলিং", en: "Career Counseling" },
+        courses_title: { bn: "আমাদের কোর্সসমূহ", en: "Our Courses" }, courses_subtitle: { bn: "আপনার ক্যারিয়ার গড়তে চয়েস করুন পছন্দের বিভাগ", en: "Choose Your Preferred Department" }, course_ct: { bn: "কম্পিউটার টেকনোলজি", en: "Computer Technology" }, course_dtb: { bn: "ডিজিটাল টেকনোলজি ইন বিজনেস", en: "Digital Technology in Business" }, course_hrd: { bn: "হিউম্যান রিসোর্স ডেভেলপমেন্ট", en: "Human Resource Development" }, btn_details: { bn: "বিস্তারিত", en: "Details" },
+        teachers_title: { bn: "শিক্ষকমণ্ডলী", en: "Our Teachers" }, teachers_subtitle: { bn: "আমাদের অভিজ্ঞ শিক্ষকবৃন্দ", en: "Our Experienced Faculty" }, btn_all_teachers: { bn: "সকল শিক্ষক দেখুন", en: "View All Teachers" },
+        testimonials_title: { bn: "সাফল্যের গল্প", en: "Success Stories" }, testimonials_subtitle: { bn: "আমাদের প্রাক্তন শিক্ষার্থীদের সাফল্য", en: "Our Alumni Success Stories" }, btn_more_stories: { bn: "আরও সাফল্যের গল্প", en: "More Success Stories" },
+        quicklinks_title: { bn: "গুরুত্বপূর্ণ লিংক", en: "Important Links" }, quicklinks_subtitle: { bn: "প্রয়োজনীয় তথ্য দ্রুত পেতে নিচের লিংকে ক্লিক করুন", en: "Click the links below for quick access" },
+        faq_title: { bn: "জিজ্ঞাসিত প্রশ্ন", en: "Frequently Asked Questions" }, faq_subtitle: { bn: "আপনার জিজ্ঞাসার উত্তর", en: "Answers to Your Questions" }, btn_all_faq: { bn: "সকল প্রশ্ন দেখুন", en: "View All FAQs" },
+        newsletter_title: { bn: "নিউজলেটার সাবস্ক্রাইব করুন", en: "Subscribe to Newsletter" }, newsletter_subtitle: { bn: "সকল আপডেট প্রথমে পেতে সাবস্ক্রাইব করুন", en: "Subscribe to get all updates first" }, newsletter_placeholder: { bn: "আপনার ইমেইল ঠিকানা", en: "Your email address" }, btn_subscribe: { bn: "সাবস্ক্রাইব", en: "Subscribe" },
+        footer_about: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" }, footer_quicklinks: { bn: "দ্রুত লিংক", en: "Quick Links" }, footer_contact: { bn: "যোগাযোগ", en: "Contact" }, footer_support: { bn: "শিক্ষা সহায়তা", en: "Education Support" }, footer_copyright: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।", en: "Technical & Business Management Institute. All rights reserved." },
+        chat_title: { bn: "সহায়তা কেন্দ্র", en: "Help Center" }, chat_welcome: { bn: "👋 হ্যালো! আপনার প্রশ্ন লিখুন, আমরা সাহায্য করতে প্রস্তুত।", en: "👋 Hello! Write your question, we are ready to help." }, chat_placeholder: { bn: "আপনার বার্তা লিখুন...", en: "Write your message..." }
     };
     
     let currentLang = localStorage.getItem('tbmi_lang') || 'bn';
@@ -1700,70 +1336,38 @@
         index = 0; charIndex = 0; currentText = ""; isDeleting = false;
         typeEffect();
     }
+    langToggle.addEventListener('click', () => changeLanguage(currentLang === 'bn' ? 'en' : 'bn'));
     
-    langToggle.addEventListener('click', () => {
-        changeLanguage(currentLang === 'bn' ? 'en' : 'bn');
-    });
-    
-    // Counter Animation
+    // Counter
     const counters = document.querySelectorAll('.counter-num');
     let counted = false;
-    function startCounters() {
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            let count = 0;
-            const updateCounter = () => {
-                const increment = target / 50;
-                if (count < target) {
-                    count += increment;
-                    counter.innerText = Math.ceil(count);
-                    setTimeout(updateCounter, 30);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCounter();
-        });
-    }
-    const counterSection = document.querySelector('.counter-section');
-    window.addEventListener('scroll', () => {
-        if (counterSection && !counted && counterSection.getBoundingClientRect().top < window.innerHeight - 100) {
-            counted = true;
-            startCounters();
-        }
-    });
+    function startCounters() { counters.forEach(counter => { let target = parseInt(counter.dataset.target), count = 0; const update = () => { let inc = target/50; if(count < target){ count += inc; counter.innerText = Math.ceil(count); setTimeout(update,30); } else counter.innerText = target; }; update(); }); }
+    window.addEventListener('scroll', () => { const cs = document.querySelector('.counter-section'); if(cs && !counted && cs.getBoundingClientRect().top < window.innerHeight-100){ counted = true; startCounters(); } });
     
-    // Header Scroll Effect
+    // Header scroll
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 100);
-    });
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 100));
     
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    // Mobile menu
+    document.getElementById('menuToggle').addEventListener('click', () => document.querySelector('.nav-links').classList.toggle('active'));
     
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
+    // Dark mode
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        const icon = darkModeToggle.querySelector('i');
+        const icon = document.querySelector('#darkModeToggle i');
         icon.classList.toggle('fa-moon');
         icon.classList.toggle('fa-sun');
     });
     
-    // Back to Top
+    // Back to top
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => backToTop.classList.toggle('active', window.scrollY > 300));
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     
-    // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
-    });
+    // FAQ
+    document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('active')));
     
-    // Notice Tabs
+    // Notice tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1774,58 +1378,40 @@
     });
     
     // Swipers
-    new Swiper('.teachers-slider', { slidesPerView: 1, spaceBetween: 30, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } } });
-    new Swiper('.testimonials-slider', { slidesPerView: 1, spaceBetween: 30, pagination: { el: '.swiper-pagination', clickable: true }, autoplay: { delay: 5000 } });
-    new Swiper('.partners-slider', { slidesPerView: 2, spaceBetween: 30, autoplay: { delay: 2000 }, breakpoints: { 768: { slidesPerView: 3 }, 992: { slidesPerView: 5 } } });
+    new Swiper('.teachers-slider', { slidesPerView:1, spaceBetween:30, pagination:{ el:'.swiper-pagination', clickable:true }, breakpoints:{ 768:{ slidesPerView:2 }, 992:{ slidesPerView:3 } } });
+    new Swiper('.testimonials-slider', { slidesPerView:1, spaceBetween:30, pagination:{ el:'.swiper-pagination', clickable:true }, autoplay:{ delay:5000 } });
+    new Swiper('.partners-slider', { slidesPerView:2, spaceBetween:30, autoplay:{ delay:2000 }, breakpoints:{ 768:{ slidesPerView:3 }, 992:{ slidesPerView:5 } } });
     
-    // Chat Widget
-    const chatToggle = document.getElementById('chatToggle');
-    const chatBox = document.getElementById('chatBox');
-    const closeChat = document.getElementById('closeChat');
-    const chatForm = document.getElementById('chatForm');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
+    // Chat
+    const chatToggle = document.getElementById('chatToggle'), chatBox = document.getElementById('chatBox'), closeChat = document.getElementById('closeChat'), chatForm = document.getElementById('chatForm'), chatInput = document.getElementById('chatInput'), chatMessages = document.getElementById('chatMessages');
     chatToggle.addEventListener('click', () => chatBox.classList.toggle('active'));
-    if (closeChat) closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
-    if (chatForm) {
+    if(closeChat) closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
+    if(chatForm){
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const message = chatInput.value.trim();
-            if (!message) return;
-            const userMsgDiv = document.createElement('div');
-            userMsgDiv.className = 'message user';
-            userMsgDiv.innerHTML = message;
-            chatMessages.appendChild(userMsgDiv);
-            chatInput.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'message bot typing';
-            typingDiv.innerHTML = '<i class="fas fa-ellipsis-h"></i> টাইপ করছি...';
-            chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            if(!message) return;
+            const userMsgDiv = document.createElement('div'); userMsgDiv.className = 'message user'; userMsgDiv.innerHTML = message; chatMessages.appendChild(userMsgDiv);
+            chatInput.value = ''; chatMessages.scrollTop = chatMessages.scrollHeight;
+            const typingDiv = document.createElement('div'); typingDiv.className = 'message bot typing'; typingDiv.innerHTML = '<i class="fas fa-ellipsis-h"></i> টাইপ করছি...'; chatMessages.appendChild(typingDiv); chatMessages.scrollTop = chatMessages.scrollHeight;
             try {
                 const formData = new FormData(chatForm);
-                const response = await fetch(chatForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                const response = await fetch(chatForm.action, { method:'POST', body:formData, headers:{ 'Accept':'application/json' } });
                 typingDiv.remove();
-                const replyDiv = document.createElement('div');
-                replyDiv.className = 'message bot';
+                const replyDiv = document.createElement('div'); replyDiv.className = 'message bot';
                 replyDiv.innerHTML = response.ok ? '✅ আপনার বার্তাটি পেয়েছি। শীঘ্রই আমাদের প্রতিনিধি আপনার সাথে যোগাযোগ করবেন। ধন্যবাদ!' : '❌ বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
                 chatMessages.appendChild(replyDiv);
-            } catch (error) {
+            } catch(error) {
                 typingDiv.remove();
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'message bot error';
-                errorDiv.innerHTML = '❌ বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
-                chatMessages.appendChild(errorDiv);
+                const errorDiv = document.createElement('div'); errorDiv.className = 'message bot error'; errorDiv.innerHTML = '❌ বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।'; chatMessages.appendChild(errorDiv);
             }
             chatMessages.scrollTop = chatMessages.scrollHeight;
         });
     }
     
-    // Newsletter Form
-    const newsletterForm = document.getElementById('newsletterForm');
-    const subscribeMessage = document.getElementById('subscribeMessage');
-    if (newsletterForm) {
+    // Newsletter
+    const newsletterForm = document.getElementById('newsletterForm'), subscribeMessage = document.getElementById('subscribeMessage');
+    if(newsletterForm){
         newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[name="email"]').value;
@@ -1835,17 +1421,15 @@
             submitBtn.disabled = true;
             try {
                 const formData = new FormData(newsletterForm);
-                const response = await fetch(newsletterForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-                if (response.ok) {
-                    subscribeMessage.style.display = 'block';
-                    subscribeMessage.className = 'success-message';
+                const response = await fetch(newsletterForm.action, { method:'POST', body:formData, headers:{ 'Accept':'application/json' } });
+                if(response.ok){
+                    subscribeMessage.style.display = 'block'; subscribeMessage.className = 'success-message';
                     subscribeMessage.innerHTML = `<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার ইমেইল (${email}) সফলভাবে সাবস্ক্রাইব হয়েছে。<br><small>শীঘ্রই আপনি আমাদের আপডেট পাবেন।</small>`;
                     newsletterForm.querySelector('input[name="email"]').value = '';
                     setTimeout(() => subscribeMessage.style.display = 'none', 5000);
                 } else throw new Error();
-            } catch (error) {
-                subscribeMessage.style.display = 'block';
-                subscribeMessage.className = 'error-message';
+            } catch(error){
+                subscribeMessage.style.display = 'block'; subscribeMessage.className = 'error-message';
                 subscribeMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> দুঃখিত! সাবস্ক্রিপশন প্রক্রিয়ায় সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
                 setTimeout(() => subscribeMessage.style.display = 'none', 5000);
             } finally {
@@ -1854,29 +1438,22 @@
             }
         });
     }
-    if (window.location.search.includes('subscribe=success') && subscribeMessage) {
-        subscribeMessage.style.display = 'block';
-        subscribeMessage.className = 'success-message';
+    if(window.location.search.includes('subscribe=success') && subscribeMessage){
+        subscribeMessage.style.display = 'block'; subscribeMessage.className = 'success-message';
         subscribeMessage.innerHTML = '<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার সাবস্ক্রিপশন সফলভাবে সম্পন্ন হয়েছে।';
         setTimeout(() => subscribeMessage.style.display = 'none', 5000);
-        const url = new URL(window.location.href);
-        url.searchParams.delete('subscribe');
-        window.history.replaceState({}, document.title, url.pathname);
+        const url = new URL(window.location.href); url.searchParams.delete('subscribe'); window.history.replaceState({}, document.title, url.pathname);
     }
     
-    // Smooth Scroll
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-                navLinks.classList.remove('active');
-            }
+            if(target){ target.scrollIntoView({ behavior:'smooth' }); document.querySelector('.nav-links').classList.remove('active'); }
         });
     });
     
-    // Apply saved language on load
     changeLanguage(currentLang);
 </script>
 </body>
