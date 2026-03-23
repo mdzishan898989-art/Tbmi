@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>প্লেসমেন্ট - TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
-    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান">
-    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, কম্পিউটার টেকনোলজি, HRD, পঞ্চগড়, প্লেসমেন্ট">
+    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্লেসমেন্ট সেল, ক্যারিয়ার গঠনে সহায়তা">
+    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, প্লেসমেন্ট, ক্যারিয়ার, চাকরি">
     <meta name="author" content="TBMI">
     
     <!-- Font Awesome -->
@@ -56,7 +56,6 @@
             color: var(--dark);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -77,7 +76,6 @@
             padding: 0 20px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -116,7 +114,6 @@
             color: var(--white);
         }
 
-        /* Section Styles */
         .section {
             padding: 80px 0;
         }
@@ -209,6 +206,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
@@ -241,7 +239,6 @@
             font-size: 1.5rem;
         }
 
-        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -351,6 +348,8 @@
             justify-content: center;
             color: var(--white);
             font-size: 3rem;
+            background-size: cover;
+            background-position: center;
         }
         .alumni-content {
             padding: 20px;
@@ -415,7 +414,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
                 position: fixed;
@@ -441,16 +439,14 @@
                 box-shadow: none;
                 padding-left: 20px;
             }
-            .section-title {
-                font-size: 2rem;
-            }
         }
 
         @media (max-width: 768px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .company-grid, .alumni-grid {
+            .company-grid,
+            .alumni-grid {
                 grid-template-columns: 1fr;
             }
             .logo-text h1 {
