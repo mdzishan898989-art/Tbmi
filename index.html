@@ -16,8 +16,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Swiper Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
     
     <style>
+        /* আপনার বিদ্যমান CSS কোড সম্পূর্ণ অপরিবর্তিত থাকবে */
         * {
             margin: 0;
             padding: 0;
@@ -1006,6 +1010,8 @@
                 <li><a href="alumni.html" data-lang-key="nav_alumni">প্রাক্তন শিক্ষার্থী</a></li>
                 <li><a href="faq.html" data-lang-key="nav_faq">FAQ</a></li>
                 <li><a href="contact.html" data-lang-key="nav_contact">যোগাযোগ</a></li>
+                <!-- অ্যাডমিন প্যানেল লিংক যোগ করা হয়েছে -->
+                <li><a href="admin-cms.html" data-lang-key="nav_admin"><i class="fas fa-user-shield"></i> অ্যাডমিন</a></li>
             </ul>
             <div class="nav-icons">
                 <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
@@ -1055,25 +1061,15 @@
             <button class="tab-btn" data-tab="exam" data-lang-key="tab_exam">পরীক্ষা</button>
         </div>
         <div class="tab-content active" id="notice-tab">
-            <div class="notice-list">
-                <div class="notice-item"><div class="notice-info"><h4>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন বিজ্ঞপ্তি প্রকাশ</h4><p class="notice-date">তারিখ: ১৫ মার্চ, ২০২৫</p></div><span class="notice-category">অ্যাডমিশন</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h4><p class="notice-date">তারিখ: ১০ মার্চ, ২০২৫</p></div><span class="notice-category">পরীক্ষা</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>মেধাবৃত্তির আবেদন শুরু</h4><p class="notice-date">তারিখ: ৫ মার্চ, ২০২৫</p></div><span class="notice-category">স্কলারশিপ</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>নতুন সেমিস্টারের ক্লাস শুরু</h4><p class="notice-date">তারিখ: ১ এপ্রিল, ২০২৫</p></div><span class="notice-category">একাডেমিক</span></div>
+            <div class="notice-list" id="homepageNoticeList">
+                <!-- নোটিশ JavaScript দিয়ে Firebase থেকে লোড হবে -->
             </div>
         </div>
         <div class="tab-content" id="event-tab">
-            <div class="notice-list">
-                <div class="notice-item"><div class="notice-info"><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h4><p class="notice-date">তারিখ: ২০ এপ্রিল, ২০২৫</p></div><span class="notice-category">ক্রীড়া</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>ক্যারিয়ার ফেয়ার ২০২৫</h4><p class="notice-date">তারিখ: ৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">প্লেসমেন্ট</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>বিজ্ঞান মেলা ও প্রদর্শনী</h4><p class="notice-date">তারিখ: ২৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">ইভেন্ট</span></div>
-            </div>
+            <div class="notice-list" id="homepageEventList"></div>
         </div>
         <div class="tab-content" id="exam-tab">
-            <div class="notice-list">
-                <div class="notice-item"><div class="notice-info"><h4>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h4><p class="notice-date">তারিখ: ১-১৫ এপ্রিল, ২০২৫</p></div><span class="notice-category">রুটিন</span></div>
-                <div class="notice-item"><div class="notice-info"><h4>মধ্যকালীন পরীক্ষার ফলাফল প্রকাশ</h4><p class="notice-date">তারিখ: ২০ মার্চ, ২০২৫</p></div><span class="notice-category">রেজাল্ট</span></div>
-            </div>
+            <div class="notice-list" id="homepageExamList"></div>
         </div>
     </div>
 </section>
@@ -1182,6 +1178,8 @@
             <a href="alumni.html" class="quick-link-card"><i class="fas fa-users"></i><h3>প্রাক্তন শিক্ষার্থী</h3><p>সাফল্যের গল্প</p></a>
             <a href="faq.html" class="quick-link-card"><i class="fas fa-question-circle"></i><h3>FAQ</h3><p>জিজ্ঞাসিত প্রশ্ন</p></a>
             <a href="contact.html" class="quick-link-card"><i class="fas fa-envelope"></i><h3>যোগাযোগ</h3><p>আমাদের সাথে যোগাযোগ করুন</p></a>
+            <!-- অ্যাডমিন প্যানেল লিংক যোগ করা হয়েছে -->
+            <a href="admin-cms.html" class="quick-link-card"><i class="fas fa-user-shield"></i><h3>অ্যাডমিন প্যানেল</h3><p>ওয়েবসাইট পরিচালনা করুন</p></a>
         </div>
     </div>
 </section>
@@ -1240,7 +1238,7 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col"><h3>TBMI</h3><p data-lang-key="footer_about">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p><p>প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
-            <div class="footer-col"><h3 data-lang-key="footer_quicklinks">দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li><li><a href="placement.html">প্লেসমেন্ট</a></li><li><a href="gallery.html">গ্যালারি</a></li><li><a href="notice-board.html">নোটিশ বোর্ড</a></li><li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li><li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">যোগাযোগ</a></li></ul></div>
+            <div class="footer-col"><h3 data-lang-key="footer_quicklinks">দ্রুত লিংক</h3><ul><li><a href="index.html">হোম</a></li><li><a href="admission.html">অ্যাডমিশন</a></li><li><a href="academic.html">একাডেমিক</a></li><li><a href="placement.html">প্লেসমেন্ট</a></li><li><a href="gallery.html">গ্যালারি</a></li><li><a href="notice-board.html">নোটিশ বোর্ড</a></li><li><a href="teachers.html">শিক্ষকমণ্ডলী</a></li><li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">যোগাযোগ</a></li><li><a href="admin-cms.html">অ্যাডমিন</a></li></ul></div>
             <div class="footer-col"><h3 data-lang-key="footer_contact">যোগাযোগ</h3><ul><li><i class="fas fa-phone"></i> +8801309132253</li><li><i class="fas fa-envelope"></i> info@tbmi.edu.bd</li><li><i class="fas fa-envelope"></i> admission@tbmi.edu.bd</li><li><i class="fas fa-map-marker-alt"></i> ভাওলাগঞ্জ, দেবীগঞ্জ, পঞ্চগড়</li><li><i class="fab fa-whatsapp"></i> +8801309132253</li></ul></div>
             <div class="footer-col"><h3 data-lang-key="footer_support">শিক্ষা সহায়তা</h3><ul><li><a href="privacy-policy.html">প্রাইভেসি পলিসি</a></li><li><a href="terms.html">টার্মস অ্যান্ড কন্ডিশন</a></li><li><a href="faq.html">FAQ</a></li><li><a href="alumni.html">প্রাক্তন শিক্ষার্থী</a></li></ul></div>
         </div>
@@ -1267,6 +1265,86 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAHEt2yaZOq5lpgw96r12uGP4iHmvkWL3E",
+        authDomain: "tbmi-cms.firebaseapp.com",
+        projectId: "tbmi-cms",
+        storageBucket: "tbmi-cms.firebasestorage.app",
+        messagingSenderId: "754106603923",
+        appId: "1:754106603923:web:579fc0ddf3292a39917066",
+        measurementId: "G-HFQMSD9QG4"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
+    // ========== নোটিশ লোড করার ফাংশন ==========
+    async function loadNoticesFromFirebase() {
+        try {
+            const snapshot = await db.collection('notices').orderBy('date', 'desc').get();
+            const notices = [];
+            snapshot.forEach(doc => {
+                notices.push({ id: doc.id, ...doc.data() });
+            });
+            return notices;
+        } catch (error) {
+            console.error("Firebase Error:", error);
+            // Fallback to default notices if Firebase fails
+            return [
+                { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+                { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+                { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
+            ];
+        }
+    }
+    
+    // নোটিশ ডিসপ্লে করার ফাংশন
+    async function displayHomepageNotices() {
+        const notices = await loadNoticesFromFirebase();
+        
+        const noticeList = document.querySelector('#notice-tab .notice-list');
+        const eventList = document.querySelector('#event-tab .notice-list');
+        const examList = document.querySelector('#exam-tab .notice-list');
+        
+        if (noticeList) noticeList.innerHTML = '';
+        if (eventList) eventList.innerHTML = '';
+        if (examList) examList.innerHTML = '';
+        
+        notices.forEach(notice => {
+            const categoryName = {
+                admission: 'অ্যাডমিশন',
+                academic: 'একাডেমিক',
+                exam: 'পরীক্ষা',
+                event: 'ইভেন্ট'
+            }[notice.category] || notice.category;
+            
+            const noticeHtml = `
+                <div class="notice-item">
+                    <div class="notice-info">
+                        <h4>${notice.title}</h4>
+                        <p class="notice-date">তারিখ: ${notice.date}</p>
+                    </div>
+                    <span class="notice-category">${categoryName}</span>
+                </div>
+            `;
+            
+            if (notice.category === 'event' && eventList) {
+                eventList.innerHTML += noticeHtml;
+            } else if (notice.category === 'exam' && examList) {
+                examList.innerHTML += noticeHtml;
+            } else if (noticeList) {
+                noticeList.innerHTML += noticeHtml;
+            }
+        });
+    }
+    
+    // পৃষ্ঠা লোড হলে নোটিশ লোড করুন
+    document.addEventListener('DOMContentLoaded', function() {
+        displayHomepageNotices();
+    });
+    
     AOS.init({ duration: 1000, once: true });
     
     const textsBn = ["প্রযুক্তি শিক্ষার সেরা ঠিকানা", "আপনার ক্যারিয়ার শুরু হোক আমাদের সাথে"];
@@ -1299,7 +1377,7 @@
     typeEffect();
     
     const translations = {
-        nav_home: { bn: "হোম", en: "Home" }, nav_admission: { bn: "অ্যাডমিশন", en: "Admission" }, nav_academic: { bn: "একাডেমিক", en: "Academic" }, nav_placement: { bn: "প্লেসমেন্ট", en: "Placement" }, nav_gallery: { bn: "গ্যালারি", en: "Gallery" }, nav_notice: { bn: "নোটিশ বোর্ড", en: "Notice Board" }, nav_teachers: { bn: "শিক্ষকমণ্ডলী", en: "Teachers" }, nav_alumni: { bn: "প্রাক্তন শিক্ষার্থী", en: "Alumni" }, nav_faq: { bn: "FAQ", en: "FAQ" }, nav_contact: { bn: "যোগাযোগ", en: "Contact" },
+        nav_home: { bn: "হোম", en: "Home" }, nav_admission: { bn: "অ্যাডমিশন", en: "Admission" }, nav_academic: { bn: "একাডেমিক", en: "Academic" }, nav_placement: { bn: "প্লেসমেন্ট", en: "Placement" }, nav_gallery: { bn: "গ্যালারি", en: "Gallery" }, nav_notice: { bn: "নোটিশ বোর্ড", en: "Notice Board" }, nav_teachers: { bn: "শিক্ষকমণ্ডলী", en: "Teachers" }, nav_alumni: { bn: "প্রাক্তন শিক্ষার্থী", en: "Alumni" }, nav_faq: { bn: "FAQ", en: "FAQ" }, nav_contact: { bn: "যোগাযোগ", en: "Contact" }, nav_admin: { bn: "অ্যাডমিন", en: "Admin" },
         hero_title: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         btn_admission: { bn: "অনলাইন অ্যাডমিশন", en: "Online Admission" }, btn_tour: { bn: "ভার্চুয়াল ট্যুর", en: "Virtual Tour" }, btn_brochure: { bn: "ব্রোশার ডাউনলোড", en: "Download Brochure" },
         counter_students: { bn: "শিক্ষার্থী", en: "Students" }, counter_teachers: { bn: "শিক্ষক", en: "Teachers" }, counter_departments: { bn: "বিভাগ", en: "Departments" }, counter_placement: { bn: "প্লেসমেন্ট রেট", en: "Placement Rate" },
@@ -1367,12 +1445,14 @@
     // FAQ
     document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('active')));
     
-    // Notice tabs
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    // Notice tabs (preserve original functionality)
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            tabBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
             document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
         });
     });
@@ -1403,7 +1483,7 @@
                 chatMessages.appendChild(replyDiv);
             } catch(error) {
                 typingDiv.remove();
-                const errorDiv = document.createElement('div'); errorDiv.className = 'message bot error'; errorDiv.innerHTML = '❌ বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।'; chatMessages.appendChild(errorDiv);
+                const errorDiv = document.createElement('div'); errorDiv.className = 'message bot error'; errorDiv.innerHTML = '❌ বার্তা পাঠাতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন。'; chatMessages.appendChild(errorDiv);
             }
             chatMessages.scrollTop = chatMessages.scrollHeight;
         });
@@ -1424,13 +1504,13 @@
                 const response = await fetch(newsletterForm.action, { method:'POST', body:formData, headers:{ 'Accept':'application/json' } });
                 if(response.ok){
                     subscribeMessage.style.display = 'block'; subscribeMessage.className = 'success-message';
-                    subscribeMessage.innerHTML = `<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার ইমেইল (${email}) সফলভাবে সাবস্ক্রাইব হয়েছে。<br><small>শীঘ্রই আপনি আমাদের আপডেট পাবেন।</small>`;
+                    subscribeMessage.innerHTML = `<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার ইমেইল (${email}) সফলভাবে সাবস্ক্রাইব হয়েছে。<br><small>শীঘ্রই আপনি আমাদের আপডেট পাবেন。</small>`;
                     newsletterForm.querySelector('input[name="email"]').value = '';
                     setTimeout(() => subscribeMessage.style.display = 'none', 5000);
                 } else throw new Error();
             } catch(error){
                 subscribeMessage.style.display = 'block'; subscribeMessage.className = 'error-message';
-                subscribeMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> দুঃখিত! সাবস্ক্রিপশন প্রক্রিয়ায় সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
+                subscribeMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> দুঃখিত! সাবস্ক্রিপশন প্রক্রিয়ায় সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন。';
                 setTimeout(() => subscribeMessage.style.display = 'none', 5000);
             } finally {
                 submitBtn.innerHTML = originalText;
@@ -1440,7 +1520,7 @@
     }
     if(window.location.search.includes('subscribe=success') && subscribeMessage){
         subscribeMessage.style.display = 'block'; subscribeMessage.className = 'success-message';
-        subscribeMessage.innerHTML = '<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার সাবস্ক্রিপশন সফলভাবে সম্পন্ন হয়েছে।';
+        subscribeMessage.innerHTML = '<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার সাবস্ক্রিপশন সফলভাবে সম্পন্ন হয়েছে。';
         setTimeout(() => subscribeMessage.style.display = 'none', 5000);
         const url = new URL(window.location.href); url.searchParams.delete('subscribe'); window.history.replaceState({}, document.title, url.pathname);
     }
@@ -1454,111 +1534,7 @@
         });
     });
     
-// ========== নোটিশ বোর্ড - localStorage থেকে লোড করা ==========
-function loadNoticesForHomepage() {
-    const storedNotices = localStorage.getItem('tbmi_notices');
-    let notices = [];
-    
-    if (storedNotices) {
-        notices = JSON.parse(storedNotices);
-    } else {
-        notices = [
-            { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
-            { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
-            { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
-        ];
-    }
-    
-    function getNoticesByCategory(category) {
-        if (category === 'notice') return notices;
-        if (category === 'event') return notices.filter(n => n.category === 'event');
-        if (category === 'exam') return notices.filter(n => n.category === 'exam');
-        return notices;
-    }
-    
-    function displayNotices() {
-        const activeTab = document.querySelector('.tab-btn.active');
-        if (!activeTab) return;
-        const activeTabId = activeTab.getAttribute('data-tab');
-        const noticesToShow = getNoticesByCategory(activeTabId);
-        
-        const noticeListContainer = document.querySelector(`#${activeTabId}-tab .notice-list`);
-        if (noticeListContainer) {
-            noticeListContainer.innerHTML = '';
-            noticesToShow.forEach(notice => {
-                const categoryName = {
-                    admission: 'অ্যাডমিশন',
-                    academic: 'একাডেমিক',
-                    exam: 'পরীক্ষা',
-                    event: 'ইভেন্ট'
-                }[notice.category] || notice.category;
-                
-                noticeListContainer.innerHTML += `
-                    <div class="notice-item">
-                        <div class="notice-info">
-                            <h4>${notice.title}</h4>
-                            <p class="notice-date">তারিখ: ${notice.date}</p>
-                        </div>
-                        <span class="notice-category">${categoryName}</span>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(displayNotices, 50);
-        });
-    });
-    
-    displayNotices();
-}
-
-// Check URL for subscription success
-const subscribeMessage = document.getElementById('subscribeMessage');
-if (window.location.search.includes('subscribe=success')) {
-    if (subscribeMessage) {
-        subscribeMessage.style.display = 'block';
-        subscribeMessage.className = 'success-message';
-        subscribeMessage.innerHTML = '<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার সাবস্ক্রিপশন সফলভাবে সম্পন্ন হয়েছে।';
-        setTimeout(() => { subscribeMessage.style.display = 'none'; }, 5000);
-    }
-    const url = new URL(window.location.href);
-    url.searchParams.delete('subscribe');
-    window.history.replaceState({}, document.title, url.pathname);
-}
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const target = document.querySelector(targetId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            const navLinks = document.querySelector('.nav-links');
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        }
-    });
-});
-
-// Apply saved language on load
-if (typeof changeLanguage === 'function') {
     changeLanguage(currentLang);
-}
-
-// Load notices when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    loadNoticesForHomepage();
-});
-// Apply saved language on load
-changeLanguage(currentLang);
-
 </script>
 </body>
 </html>
