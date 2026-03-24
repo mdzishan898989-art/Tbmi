@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>অ্যাডমিন প্যানেল - TBMI</title>
+    <title>অ্যাডমিন প্যানেল - TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
     <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - অ্যাডমিন প্যানেল">
     <meta name="author" content="TBMI">
     
@@ -28,12 +28,10 @@
             --secondary: #ff9800;
             --secondary-dark: #e68900;
             --accent: #2ecc71;
-            --accent-dark: #27ae60;
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --gray: #6c757d;
             --white: #ffffff;
-            --black: #000000;
             --shadow: 0 5px 30px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
             --transition: all 0.3s ease;
@@ -43,7 +41,7 @@
             font-family: 'Hind Siliguri', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background: var(--white);
+            background: var(--light);
             overflow-x: hidden;
         }
 
@@ -55,7 +53,6 @@
             color: var(--dark);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -76,7 +73,6 @@
             padding: 0 20px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -171,6 +167,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
@@ -238,6 +235,7 @@
             align-items: center;
             justify-content: center;
             padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
         }
         .login-box {
             background: var(--white);
@@ -326,6 +324,10 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
         }
         .dashboard-card h3 {
             font-size: 2rem;
@@ -346,6 +348,8 @@
         .btn-logout:hover {
             background: var(--primary);
         }
+        
+        /* Notice Management */
         .notice-list-admin {
             background: var(--white);
             padding: 20px;
@@ -361,13 +365,17 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+        .notice-item-admin:last-child {
+            border-bottom: none;
+        }
         .add-notice-form {
             background: var(--white);
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
         }
-        .add-notice-form input, .add-notice-form select {
+        .add-notice-form input,
+        .add-notice-form select {
             padding: 10px;
             margin-right: 10px;
             margin-bottom: 10px;
@@ -386,6 +394,18 @@
         }
         .btn-add:hover {
             background: var(--secondary);
+        }
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .delete-btn:hover {
+            background: #c0392b;
         }
 
         /* Footer */
@@ -480,7 +500,8 @@
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
-            .add-notice-form input, .add-notice-form select {
+            .add-notice-form input,
+            .add-notice-form select {
                 width: 100%;
                 margin-right: 0;
             }
@@ -500,7 +521,7 @@
                 <div class="logo-img"></div>
                 <div class="logo-text">
                     <h1>TBMI</h1>
-                    <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <p data-lang-key="logo_text">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
                     <div class="college-codes">
                         <span>College Code: 11011</span>
                         <span>EIIN: 132253</span>
@@ -635,13 +656,26 @@
 <script>
     AOS.init({ duration: 1000, once: true });
 
-    // ---------- Admin Logic ----------
-    let notices = [
-        { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
-        { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
-        { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
-    ];
+    // ========== localStorage থেকে নোটিশ লোড ==========
+    function loadNoticesFromStorage() {
+        const storedNotices = localStorage.getItem('tbmi_notices');
+        if (storedNotices) {
+            return JSON.parse(storedNotices);
+        }
+        return [
+            { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+            { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+            { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
+        ];
+    }
     
+    function saveNoticesToStorage(notices) {
+        localStorage.setItem('tbmi_notices', JSON.stringify(notices));
+    }
+    
+    let notices = loadNoticesFromStorage();
+    
+    // ========== লগইন ফাংশন ==========
     function login() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -674,12 +708,20 @@
     
     function loadNoticeList() {
         const container = document.getElementById('noticeListAdmin');
+        if (!container) return;
         container.innerHTML = '';
         notices.forEach((notice, index) => {
+            const categoryName = {
+                admission: currentLang === 'bn' ? 'অ্যাডমিশন' : 'Admission',
+                academic: currentLang === 'bn' ? 'একাডেমিক' : 'Academic',
+                exam: currentLang === 'bn' ? 'পরীক্ষা' : 'Exam',
+                event: currentLang === 'bn' ? 'ইভেন্ট' : 'Event'
+            }[notice.category] || notice.category;
+            
             container.innerHTML += `
                 <div class="notice-item-admin">
-                    <div><strong>${notice.title}</strong><br><small>${notice.date} | ${notice.category}</small></div>
-                    <button onclick="deleteNotice(${index})" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;"><i class="fas fa-trash"></i></button>
+                    <div><strong>${notice.title}</strong><br><small>${notice.date} | ${categoryName}</small></div>
+                    <button class="delete-btn" onclick="deleteNotice(${index})"><i class="fas fa-trash"></i></button>
                 </div>
             `;
         });
@@ -693,6 +735,7 @@
         
         if (title && date) {
             notices.unshift({ title, date, category });
+            saveNoticesToStorage(notices);
             loadNoticeList();
             document.getElementById('noticeTitle').value = '';
             document.getElementById('noticeDate').value = '';
@@ -705,12 +748,14 @@
     function deleteNotice(index) {
         if (confirm(translations.delete_confirm[currentLang] || 'নোটিশটি ডিলিট করতে চান?')) {
             notices.splice(index, 1);
+            saveNoticesToStorage(notices);
             loadNoticeList();
         }
     }
 
-    // ---------- Language Translations ----------
+    // ========== Language Translations ==========
     const translations = {
+        logo_text: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         nav_home: { bn: "হোম", en: "Home" },
         nav_admission: { bn: "অ্যাডমিশন", en: "Admission" },
         nav_academic: { bn: "একাডেমিক", en: "Academic" },
@@ -764,7 +809,7 @@
                 }
             }
         });
-        // Update select options for category
+        // Update category select options
         const catSelect = document.getElementById('noticeCategory');
         if (catSelect) {
             if (lang === 'bn') {
@@ -779,6 +824,8 @@
                 catSelect.options[3].text = 'Event';
             }
         }
+        // Update notice list display
+        loadNoticeList();
         langToggle.textContent = lang === 'bn' ? 'EN' : 'BN';
     }
 
@@ -786,7 +833,7 @@
         changeLanguage(currentLang === 'bn' ? 'en' : 'bn');
     });
 
-    // Dark Mode Toggle
+    // ========== Dark Mode Toggle ==========
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -795,14 +842,14 @@
         icon.classList.toggle('fa-sun');
     });
 
-    // Mobile Menu Toggle
+    // ========== Mobile Menu Toggle ==========
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Apply saved language
+    // ========== Apply saved language ==========
     changeLanguage(currentLang);
 </script>
 </body>
