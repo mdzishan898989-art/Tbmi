@@ -1454,7 +1454,111 @@
         });
     });
     
+// ========== নোটিশ বোর্ড - localStorage থেকে লোড করা ==========
+function loadNoticesForHomepage() {
+    const storedNotices = localStorage.getItem('tbmi_notices');
+    let notices = [];
+    
+    if (storedNotices) {
+        notices = JSON.parse(storedNotices);
+    } else {
+        notices = [
+            { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+            { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+            { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" }
+        ];
+    }
+    
+    function getNoticesByCategory(category) {
+        if (category === 'notice') return notices;
+        if (category === 'event') return notices.filter(n => n.category === 'event');
+        if (category === 'exam') return notices.filter(n => n.category === 'exam');
+        return notices;
+    }
+    
+    function displayNotices() {
+        const activeTab = document.querySelector('.tab-btn.active');
+        if (!activeTab) return;
+        const activeTabId = activeTab.getAttribute('data-tab');
+        const noticesToShow = getNoticesByCategory(activeTabId);
+        
+        const noticeListContainer = document.querySelector(`#${activeTabId}-tab .notice-list`);
+        if (noticeListContainer) {
+            noticeListContainer.innerHTML = '';
+            noticesToShow.forEach(notice => {
+                const categoryName = {
+                    admission: 'অ্যাডমিশন',
+                    academic: 'একাডেমিক',
+                    exam: 'পরীক্ষা',
+                    event: 'ইভেন্ট'
+                }[notice.category] || notice.category;
+                
+                noticeListContainer.innerHTML += `
+                    <div class="notice-item">
+                        <div class="notice-info">
+                            <h4>${notice.title}</h4>
+                            <p class="notice-date">তারিখ: ${notice.date}</p>
+                        </div>
+                        <span class="notice-category">${categoryName}</span>
+                    </div>
+                `;
+            });
+        }
+    }
+    
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(displayNotices, 50);
+        });
+    });
+    
+    displayNotices();
+}
+
+// Check URL for subscription success
+const subscribeMessage = document.getElementById('subscribeMessage');
+if (window.location.search.includes('subscribe=success')) {
+    if (subscribeMessage) {
+        subscribeMessage.style.display = 'block';
+        subscribeMessage.className = 'success-message';
+        subscribeMessage.innerHTML = '<i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার সাবস্ক্রিপশন সফলভাবে সম্পন্ন হয়েছে।';
+        setTimeout(() => { subscribeMessage.style.display = 'none'; }, 5000);
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.delete('subscribe');
+    window.history.replaceState({}, document.title, url.pathname);
+}
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        }
+    });
+});
+
+// Apply saved language on load
+if (typeof changeLanguage === 'function') {
     changeLanguage(currentLang);
+}
+
+// Load notices when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadNoticesForHomepage();
+});
+// Apply saved language on load
+changeLanguage(currentLang);
+
 </script>
 </body>
 </html>
