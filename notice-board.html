@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
     
     <style>
         * {
@@ -103,15 +106,6 @@
         .btn-secondary:hover {
             background: var(--primary);
             transform: translateY(-3px);
-        }
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
         }
 
         .section {
@@ -477,7 +471,7 @@
                 <div class="logo-img"></div>
                 <div class="logo-text">
                     <h1>TBMI</h1>
-                    <p data-lang-key="logo_text">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
                     <div class="college-codes">
                         <span>College Code: 11011</span>
                         <span>EIIN: 132253</span>
@@ -512,6 +506,7 @@
                 <li><a href="alumni.html" data-lang-key="nav_alumni">প্রাক্তন শিক্ষার্থী</a></li>
                 <li><a href="faq.html" data-lang-key="nav_faq">FAQ</a></li>
                 <li><a href="contact.html" data-lang-key="nav_contact">যোগাযোগ</a></li>
+                <li><a href="admin-cms.html" data-lang-key="nav_admin">অ্যাডমিন</a></li>
             </ul>
             <div class="nav-icons">
                 <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
@@ -545,7 +540,7 @@
         </div>
         
         <div class="notice-list" id="noticeList" data-aos="fade-up">
-            <!-- নোটিশগুলি JavaScript দিয়ে localStorage থেকে লোড হবে -->
+            <!-- নোটিশগুলি JavaScript দিয়ে Firebase থেকে লোড হবে -->
         </div>
     </div>
 </section>
@@ -589,34 +584,56 @@
 <script>
     AOS.init({ duration: 1000, once: true });
 
-    // ========== localStorage থেকে নোটিশ লোড করা ==========
-    function loadNoticesFromStorage() {
-        const storedNotices = localStorage.getItem('tbmi_notices');
-        if (storedNotices) {
-            return JSON.parse(storedNotices);
+    // ========== Firebase Configuration ==========
+    const firebaseConfig = {
+        apiKey: "AIzaSyAHEt2yaZOq5lpgw96r12uGP4iHmvkWL3E",
+        authDomain: "tbmi-cms.firebaseapp.com",
+        projectId: "tbmi-cms",
+        storageBucket: "tbmi-cms.firebasestorage.app",
+        messagingSenderId: "754106603923",
+        appId: "1:754106603923:web:579fc0ddf3292a39917066",
+        measurementId: "G-HFQMSD9QG4"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    let currentNotices = [];
+
+    // ========== নোটিশ লোড করার ফাংশন ==========
+    async function loadNoticesForNoticeBoard() {
+        try {
+            const snapshot = await db.collection('notices').orderBy('date', 'desc').get();
+            currentNotices = [];
+            snapshot.forEach(doc => {
+                currentNotices.push({ id: doc.id, ...doc.data() });
+            });
+            displayNoticesOnNoticeBoard();
+        } catch (error) {
+            console.error("Firebase Error:", error);
+            // Fallback to default notices
+            currentNotices = [
+                { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+                { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+                { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" },
+                { title: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫", date: "2025-04-20", category: "event" },
+                { title: "ক্যারিয়ার ফেয়ার ২০২৫", date: "2025-04-05", category: "event" },
+                { title: "সেমিস্টার ফাইনাল পরীক্ষার রুটিন", date: "2025-04-01", category: "exam" },
+                { title: "অ্যাডমিশন টেস্টের তারিখ ঘোষণা", date: "2025-03-25", category: "admission" }
+            ];
+            displayNoticesOnNoticeBoard();
         }
-        // ডিফল্ট নোটিশ
-        return [
-            { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
-            { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
-            { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" },
-            { title: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫", date: "2025-04-20", category: "event" },
-            { title: "ক্যারিয়ার ফেয়ার ২০২৫", date: "2025-04-05", category: "event" },
-            { title: "সেমিস্টার ফাইনাল পরীক্ষার রুটিন", date: "2025-04-01", category: "exam" },
-            { title: "অ্যাডমিশন টেস্টের তারিখ ঘোষণা", date: "2025-03-25", category: "admission" }
-        ];
     }
 
-    let currentNotices = loadNoticesFromStorage();
-
-    // নোটিশ ডিসপ্লে করার ফাংশন
-    function displayNotices() {
+    function displayNoticesOnNoticeBoard() {
         const activeCat = document.querySelector('.cat-btn.active');
-        if (!activeCat) return;
+        let activeCategory = 'all';
+        if (activeCat) {
+            activeCategory = activeCat.getAttribute('data-cat');
+        }
         
-        const activeCategory = activeCat.getAttribute('data-cat');
         let filteredNotices = currentNotices;
-        
         if (activeCategory !== 'all') {
             filteredNotices = currentNotices.filter(n => n.category === activeCategory);
         }
@@ -627,10 +644,10 @@
             filteredNotices.forEach(notice => {
                 const categoryClass = notice.category;
                 const categoryName = {
-                    admission: currentLang === 'bn' ? 'অ্যাডমিশন' : 'Admission',
-                    academic: currentLang === 'bn' ? 'একাডেমিক' : 'Academic',
-                    exam: currentLang === 'bn' ? 'পরীক্ষা' : 'Exam',
-                    event: currentLang === 'bn' ? 'ইভেন্ট' : 'Event'
+                    admission: 'অ্যাডমিশন',
+                    academic: 'একাডেমিক',
+                    exam: 'পরীক্ষা',
+                    event: 'ইভেন্ট'
                 }[notice.category] || notice.category;
                 
                 noticeList.innerHTML += `
@@ -646,50 +663,42 @@
         }
     }
 
-    // ========== সার্চ ফাংশন ==========
-    function searchNotices() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const items = document.querySelectorAll('#noticeList .notice-item');
-        items.forEach(item => {
-            const title = item.querySelector('h3').innerText.toLowerCase();
-            if (title.includes(searchTerm)) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    // ========== ক্যাটাগরি ফিল্টার ==========
-    function initCategoryFilters() {
+    // ========== ক্যাটাগরি বাটন ইভেন্ট ==========
+    function setupCategoryButtons() {
         const catBtns = document.querySelectorAll('.cat-btn');
         catBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 catBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                displayNotices();
-                // সার্চ রিসেট না করে ফিল্টার প্রয়োগ
-                const searchTerm = document.getElementById('searchInput').value;
-                if (searchTerm) {
-                    searchNotices();
-                }
+                displayNoticesOnNoticeBoard();
             });
         });
     }
 
-    // ========== ভাষা পরিবর্তনের সময় নোটিশ আপডেট ==========
-    function updateNoticesForLanguage() {
-        displayNotices();
-        // সার্চ থাকলে পুনরায় সার্চ প্রয়োগ
-        const searchTerm = document.getElementById('searchInput').value;
-        if (searchTerm) {
-            searchNotices();
+    // ========== সার্চ ফাংশন ==========
+    function setupSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        
+        function searchNotices() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const items = document.querySelectorAll('#noticeList .notice-item');
+            items.forEach(item => {
+                const title = item.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
+        
+        if (searchBtn) searchBtn.addEventListener('click', searchNotices);
+        if (searchInput) searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') searchNotices(); });
     }
 
     // ========== Language Translations ==========
     const translations = {
-        logo_text: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         nav_home: { bn: "হোম", en: "Home" },
         nav_admission: { bn: "অ্যাডমিশন", en: "Admission" },
         nav_academic: { bn: "একাডেমিক", en: "Academic" },
@@ -700,6 +709,7 @@
         nav_alumni: { bn: "প্রাক্তন শিক্ষার্থী", en: "Alumni" },
         nav_faq: { bn: "FAQ", en: "FAQ" },
         nav_contact: { bn: "যোগাযোগ", en: "Contact" },
+        nav_admin: { bn: "অ্যাডমিন", en: "Admin" },
         page_title: { bn: "নোটিশ বোর্ড", en: "Notice Board" },
         page_subtitle: { bn: "সর্বশেষ বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তথ্য", en: "Latest Notices & Important Information" },
         search_placeholder: { bn: "নোটিশ অনুসন্ধান করুন...", en: "Search notices..." },
@@ -732,7 +742,6 @@
             }
         });
         langToggle.textContent = lang === 'bn' ? 'EN' : 'BN';
-        updateNoticesForLanguage();
     }
 
     langToggle.addEventListener('click', () => {
@@ -755,32 +764,15 @@
         navLinks.classList.toggle('active');
     });
 
-    // ========== localStorage পরিবর্তন শোনা ==========
-    // অন্য ট্যাবে নোটিশ পরিবর্তন হলে এখানেও আপডেট হবে
-    window.addEventListener('storage', function(e) {
-        if (e.key === 'tbmi_notices') {
-            currentNotices = JSON.parse(e.newValue);
-            displayNotices();
-        }
-    });
-
     // ========== পৃষ্ঠা লোড হলে ==========
     document.addEventListener('DOMContentLoaded', function() {
-        displayNotices();
-        initCategoryFilters();
-        
-        // সার্চ বাটন ইভেন্ট
-        const searchBtn = document.getElementById('searchBtn');
-        const searchInput = document.getElementById('searchInput');
-        if (searchBtn) {
-            searchBtn.addEventListener('click', searchNotices);
-        }
-        if (searchInput) {
-            searchInput.addEventListener('keyup', (e) => {
-                if (e.key === 'Enter') searchNotices();
-            });
-        }
+        loadNoticesForNoticeBoard();
+        setupCategoryButtons();
+        setupSearch();
     });
+
+    // Apply saved language
+    changeLanguage(currentLang);
 </script>
 </body>
 </html>
