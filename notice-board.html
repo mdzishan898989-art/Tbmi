@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>নোটিশ বোর্ড - TBMI | টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</title>
-    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - প্রযুক্তি ও ব্যবসায় শিক্ষায় দক্ষ পেশাজীবী তৈরির সেরা প্রতিষ্ঠান">
-    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, কম্পিউটার টেকনোলজি, HRD, পঞ্চগড়, নোটিশ">
+    <meta name="description" content="টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট - সর্বশেষ নোটিশ ও বিজ্ঞপ্তি">
+    <meta name="keywords" content="টেকনিক্যাল কলেজ, বিজনেস ম্যানেজমেন্ট, নোটিশ, বিজ্ঞপ্তি, TBMI">
     <meta name="author" content="TBMI">
     
     <!-- Font Awesome -->
@@ -56,7 +56,6 @@
             color: var(--dark);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -77,7 +76,6 @@
             padding: 0 20px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -116,7 +114,6 @@
             color: var(--white);
         }
 
-        /* Section Styles */
         .section {
             padding: 80px 0;
         }
@@ -209,6 +206,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
@@ -241,7 +239,6 @@
             font-size: 1.5rem;
         }
 
-        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -303,10 +300,15 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-box button:hover {
+            background: var(--secondary);
         }
 
         .category-filters {
             display: flex;
+            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
             margin-bottom: 30px;
@@ -319,7 +321,8 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        .cat-btn.active, .cat-btn:hover {
+        .cat-btn.active,
+        .cat-btn:hover {
             background: var(--primary);
             color: white;
         }
@@ -413,7 +416,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
                 position: fixed;
@@ -439,9 +441,6 @@
                 box-shadow: none;
                 padding-left: 20px;
             }
-            .section-title {
-                font-size: 2rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -459,6 +458,13 @@
             .est-year, .college-codes span {
                 font-size: 0.55rem;
             }
+            .category-filters {
+                gap: 10px;
+            }
+            .cat-btn {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -471,7 +477,7 @@
                 <div class="logo-img"></div>
                 <div class="logo-text">
                     <h1>TBMI</h1>
-                    <p>টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
+                    <p data-lang-key="logo_text">টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট</p>
                     <div class="college-codes">
                         <span>College Code: 11011</span>
                         <span>EIIN: 132253</span>
@@ -539,34 +545,7 @@
         </div>
         
         <div class="notice-list" id="noticeList" data-aos="fade-up">
-            <div class="notice-item" data-category="admission">
-                <div class="notice-info"><h3>২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন বিজ্ঞপ্তি প্রকাশ</h3><p><i class="far fa-calendar-alt"></i> ১৫ মার্চ, ২০২৫ | <i class="far fa-clock"></i> সকাল ১০:০০</p></div>
-                <span class="notice-category admission">অ্যাডমিশন</span>
-            </div>
-            <div class="notice-item" data-category="exam">
-                <div class="notice-info"><h3>বার্ষিক পরীক্ষার সময়সূচী প্রকাশ</h3><p><i class="far fa-calendar-alt"></i> ১০ মার্চ, ২০২৫ | <i class="far fa-clock"></i> দুপুর ১২:০০</p></div>
-                <span class="notice-category exam">পরীক্ষা</span>
-            </div>
-            <div class="notice-item" data-category="academic">
-                <div class="notice-info"><h3>মেধাবৃত্তির আবেদন শুরু</h3><p><i class="far fa-calendar-alt"></i> ৫ মার্চ, ২০২৫ | <i class="far fa-clock"></i> সকাল ৯:০০</p></div>
-                <span class="notice-category academic">একাডেমিক</span>
-            </div>
-            <div class="notice-item" data-category="event">
-                <div class="notice-info"><h3>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</h3><p><i class="far fa-calendar-alt"></i> ২০ এপ্রিল, ২০২৫ | <i class="far fa-clock"></i> সকাল ৮:০০</p></div>
-                <span class="notice-category event">ইভেন্ট</span>
-            </div>
-            <div class="notice-item" data-category="event">
-                <div class="notice-info"><h3>ক্যারিয়ার ফেয়ার ২০২৫</h3><p><i class="far fa-calendar-alt"></i> ৫ এপ্রিল, ২০২৫ | <i class="far fa-clock"></i> সকাল ১০:০০</p></div>
-                <span class="notice-category event">ইভেন্ট</span>
-            </div>
-            <div class="notice-item" data-category="exam">
-                <div class="notice-info"><h3>সেমিস্টার ফাইনাল পরীক্ষার রুটিন</h3><p><i class="far fa-calendar-alt"></i> ১-১৫ এপ্রিল, ২০২৫</p></div>
-                <span class="notice-category exam">পরীক্ষা</span>
-            </div>
-            <div class="notice-item" data-category="admission">
-                <div class="notice-info"><h3>অ্যাডমিশন টেস্টের তারিখ ঘোষণা</h3><p><i class="far fa-calendar-alt"></i> ২৫ মার্চ, ২০২৫ | <i class="far fa-clock"></i> সকাল ১০:০০</p></div>
-                <span class="notice-category admission">অ্যাডমিশন</span>
-            </div>
+            <!-- নোটিশগুলি JavaScript দিয়ে localStorage থেকে লোড হবে -->
         </div>
     </div>
 </section>
@@ -610,8 +589,107 @@
 <script>
     AOS.init({ duration: 1000, once: true });
 
-    // Language Translations
+    // ========== localStorage থেকে নোটিশ লোড করা ==========
+    function loadNoticesFromStorage() {
+        const storedNotices = localStorage.getItem('tbmi_notices');
+        if (storedNotices) {
+            return JSON.parse(storedNotices);
+        }
+        // ডিফল্ট নোটিশ
+        return [
+            { title: "২০২৫-২৬ শিক্ষাবর্ষের অ্যাডমিশন শুরু", date: "2025-03-15", category: "admission" },
+            { title: "বার্ষিক পরীক্ষার সময়সূচী প্রকাশ", date: "2025-03-10", category: "exam" },
+            { title: "মেধাবৃত্তির আবেদন শুরু", date: "2025-03-05", category: "academic" },
+            { title: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫", date: "2025-04-20", category: "event" },
+            { title: "ক্যারিয়ার ফেয়ার ২০২৫", date: "2025-04-05", category: "event" },
+            { title: "সেমিস্টার ফাইনাল পরীক্ষার রুটিন", date: "2025-04-01", category: "exam" },
+            { title: "অ্যাডমিশন টেস্টের তারিখ ঘোষণা", date: "2025-03-25", category: "admission" }
+        ];
+    }
+
+    let currentNotices = loadNoticesFromStorage();
+
+    // নোটিশ ডিসপ্লে করার ফাংশন
+    function displayNotices() {
+        const activeCat = document.querySelector('.cat-btn.active');
+        if (!activeCat) return;
+        
+        const activeCategory = activeCat.getAttribute('data-cat');
+        let filteredNotices = currentNotices;
+        
+        if (activeCategory !== 'all') {
+            filteredNotices = currentNotices.filter(n => n.category === activeCategory);
+        }
+        
+        const noticeList = document.getElementById('noticeList');
+        if (noticeList) {
+            noticeList.innerHTML = '';
+            filteredNotices.forEach(notice => {
+                const categoryClass = notice.category;
+                const categoryName = {
+                    admission: currentLang === 'bn' ? 'অ্যাডমিশন' : 'Admission',
+                    academic: currentLang === 'bn' ? 'একাডেমিক' : 'Academic',
+                    exam: currentLang === 'bn' ? 'পরীক্ষা' : 'Exam',
+                    event: currentLang === 'bn' ? 'ইভেন্ট' : 'Event'
+                }[notice.category] || notice.category;
+                
+                noticeList.innerHTML += `
+                    <div class="notice-item" data-category="${notice.category}">
+                        <div class="notice-info">
+                            <h3>${notice.title}</h3>
+                            <p><i class="far fa-calendar-alt"></i> ${notice.date}</p>
+                        </div>
+                        <span class="notice-category ${categoryClass}">${categoryName}</span>
+                    </div>
+                `;
+            });
+        }
+    }
+
+    // ========== সার্চ ফাংশন ==========
+    function searchNotices() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('#noticeList .notice-item');
+        items.forEach(item => {
+            const title = item.querySelector('h3').innerText.toLowerCase();
+            if (title.includes(searchTerm)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // ========== ক্যাটাগরি ফিল্টার ==========
+    function initCategoryFilters() {
+        const catBtns = document.querySelectorAll('.cat-btn');
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                displayNotices();
+                // সার্চ রিসেট না করে ফিল্টার প্রয়োগ
+                const searchTerm = document.getElementById('searchInput').value;
+                if (searchTerm) {
+                    searchNotices();
+                }
+            });
+        });
+    }
+
+    // ========== ভাষা পরিবর্তনের সময় নোটিশ আপডেট ==========
+    function updateNoticesForLanguage() {
+        displayNotices();
+        // সার্চ থাকলে পুনরায় সার্চ প্রয়োগ
+        const searchTerm = document.getElementById('searchInput').value;
+        if (searchTerm) {
+            searchNotices();
+        }
+    }
+
+    // ========== Language Translations ==========
     const translations = {
+        logo_text: { bn: "টেকনিক্যাল অ্যান্ড বিজনেস ম্যানেজমেন্ট ইনস্টিটিউট", en: "Technical & Business Management Institute" },
         nav_home: { bn: "হোম", en: "Home" },
         nav_admission: { bn: "অ্যাডমিশন", en: "Admission" },
         nav_academic: { bn: "একাডেমিক", en: "Academic" },
@@ -654,13 +732,14 @@
             }
         });
         langToggle.textContent = lang === 'bn' ? 'EN' : 'BN';
+        updateNoticesForLanguage();
     }
 
     langToggle.addEventListener('click', () => {
         changeLanguage(currentLang === 'bn' ? 'en' : 'bn');
     });
 
-    // Dark Mode Toggle
+    // ========== Dark Mode Toggle ==========
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -669,50 +748,39 @@
         icon.classList.toggle('fa-sun');
     });
 
-    // Mobile Menu Toggle
+    // ========== Mobile Menu Toggle ==========
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Filter by category
-    const catBtns = document.querySelectorAll('.cat-btn');
-    const noticeItems = document.querySelectorAll('.notice-item');
-    catBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            catBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const cat = btn.getAttribute('data-cat');
-            noticeItems.forEach(item => {
-                if (cat === 'all' || item.getAttribute('data-category') === cat) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+    // ========== localStorage পরিবর্তন শোনা ==========
+    // অন্য ট্যাবে নোটিশ পরিবর্তন হলে এখানেও আপডেট হবে
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'tbmi_notices') {
+            currentNotices = JSON.parse(e.newValue);
+            displayNotices();
+        }
     });
 
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    function searchNotices() {
-        const searchTerm = searchInput.value.toLowerCase();
-        noticeItems.forEach(item => {
-            const title = item.querySelector('h3').innerText.toLowerCase();
-            if (title.includes(searchTerm)) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-    searchBtn.addEventListener('click', searchNotices);
-    searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') searchNotices(); });
-
-    // Apply saved language
-    changeLanguage(currentLang);
+    // ========== পৃষ্ঠা লোড হলে ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        displayNotices();
+        initCategoryFilters();
+        
+        // সার্চ বাটন ইভেন্ট
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', searchNotices);
+        }
+        if (searchInput) {
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') searchNotices();
+            });
+        }
+    });
 </script>
 </body>
 </html>
